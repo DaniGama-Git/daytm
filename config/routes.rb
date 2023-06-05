@@ -5,4 +5,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  resources :items
+  resources :collections, except: [:index]
+  resources :tags, only: [:new, :create]
+  resources :members, only: [:new, :create]
+  get 'landing', to: 'pages#landing'
 end
