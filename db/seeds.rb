@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+require "open-uri"
 # DESTROYING ALL DATA
 p "CLEANING THE DATABASE"
 
@@ -84,25 +85,35 @@ user_1.collections << collection_10
 user_1.save
 
 
-# CREATING ITEMS & TAGS SEED COLLECTION 1
+# CREATING ITEMS & TAGS SEED COLLECTION 1:
 p "CREATING ITEMS & TAGS SEED COLLECTION 1"
 
-item_1_1 = Item.create(title: "Kiki's Leg X-Ray", description: "The X-Rays received from the doctor when Kiki broke her leg", format: "JPEG", date: Date.parse("2022/05/03"), user_id: user_1)
-item_1_2 = Item.create(title: "Lila's Hospital Visit", description: "Details of Lila's hospital visit", format: "PDF", date: Date.parse("2023-06-07"), user_id: user_1.id)
+item_1_1 = Item.create(title: "Kiki's Leg X-Ray", description: "The X-Rays received from the doctor when Kiki broke her leg", format: "JPEG", date: Date.parse("2022/05/03"), user: user_1)
+item_1_2 = Item.create(title: "Lila's Hospital Visit", description: "Details of Lila's hospital visit", format: "PDF", date: Date.parse("2023-06-07"), user: user_1)
 
 collection_1.items << item_1_1
 collection_1.items << item_1_2
 collection_1.save
 
+# CREATING TAGS FOR ITEMS 1.1 & 1.2:
 tag_1 = Tag.create(name: "X-Ray", user: user_1)
 tag_2 = Tag.create(name: "doctor", user: user_1)
 tag_3 = Tag.create(name: "medical", user: user_1)
 tag_4 = Tag.create(name: "leg", user: user_1)
 
+# ATTACHING TAGS TO ITEMS 1.1 & 1.2
+
 item_1_1.tags << [tag_1, tag_3, tag_4]
 item_1_1.save
 item_1_2.tags << [tag_2, tag_3]
 item_1_2.save
+
+# ATTACHING IMAGES/PDF'S TO ITEMS 1.1 & 1.2:
+file_1_1 = URI.open("https://www.cedars-sinai.org/content/dam/cedars-sinai/programs-and-services/imaging-center/for-patients/exams-by-procedure/lower-extremity-xray-2.jpg")
+item_1_1.photos.attach(io: file_1_1, filename: "image_1_1.jpg", content_type: "image/jpg")
+
+file_1_2 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686153397/Lila_Hospital_Visit_eiyh7j.pdf")
+item_1_1.photos.attach(io: file_1_2, filename: "image_1_2.jpg", content_type: "pdf")
 
 
 # CREATING ITEMS & TAGS SEED COLLECTION 2
