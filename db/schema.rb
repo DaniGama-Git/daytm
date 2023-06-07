@@ -17,6 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_151219) do
   create_table "collections", force: :cascade do |t|
     t.string "label"
     t.string "description"
+    t.string "type"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -60,30 +61,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_151219) do
 
   create_table "items", force: :cascade do |t|
     t.string "title"
-    t.text "description"
     t.string "format"
     t.datetime "date"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "members", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_members_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_tags_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -109,6 +106,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_06_151219) do
   add_foreign_key "item_tags", "items"
   add_foreign_key "item_tags", "tags"
   add_foreign_key "items", "users"
-  add_foreign_key "members", "users"
-  add_foreign_key "tags", "users"
 end

@@ -1,0 +1,30 @@
+# nav bar at the top
+
+# search bar
+
+# all collections
+<div>
+  <% @collections.each do |collection| %>
+    <ul>
+      <li><%= collection.label %></li>
+      <li><%= collection.description %></li>
+      <li><%= collection.type %></li>
+    </ul>
+  <% end %>
+</div>
+
+# floating plus icon
+<%= image_tag('homepage-add-button.svg', alt: 'Add Button') %>
+
+# form to add new collection
+<div>
+  <%= simple_form_for(collection) do |f| %>
+    <%= f.input :label %>
+    <%= f.input :description %>
+    <%= f.input :icon %>
+    <%= f.submit %>
+  <% end %>
+</div>
+
+# link to add new item
+<%= link_to('Add new item', new_item_path, class: 'btn btn-primary') %>
