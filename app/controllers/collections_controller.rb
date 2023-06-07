@@ -1,7 +1,11 @@
 class CollectionsController < ApplicationController
   before_action :set_collection, only: %i[show edit update destroy]
-  def show
+
+  def index
     @collections = Collection.all
+  end
+
+  def show
   end
 
   def new
