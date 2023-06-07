@@ -1,19 +1,28 @@
-<h1>New Item</h1>
-
-<%= simple_form_for(@item) do |f| %>
+<div class="container">
+  <h1>Add New Item</h1>
+  <div class="item-container">
+  </div>
+  <%= simple_form_for(@item) do |f| %>
 
   <div class="form-inputs">
     <%= f.input :title %>
-    <%= f.input :comment %>
     <%= f.input :format %>
-    <%= f.input :date %>
+    <%= f.input :date, html5: true %>
+    <%= f.input :description %>
+    <%= f.association :members, collection: @members, label_method: :full_name, as: :check_boxes %>
+    <%= f.association :tags, collection: @tags, as: :check_boxes %>
+
   </div>
 
-<div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+  <div class="form-actions">
+      <%= f.button :submit, "Save" %>
+    </div>
+  <% end %>
 
-<div>
-  <%= link_to "Back to items", items_path %>
+  <div>
+    <%= link_to "Back to items", items_path %>
+  </div>
 </div>
+<% @members.each do |member| %>
+  <%= member.first_name %>
+  <% end %>
