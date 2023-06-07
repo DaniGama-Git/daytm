@@ -87,17 +87,17 @@ user_1.save
 # CREATING ITEMS & TAGS SEED COLLECTION 1
 p "CREATING ITEMS & TAGS SEED COLLECTION 1"
 
-item_1_1 = Item.create(title: "Kiki's Leg X-Ray", description: "The X-Rays received from the doctor when Kiki broke her leg", format: "JPEG", date: Date.parse("2022/05/03"), user_id: user_1.id)
+item_1_1 = Item.create(title: "Kiki's Leg X-Ray", description: "The X-Rays received from the doctor when Kiki broke her leg", format: "JPEG", date: Date.parse("2022/05/03"), user_id: user_1)
 item_1_2 = Item.create(title: "Lila's Hospital Visit", description: "Details of Lila's hospital visit", format: "PDF", date: Date.parse("2023-06-07"), user_id: user_1.id)
 
 collection_1.items << item_1_1
 collection_1.items << item_1_2
 collection_1.save
 
-tag_1 = Tag.create(name: "X-Ray", user_id: user_1.id)
-tag_2 = Tag.create(name: "doctor", user_id: user_1.id)
-tag_3 = Tag.create(name: "medical", user_id: user_1.id)
-tag_4 = Tag.create(name: "leg", user_id: user_1.id)
+tag_1 = Tag.create(name: "X-Ray", user: user_1)
+tag_2 = Tag.create(name: "doctor", user: user_1)
+tag_3 = Tag.create(name: "medical", user: user_1)
+tag_4 = Tag.create(name: "leg", user: user_1)
 
 item_1_1.tags << [tag_1, tag_3, tag_4]
 item_1_1.save
@@ -108,17 +108,17 @@ item_1_2.save
 # CREATING ITEMS & TAGS SEED COLLECTION 2
 p "CREATING ITEMS & TAGSNEED COLLECTION 2"
 
-item_2_1 = Item.create(title: "Liam's drawing of a bug", description: "Liam's drawing done with granny on school holidays", format: "JPEG", date: Date.parse("2021/06/02"), user_id: user_1.id)
-item_2_2 = Item.create(title: "Lis's pottery", description: "Lis's pottery done at clay cafe for her cousin's birthday", format: "JPEG", date: Date.parse("2023/08/14"), user_id: user_1.id)
+item_2_1 = Item.create(title: "Liam's drawing of a bug", description: "Liam's drawing done with granny on school holidays", format: "JPEG", date: Date.parse("2021/06/02"), user: user_1)
+item_2_2 = Item.create(title: "Lis's pottery", description: "Lis's pottery done at clay cafe for her cousin's birthday", format: "JPEG", date: Date.parse("2023/08/14"), user: user_1)
 
 collection_2.items << item_2_1
 collection_2.items << item_2_2
 collection_2.save
 
-tag_5 = Tag.create(name: "art", user_id: user_1.id)
-tag_6 = Tag.create(name: "pictures", user_id: user_1.id)
-tag_7 = Tag.create(name: "potery", user_id: user_1.id)
-tag_8 = Tag.create(name: "drawing", user_id: user_1.id)
+tag_5 = Tag.create(name: "art", user: user_1)
+tag_6 = Tag.create(name: "pictures", user: user_1)
+tag_7 = Tag.create(name: "potery", user: user_1)
+tag_8 = Tag.create(name: "drawing", user: user_1)
 
 item_2_1.tags << [tag_5, tag_6, tag_8]
 item_2_1.save

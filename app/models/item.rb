@@ -5,4 +5,5 @@ class Item < ApplicationRecord
   has_many :item_tags
   has_many :tags, through: :item_tags
   has_many :comments
+  has_many_attached :photos
 end
