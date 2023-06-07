@@ -4,5 +4,7 @@ class Item < ApplicationRecord
   has_many :collections, through: :item_collections
   has_many :item_tags
   has_many :tags, through: :item_tags
+  has_many :item_members
+  has_many :members, through: :item_members
   has_many :comments
 end

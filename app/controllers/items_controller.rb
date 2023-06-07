@@ -10,11 +10,27 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @tags = Tag.where(user: current_user)
+    @members = Member.where(user: current_user)
+    @member_details = @members.map do |member|
+      [member.first_name, member.id]
+    end
   end
 
   def create
     @item = Item.new(item_params)
+    @item.user = current_user
     if @item.save
+      members = params[:item][:member_ids].map do |id|
+        next if id.to_i == 0
+        Member.find(id.to_i)
+      end
+      tags = params[:item][:tag_ids].map do |id|
+        next if id.to_i == 0
+        Tag.find(id.to_i)
+      end
+      @item.members.push(members.compact)
+      @item.tags.push(tags.compact)
       redirect_to @item, notice: "#{@item.title} has been successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -44,6 +60,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:title, :comment, :format, :date, photos: [])
+    params.require(:item).permit(:title, :description, :format, :date, :tag_ids, :member_ids, photos: [])
   end
 end
