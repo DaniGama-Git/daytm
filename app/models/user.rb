@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :collections
   has_many :items
+  has_many :members
+  has_many :tags
 end
