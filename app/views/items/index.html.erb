@@ -5,8 +5,9 @@
   <li>
     <%= link_to item_path(item) do %>
       <%= item.title %>
+  <% end %>
   </li>
   <% end %>
 </ul>
 
-<%= link_to "Add Item", new_item_path %> 
+<%= link_to "Add Item", new_item_path %>
