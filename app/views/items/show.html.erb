@@ -1,17 +1,20 @@
-<div class="container">
-  <div class="item-image-container">
-  </div>
+<div class="show-container">
+  <div class="image-file-container">
+      <% @item.photos.each do |photo|%>
+      <%=cl_image_tag(photo.key, width: 400, height: 300, crop: :fill) %>
+      <% end %>
+    </div>
   <div class="item-info">
-  <h1><%= @item.title %></h1>
-  <h2><%= @item.description %></h2>
-  <% @item.tags.each do |tag|%>
+    <h1>Title: <%= @item.title %></h1>
+    <h2>Description: <%= @item.description %></h2>
+    <p>Tags:<% @item.tags.each do |tag|%> </p>
     <%= tag.name %>
-    <br>
-  <% end %>
-  <h3>Comment</h3>
-<%= simple_form_for [@item, @comment] do |f| %>
-  <%= f.input :content%>
-  <%= f.submit "Submit comment", class: "btn btn-primary" %>
-<% end %>
+    <% end %>
+    <div id="comment-container">
+      <%= simple_form_for [@item, @comment] do |f| %>
+      <%= f.input :content, label: "Comment" %>
+      <%= f.submit "Submit comment", class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
 </div>
