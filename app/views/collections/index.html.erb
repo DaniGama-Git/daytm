@@ -1,27 +1,35 @@
-# nav bar at the top
+<div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: collections_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "A search engine for your life"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
 
-# search bar
-
-# all collections
 <div>
   <% @collections.each do |collection| %>
-    <ul>
-      <li><%= collection.label %></li>
-      <li><%= collection.description %></li>
-      <li><%= collection.type %></li>
-    </ul>
+    <%= link_to collection_path(collection) do %>
+      <ul>
+        <h3><%= collection.label %></h3>
+        <p><%= collection.description %></p>
+      </ul>
+    <% end %>
   <% end %>
 </div>
 
 # floating plus icon
-<%= image_tag('homepage-add-button.svg', alt: 'Add Button') %>
+<%= image_tag('homepage-add-button.svg', alt: 'Add Button', style: 'height:50px') %>
 
 # form to add new collection
 <div>
-  <%= simple_form_for(collection) do |f| %>
+  <%= simple_form_for(@collection) do |f| %>
     <%= f.input :label %>
     <%= f.input :description %>
-    <%= f.input :icon %>
     <%= f.submit %>
   <% end %>
 </div>

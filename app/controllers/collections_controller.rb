@@ -3,20 +3,17 @@ class CollectionsController < ApplicationController
 
   def index
     @collections = Collection.all
+    @collection = Collection.new
   end
 
   def show
   end
 
-  def new
-    @collection = Collection.new
-  end
-
   def create
     @collection = Collection.new(collection_params)
-    @collection.user_id = current_user.index
+    @collection.user_id = current_user.id
     if @collection.save
-      redirect_to @collection, notice: "#{@collection.label} has been created"
+      redirect_to collections_path, notice: "#{@collection.label} has been created"
     else
       render :new, status: :unprocessable_entity
     end
