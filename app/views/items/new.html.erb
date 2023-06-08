@@ -1,23 +1,26 @@
-<div class="new-container">
+<div class="new-item-container">
   <h1>Add New Item</h1>
-  <div class="item-container">
-  </div>
-  <%= simple_form_for(@item) do |f| %>
+  <div class="new-item-form-container">
+    <div class="new-item-image-container">
+      <%= simple_form_for(@item) do |f| %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        <%= f.button :submit, "Save" %>
+      <% end %>
 
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :format %>
-    <%= f.input :date, html5: true %>
-    <%= f.input :description %>
-    <%= f.association :members, collection: @members, label_method: :full_name, as: :check_boxes %>
-    <%= f.association :tags, collection: @tags, as: :check_boxes %>
-
-  </div>
-
-  <div class="form-actions">
-      <%= f.button :submit, "Save" %>
     </div>
-  <% end %>
+    <div class="form-inputs-container">
+      <%= simple_form_for(@item) do |f| %>
+        <%= f.input :title %>
+        <%= f.input :format %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        <%= f.input :date, html5: true %>
+        <%= f.input :description %>
+        <%= f.association :members, collection: @members, label_method: :full_name, as: :check_boxes %>
+        <%= f.association :tags, collection: @tags, as: :check_boxes %>
+        <%= f.button :submit, "Save" %>
+      <% end %>
+    </div>
+  </div>
 
   <div>
     <%= link_to "Back to items", items_path %>
