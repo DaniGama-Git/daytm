@@ -7,9 +7,18 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
+    @item = Item.find(params[:item_id])
     @comment.item = @item
-    @comment.save
-    redirect_to items_path(@items)
+
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to item_path(@item) }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      else
+        format.html { render "items/show", status: :unprocessable_entity }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      end
+    end
   end
 
   private
