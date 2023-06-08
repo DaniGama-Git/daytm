@@ -2,11 +2,17 @@ class CollectionsController < ApplicationController
   before_action :set_collection, only: %i[show edit update destroy]
 
   def index
-    @collections = Collection.all
-    @collection = Collection.new
+    if params[:query].present?
+      @results = PgSearch.multisearch(params[:query])
+    else
+      @collections = Collection.all
+    end
+      @collection = Collection.new
   end
 
   def show
+    @collection = Collection.find(params[:id])
+    @items = @collection.items
   end
 
   def create

@@ -2,7 +2,7 @@
 
   <div class="image-file-container">
       <% @item.photos.each do |photo|%>
-      <%=cl_image_tag(photo.key, width: 400, height: 300, crop: :fill) %>
+        <%=cl_image_tag(photo.key, width: 400, height: 600, crop: :fill, format: :jpg) %>
       <% end %>
   </div>
 

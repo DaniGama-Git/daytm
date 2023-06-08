@@ -27,9 +27,10 @@ user_1 = User.create(email: 'lila@legend.com', password: 'password', first_name:
 # CREATING MEMBER'S SEED - LILA'S THREE KIDS, KIKI, LIS, LIAM
 p"CREATING MEMBER'S SEED - LILA'S THREE KIDS, KIKI, LIS, LIAM"
 
-Member.create(first_name: 'Kiki', last_name: 'Legend', user: user_1)
-Member.create(first_name: 'Lis', last_name: 'Legend', user: user_1)
-Member.create(first_name: 'Liam', last_name: 'Legend', user: user_1)
+member_1 = Member.create(first_name: 'Kiki', last_name: 'Legend', user: user_1)
+member_2 = Member.create(first_name: 'Lis', last_name: 'Legend', user: user_1)
+member_3 = Member.create(first_name: 'Liam', last_name: 'Legend', user: user_1)
+member_4 = Member.create(first_name: 'Lila', last_name: 'Legend', user: user_1)
 
 
 # CREATING COLLECTIONS SEED
@@ -95,6 +96,12 @@ collection_1.items << item_1_1
 collection_1.items << item_1_2
 collection_1.save
 
+member_1.items << item_1_1
+member_1.save
+
+member_4.items << item_1_2
+member_4.save
+
 # CREATING TAGS FOR ITEMS 1.1 & 1.2:
 tag_1 = Tag.create(name: "X-Ray", user: user_1)
 tag_2 = Tag.create(name: "doctor", user: user_1)
@@ -111,10 +118,11 @@ item_1_2.save
 # ATTACHING IMAGES/PDF'S TO ITEMS 1.1 & 1.2:
 file_1_1 = URI.open("https://www.cedars-sinai.org/content/dam/cedars-sinai/programs-and-services/imaging-center/for-patients/exams-by-procedure/lower-extremity-xray-2.jpg")
 item_1_1.photos.attach(io: file_1_1, filename: "image_1_1.jpg", content_type: "image/jpg")
+item_1_1.save
 
 file_1_2 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686153397/Lila_Hospital_Visit_eiyh7j.pdf")
-item_1_1.photos.attach(io: file_1_2, filename: "image_1_2.jpg", content_type: "pdf")
-
+item_1_2.photos.attach(io: file_1_2, filename: "img.pdf", content_type: "application/pdf")
+item_1_2.save
 
 # CREATING ITEMS & TAGS SEED COLLECTION 2
 p "CREATING ITEMS & TAGSNEED COLLECTION 2"
@@ -125,6 +133,12 @@ item_2_2 = Item.create(title: "Lis's pottery", description: "Lis's pottery done 
 collection_2.items << item_2_1
 collection_2.items << item_2_2
 collection_2.save
+
+member_2.items << item_2_1
+member_2.save
+
+member_3.items << item_2_2
+member_3.save
 
 tag_5 = Tag.create(name: "art", user: user_1)
 tag_6 = Tag.create(name: "pictures", user: user_1)

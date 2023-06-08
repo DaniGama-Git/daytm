@@ -6,33 +6,68 @@
             class: "form-control",
             placeholder: "A search engine for your life"
         %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <%= submit_tag "Search", class: "btn btn-ghost" %>
     <% end %>
   </div>
 </div>
 
-<div>
-  <% @collections.each do |collection| %>
-    <%= link_to collection_path(collection) do %>
-      <ul>
-        <h3><%= collection.label %></h3>
-        <p><%= collection.description %></p>
-      </ul>
+<div class="all-collections-container">
+  <% if params[:query].present? %>
+    <% @results.each do |result| %>
+      <% if result.searchable_type == "Collection" %>
+        <%= link_to collection_path(result) do %>
+          <div class="home-collection-card">
+            <div class="home-collection-image">
+            </div>
+            <div class="home-collection-title">
+              <%= render "collection", collection: result   %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <%= link_to item_path(result) do %>
+          <div class="home-collection-card">
+            <div class="home-collection-image">
+            </div>
+            <div class="home-collection-title">
+              <%= render "item", item: result %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <% @collections.each do |collection| %>
+      <%= link_to collection_path(collection) do %>
+        <div class="home-collection-card">
+          <div class="home-collection-image">
+          </div>
+          <div class="home-collection-title">
+            <h3><%= collection.label %></h3>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 </div>
 
-# floating plus icon
-<%= image_tag('homepage-add-button.svg', alt: 'Add Button', style: 'height:50px') %>
 
-# form to add new collection
-<div>
-  <%= simple_form_for(@collection) do |f| %>
-    <%= f.input :label %>
-    <%= f.input :description %>
-    <%= f.submit %>
-  <% end %>
+<div class="add-button dropdown-button">
+  <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+  </svg>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">
+      <div>
+        <%= simple_form_for(@collection) do |f| %>
+          <%= f.input :label %>
+          <%= f.input :description %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+    </a>
+    <a class="dropdown-item" href="#"><%= link_to('Add a new item', new_item_path) %></a>
+  </div>
 </div>
-
-# link to add new item
-<%= link_to('Add new item', new_item_path, class: 'btn btn-primary') %>
