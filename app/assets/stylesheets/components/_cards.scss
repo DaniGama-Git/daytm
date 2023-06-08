@@ -18,15 +18,6 @@
   border: 100%;
 }
 
-.all-collections-container {
-  margin: 0 auto;
-  width: 90%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: auto;
-  grid-gap: 20px;
-  padding: 20px;
-}
 
 /* CSS STYLES FOR COLLECTIONS SHOW PAGE*/
 .items-cards {
@@ -42,6 +33,66 @@
   }
 }
 
+.item-card {
+  display: flex;
+  width: 420px;
+  height: 200px;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, .05);
+  position: relative;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.item-card img {
+  width: 40%;
+  height: 100%;
+}
+
+.item-card-info {
+  padding: 15px;
+}
+
+.title {
+  font-weight: 220;
+  font-size: 24px;
+  color: rgb(31, 48, 70);
+}
+
+.item-card-description {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgb(78, 88, 101);
+}
+
+.item-card-comments {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  padding: 20px
+}
+
+// for home page
+
+.all-collections-container {
+  margin: 0 auto;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 40px;
+  padding: 20px;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
 
 .home-collection-card {
   height: 180px;
@@ -53,6 +104,7 @@
   border-radius: 10px;
   padding: 10px;
   text-align: center;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, .05);
 }
 
 .home-collection-title {
@@ -72,6 +124,7 @@
 .collections-header {
   display: flex;
   justify-content: center;
+  margin: 64px;
 }
 
 .add-button {
