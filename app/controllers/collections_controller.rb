@@ -3,12 +3,11 @@ class CollectionsController < ApplicationController
 
   def index
     if params[:query].present?
-      @collections = Collection.multisearchable(params[:query])
+      @results = PgSearch.multisearch(params[:query])
     else
       @collections = Collection.all
     end
     @collection = Collection.new
-
   end
 
   def show
