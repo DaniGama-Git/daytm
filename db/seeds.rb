@@ -35,6 +35,10 @@ Member.create(first_name: 'Liam', last_name: 'Legend', user: user_1)
 # CREATING COLLECTIONS SEED
 p "CREATING COLLECTIONS SEED"
 
+collection_all = Collection.create(label: 'All Items', description: 'This collection contains all your items')
+user_1.collections << collection_all
+user_1.save
+
 collection_1 = Collection.create(label: 'Medical', description: 'This collection is for all the medical records of the family')
 user_1.collections << collection_1
 user_1.save
@@ -94,6 +98,8 @@ item_1_2 = Item.create(title: "Lila's Hospital Visit", description: "Details of 
 collection_1.items << item_1_1
 collection_1.items << item_1_2
 collection_1.save
+collection_all.items << Item.all
+collection_all.save
 
 # CREATING TAGS FOR ITEMS 1.1 & 1.2:
 tag_1 = Tag.create(name: "X-Ray", user: user_1)
