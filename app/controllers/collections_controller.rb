@@ -2,7 +2,11 @@ class CollectionsController < ApplicationController
   before_action :set_collection, only: %i[show edit update destroy]
 
   def index
-    @collections = Collection.all
+    if params[:query].present?
+      @collections = Collection.global_search(params[:query])
+    else
+      @collections = Collection.all
+    end
     @collection = Collection.new
   end
 
