@@ -1,0 +1,4 @@
+<%= simple_form_for([item, comment], data: {insert_comment_target: "form", action: "submit->insert-comment#send"}) do |f| %>
+  <%= f.input :content, label: "Comments:" %>
+  <%= f.submit "Submit comment", class: "btn btn-primary" %>
+<% end %>
