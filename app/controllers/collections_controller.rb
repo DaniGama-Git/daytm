@@ -7,12 +7,12 @@ class CollectionsController < ApplicationController
     else
       @collections = Collection.all
     end
-    @collection = Collection.new
-
+      @collection = Collection.new
   end
 
   def show
-    @items = Item.all
+    @collection = Collection.find(params[:id])
+    @items = @collection.items
   end
 
   def create

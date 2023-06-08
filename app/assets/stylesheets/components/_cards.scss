@@ -17,3 +17,64 @@
   width: 50%;
   border: 100%;
 }
+
+/* CSS STYLES FOR COLLECTIONS SHOW PAGE*/
+.items-cards {
+  display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 2.5rem;
+	margin: 10vh auto;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+
+.item-card {
+  display: flex;
+  width: 420px;
+  height: 200px;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, .05);
+  position: relative;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.item-card img {
+  width: 40%;
+  height: 100%;
+}
+
+.item-card-info {
+  padding: 15px;
+}
+
+.title {
+  font-weight: 220;
+  font-size: 24px;
+  color: rgb(31, 48, 70);
+}
+
+.item-card-description {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgb(78, 88, 101);
+}
+
+.item-card-comments {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  padding: 20px
+}
