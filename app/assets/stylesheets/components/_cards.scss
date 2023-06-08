@@ -135,3 +135,39 @@
   right: 5px;
   padding: 20px
 }
+
+.form-inputs-container {
+  padding-right: 10px;
+  padding-top: 10px;
+  font-size: 16px;
+  border: solid rgb(255, 0, 0) 1px;
+  justify-content: center;
+  border-radius: 15px;
+  padding: 15px;
+  width: 60%;
+}
+
+.new-item-image-container {
+  padding-left: 10px;
+  padding-top: 10px;
+  font-size: 16px;
+  border: 1px solid forestgreen;
+  justify-content: center;
+  width: 35%;
+}
+
+.new-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid blue;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.new-item-form-container {
+  display: flex;
+  border: 1px solid orange;
+  width: 100%;
+  justify-content: space-between;
+}
