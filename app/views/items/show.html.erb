@@ -8,5 +8,10 @@
     <%= tag.name %>
     <br>
   <% end %>
+  <h3>Comment</h3>
+<%= simple_form_for [@item, @comment] do |f| %>
+  <%= f.input :content%>
+  <%= f.submit "Submit comment", class: "btn btn-primary" %>
+<% end %>
   </div>
 </div>
