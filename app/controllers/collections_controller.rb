@@ -3,7 +3,7 @@ class CollectionsController < ApplicationController
 
   def index
     if params[:query].present?
-      @collections = Collection.global_search(params[:query])
+      @collections = Collection.multisearchable(params[:query])
     else
       @collections = Collection.all
     end

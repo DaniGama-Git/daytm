@@ -8,4 +8,7 @@ class Item < ApplicationRecord
   has_many :members, through: :item_members
   has_many :comments
   has_many_attached :photos
+
+  include PgSearch::Model
+  multisearchable against: [:title, :description]
 end
