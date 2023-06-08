@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'comments/new'
   devise_for :users
   root to: "collections#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -6,7 +7,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :items
+  resources :items do
+    resources :comments, only: [:new, :create]
+  end
   resources :collections
   resources :tags, only: [:new, :create]
   resources :members, only: [:new, :create]

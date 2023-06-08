@@ -1,0 +1,19 @@
+.show-container {
+  width: 1205px;
+  display: flex;
+  justify-content: center;
+}
+
+.item-info{
+  width: 55%;
+  padding: 100px;
+  padding-top: 10px;
+  font-size: 16px;
+  border: solid rgb(71, 71, 71) 1px;
+  justify-content: center;
+}
+
+.item-file-container{
+  width: 50%;
+  border: 100%;
+}
