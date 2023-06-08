@@ -26,6 +26,7 @@
   grid-template-rows: auto;
   grid-gap: 20px;
   padding: 20px;
+}
 
 /* CSS STYLES FOR COLLECTIONS SHOW PAGE*/
 .items-cards {
@@ -88,6 +89,7 @@
   .all-collections-container {
     grid-template-columns: 1fr;
   }
+}
 
 .item-card {
   display: flex;
