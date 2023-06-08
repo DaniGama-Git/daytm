@@ -10,5 +10,7 @@ class Item < ApplicationRecord
   has_many_attached :photos
 
   include PgSearch::Model
+
   multisearchable against: [:title, :description]
+  PgSearch.multisearch_options = { using: { tsearch: { prefix: true, dictionary: "english"} } }
 end
