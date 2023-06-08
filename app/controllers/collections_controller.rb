@@ -4,9 +4,11 @@ class CollectionsController < ApplicationController
   def index
     @collections = Collection.all
     @collection = Collection.new
+    @items = Item.all
   end
 
   def show
+    @items = Item.all
   end
 
   def create

@@ -1,0 +1,15 @@
+<div class="items-index">
+  <h1>All Items</h1>
+
+  <ul>
+    <% @items.each do |item| %>
+    <li>
+      <%= link_to item_path(item) do %>
+        <%= item.title %>
+    <% end %>
+    </li>
+    <% end %>
+  </ul>
+
+  <%= link_to "Add Item", new_item_path %>
+</div>
