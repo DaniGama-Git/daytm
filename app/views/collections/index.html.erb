@@ -1,21 +1,34 @@
 <div class="row justify-content-center">
-  <div class="col-sm-8 my-3">
+  <div class="col-sm-8 my-5">
     <%= form_with url: collections_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
             params[:query],
-            class: "form-control",
+            class: "search-bar",
             placeholder: "A search engine for your life"
         %>
-      <%= submit_tag "Search", class: "btn btn-ghost" %>
+      <%= submit_tag "Search", class: "search-button" %>
     <% end %>
   </div>
 </div>
 
+<div class="collections-header">
+  <h2>My Collections</h2>
+</div>
+
 <div class="all-collections-container">
+  <%= link_to items_path do %>
+    <div class="home-collection-card">
+      <div class="home-collection-image">
+      </div>
+      <div class="home-collection-title">
+        <h3>All Items</h3>
+      </div>
+    </div>
+  <% end %>
   <% if params[:query].present? %>
     <% @results.each do |result| %>
       <% if result.searchable_type == "Collection" %>
-        <%= link_to collection_path(result) do %>
+        <%= link_to collection_path(result.searchable_id) do %>
           <div class="home-collection-card">
             <div class="home-collection-image">
             </div>
@@ -25,7 +38,7 @@
           </div>
         <% end %>
       <% else %>
-        <%= link_to item_path(result) do %>
+        <%= link_to item_path(result.searchable_id) do %>
           <div class="home-collection-card">
             <div class="home-collection-image">
             </div>
