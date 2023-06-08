@@ -4,10 +4,13 @@ class Collection < ApplicationRecord
   has_many :items, through: :item_collections
 
   include PgSearch::Model
+  multisearchable against: [:label, :description]
 
-  pg_search_scope :global_search,
-    against: [ :label, :description ],
-    using: {
-      tsearch: { prefix: true }
-    }
+  # include PgSearch::Model
+
+  # pg_search_scope :global_search,
+  #   against: [ :label, :description ],
+  #   using: {
+  #     tsearch: { prefix: true }
+  #   }
 end
