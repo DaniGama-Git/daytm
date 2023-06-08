@@ -8,9 +8,11 @@ class CollectionsController < ApplicationController
       @collections = Collection.all
     end
     @collection = Collection.new
+    @items = Item.all
   end
 
   def show
+    @items = Item.all
   end
 
   def create

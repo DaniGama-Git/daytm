@@ -117,10 +117,11 @@ item_1_2.save
 # ATTACHING IMAGES/PDF'S TO ITEMS 1.1 & 1.2:
 file_1_1 = URI.open("https://www.cedars-sinai.org/content/dam/cedars-sinai/programs-and-services/imaging-center/for-patients/exams-by-procedure/lower-extremity-xray-2.jpg")
 item_1_1.photos.attach(io: file_1_1, filename: "image_1_1.jpg", content_type: "image/jpg")
+item_1_1.save
 
 file_1_2 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686153397/Lila_Hospital_Visit_eiyh7j.pdf")
-item_1_1.photos.attach(io: file_1_2, filename: "image_1_2.jpg", content_type: "pdf")
-
+item_1_2.photos.attach(io: file_1_2, filename: "img.pdf", content_type: "application/pdf")
+item_1_2.save
 
 # CREATING ITEMS & TAGS SEED COLLECTION 2
 p "CREATING ITEMS & TAGSNEED COLLECTION 2"
