@@ -74,15 +74,13 @@
 </svg>
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="">
-      <div>
-        <%= simple_form_for(@collection) do |f| %>
-          <%= f.input :label %>
-          <%= f.input :description %>
-          <%= f.submit %>
-        <% end %>
-      </div>
-    </a>
-    <a class="dropdown-item" href="#"><%= link_to('Add a new item', new_item_path) %></a>
+    <div class="dropdown-item">
+      <%= simple_form_for(@collection) do |f| %>
+        <%= f.input :label %>
+        <%= f.input :description %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+    <%= link_to 'Add a new item', new_item_path, class: "dropdown-item text-decoration-none" %>
   </div>
 </div>
