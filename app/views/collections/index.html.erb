@@ -10,11 +10,15 @@
     <% end %>
   </div>
 </div>
-
-<div class="collections-header">
-  <h2>My Collections</h2>
-</div>
-
+<% if params[:query].present? %>
+  <div class="collections-header">
+    <h2> Search Results</h2>
+  </div>
+<% else %>
+  <div class="collections-header">
+    <h2>Collections</h2>
+  </div>
+<% end %>
 <div class="all-collections-container">
   <%= link_to items_path do %>
     <div class="home-collection-card">
@@ -63,24 +67,21 @@
     <% end %>
   <% end %>
 </div>
-
-
 <div class="add-button dropdown-button">
   <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-  <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
-  </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+    </svg>
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">
-      <div>
-        <%= simple_form_for(@collection) do |f| %>
-          <%= f.input :label %>
-          <%= f.input :description %>
-          <%= f.submit %>
-        <% end %>
-      </div>
-    </a>
-    <a class="dropdown-item" href="#"><%= link_to('Add a new item', new_item_path) %></a>
+    <div class="dropdown-item">
+      <p>Add a new collection:</p>
+      <%= simple_form_for(@collection) do |f| %>
+        <%= f.input :label %>
+        <%= f.input :description %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+    <%= link_to 'Add a new item', new_item_path, class: "dropdown-item text-decoration-none" %>
   </div>
 </div>
