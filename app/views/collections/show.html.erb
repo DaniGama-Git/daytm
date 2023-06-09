@@ -1,4 +1,6 @@
+<div>
   <h1><%= @collection.label %></h1>
+</div>
 
 <div class="collections-show-items-cards">
   <% @items.each do |item|%>
@@ -25,5 +27,6 @@
     <% end %>
   <% end %>
 </div>
-
+<div>
   <%= link_to "Add Item", new_item_path %>
+</div>
