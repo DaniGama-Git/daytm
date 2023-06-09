@@ -1,36 +1,68 @@
 <div class="item-show-container">
-
-  <div class="image-file-container">
-      <% @item.photos.each do |photo|%>
-        <%=cl_image_tag(photo.key, width: 400, height: 600, crop: :fill, format: :jpg) %>
-      <% end %>
-  </div>
-
-  <div class="item-card-infos" data-controller="edit-item">
-
-    <div class="item-infos" data-edit-item-target="infos">
-      <h1>Title: <%= @item.title %>
-      <h2>Description: <%= @item.description %></h2>
-      <p>Tags:</p>
-      <% @item.tags.each do |tag|%>
-        <p><%= tag.name %></p>
-      <% end %>
-      <p>Members:</p>
-      <% @item.members.each do |member| %>
-        <p><%= member.full_name %></p>
-      <% end %>
-
-      <div id="comment-container" data-controller="insert-comment">
-        <div data-insert-comment-target="comments">
-          <% @item.comments.each do |comment| %>
-          <%= render 'items/comment', comment: comment %>
+  <div class="item-show-card">
+    <div class="item-show-image">
+      <%=cl_image_tag(@item.photos.first.key, width: 400, height: 600, crop: :fill, format: :jpg) %>
+    </div>
+    <div class="item-show-content">
+      <div class="item-show-infos-section">
+        <h1><%= @item.title %></h1>
+        <p><%= @item.description %></p>
+      </div>
+      <div class="item-show-tags-section">
+        <h4>Tags</h4>
+        <div class="item-show-tags">
+          <% @item.tags.each do |tag|%>
+            <div class="item-show-tag">
+              <p><%= tag.name %></p>
+            </div>
           <% end %>
         </div>
-        <%= render 'comments/form', item: @item, comment: @comment %>
       </div>
-
-      <%= link_to "Edit Item", edit_item_path %>
-    <%= link_to "Delete #{@item.title}", item_path(@item), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'text-decoration-none' %>
+      <div class="item-show-comments-section" id="comment-container" data-controller="insert-comment">
+        <h4>Comments</h4>
+        <%= simple_form_for([@item, @comment], data: {insert_comment_target: "form", action: "submit->insert-comment#send"}) do |f| %>
+          <%= f.input :content, label: false, class: "test" %>
+          <%= f.submit "Submit comment", class: "btn btn-primary" %>
+        <% end %>
+        <div class="item-show-comments" data-insert-comment-target="comments">
+          <% @item.comments.reverse.first(5).each do |comment| %>
+          <div class="item-show-comment">
+            <%= render 'items/comment', comment: comment %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="item-show-members">
+        <% @item.members.each do |member| %>
+          <div class="item-member-tag">
+            <p><%= member.full_name %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
