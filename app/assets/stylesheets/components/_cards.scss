@@ -415,7 +415,7 @@ p {
   align-items: center;
   border: 1px solid blue;
   width: 80%;
-  margin: 0 auto;
+  margin: 60px auto;
 }
 
 .new-item-form-container {
@@ -424,5 +424,15 @@ p {
   width: 100%;
   justify-content: space-between;
 
+}
+
+.tags-container {
+  display: flex;
+  align-items: center;
+}
+
+.tag-checkbox {
+  display: inline-block;
+  margin-right: 10px;
 }
 
