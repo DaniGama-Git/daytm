@@ -6,4 +6,9 @@ class Member < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  include PgSearch::Model
+
+  multisearchable against: [:first_name, :last_name]
+  PgSearch.multisearch_options = { using: { tsearch: { prefix: true, dictionary: "english"} } }
 end

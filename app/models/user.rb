@@ -8,4 +8,9 @@ class User < ApplicationRecord
   has_many :items
   has_many :members
   has_many :tags
+
+  include PgSearch::Model
+
+  multisearchable against: [:first_name, :last_name]
+  PgSearch.multisearch_options = { using: { tsearch: { prefix: true, dictionary: "english"} } }
 end

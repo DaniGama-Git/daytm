@@ -1,4 +1,4 @@
-<div class="row justify-content-center">
+<div class="row justify-content-center"> <! --div for the search bar-->
   <div class="col-sm-8 my-5">
     <%= form_with url: collections_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
@@ -10,7 +10,7 @@
     <% end %>
   </div>
 </div>
-<% if params[:query].present? %>
+<% if params[:query].present? %> <!-- logic to display the collections heading / search results -->
   <div class="collections-header">
     <h2> Search Results</h2>
   </div>
@@ -20,7 +20,7 @@
   </div>
 <% end %>
 <div class="all-collections-container">
-  <%= link_to items_path do %>
+  <%= link_to items_path do %> <!-- block to always display the all items collection -->
     <div class="home-collection-card">
       <div class="home-collection-image">
       </div>
@@ -29,7 +29,7 @@
       </div>
     </div>
   <% end %>
-  <% if params[:query].present? %>
+  <% if params[:query].present? %> <!-- logic to show either all collections or search results -->
     <% @results.each do |result| %>
       <% if result.searchable_type == "Collection" %>
         <%= link_to collection_path(result.searchable_id) do %>
@@ -45,6 +45,12 @@
         <%= link_to item_path(result.searchable_id) do %>
           <div class="home-collection-card">
             <div class="home-collection-image">
+              <% if result.searchable_type == 'Photo' %>
+                <% photo = result.searchable %>
+                <% cl_image_key = photo.photos.key %>
+                <%= cl_image_tag(cl_image_key, crop: :fill) %>
+              <% end %>
+              <% raise %>
             </div>
             <div class="home-collection-title">
               <%= render "item", item: result %>
