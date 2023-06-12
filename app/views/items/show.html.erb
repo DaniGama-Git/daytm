@@ -20,9 +20,9 @@
       </div>
       <div class="item-show-comments-section" id="comment-container" data-controller="insert-comment">
         <h4>Comments</h4>
-        <%= simple_form_for([@item, @comment], data: {insert_comment_target: "form", action: "submit->insert-comment#send"}) do |f| %>
+        <%= simple_form_for([@item, @comment], data: { behavior: "submit-on-enter" })  do |f| %>
           <%= f.input :content, label: false, class: "test" %>
-          <%= f.submit "Submit comment", class: "btn btn-primary" %>
+          <%= f.submit "Submit comment", class: "btn btn-primary"%>
         <% end %>
         <div class="item-show-comments" data-insert-comment-target="comments">
           <% @item.comments.reverse.first(5).each do |comment| %>
@@ -41,28 +41,4 @@
       </div>
     </div>
   </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>

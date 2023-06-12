@@ -15,6 +15,7 @@
         <%= f.input :date, html5: true %>
         <%= f.input :description %>
         <%= f.association :members, collection: @members, label_method: :full_name, as: :check_boxes %>
+        <%= f.association :collections, collection: @collections, label_method: :label, as: :check_boxes %>
         <div class="new-item-tags-container">
           <div class="new-item-tag-checkboxes">
             <%= f.association :tags, collection: @tags, as: :check_boxes, item_wrapper_class: "tag-checkbox" %>
