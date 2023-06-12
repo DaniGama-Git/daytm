@@ -3,7 +3,12 @@ class CollectionsController < ApplicationController
 
   def index
     if params[:query].present?
-      @results = PgSearch.multisearch(params[:query])
+      PgSearch::Multisearch.rebuild(Collection)
+      PgSearch::Multisearch.rebuild(Item)
+      PgSearch::Multisearch.rebuild(Tag)
+      PgSearch::Multisearch.rebuild(Member)
+      pg_results = PgSearch.multisearch(params[:query])
+      @results = pg_results
     else
       @collections = Collection.all
     end

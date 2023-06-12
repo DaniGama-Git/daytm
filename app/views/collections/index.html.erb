@@ -21,8 +21,9 @@
 <% end %>
 <div class="all-collections-container">
   <%= link_to items_path do %> <!-- block to always display the all items collection -->
-    <div class="home-collection-card">
+    <div class="home-collection-card-all-items">
       <div class="home-collection-image">
+          <%= image_tag "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Red_Torso_kyvgtb.png", alt: "all items", height: 110 %>
       </div>
       <div class="home-collection-title">
         <h3>All Items</h3>
@@ -30,33 +31,23 @@
     </div>
   <% end %>
   <% if params[:query].present? %> <!-- logic to show either all collections or search results -->
+      <% if @results.empty? %>
+        <div class="no-results-card">
+          <h2>No results for this search, please try again</h2>
+        </div>
+      <% end %>
     <% @results.each do |result| %>
       <% if result.searchable_type == "Collection" %>
-        <%= link_to collection_path(result.searchable_id) do %>
-          <div class="home-collection-card">
-            <div class="home-collection-image">
-            </div>
-            <div class="home-collection-title">
-              <%= render "collection", collection: result   %>
-            </div>
-          </div>
-        <% end %>
-      <% else %>
-        <%= link_to item_path(result.searchable_id) do %>
-          <div class="home-collection-card">
-            <div class="home-collection-image">
-              <% if result.searchable_type == 'Photo' %>
-                <% photo = result.searchable %>
-                <% cl_image_key = photo.photos.key %>
-                <%= cl_image_tag(cl_image_key, crop: :fill) %>
-              <% end %>
-              <% raise %>
-            </div>
-            <div class="home-collection-title">
-              <%= render "item", item: result %>
-            </div>
-          </div>
-        <% end %>
+        <%= render "collection", collection: result %>
+      <% end %>
+      <% if result.searchable_type == "Item" %>
+        <%= render "item", item: result %>
+      <% end %>
+      <% if result.searchable_type == "Member" %>
+        <%= render "member", member: result %>
+      <% end %>
+      <% if result.searchable_type == "Tag" %>
+        <%= render "tag", tag: result %>
       <% end %>
     <% end %>
   <% else %>
@@ -64,9 +55,12 @@
       <%= link_to collection_path(collection) do %>
         <div class="home-collection-card">
           <div class="home-collection-image">
+            <% if collection.photos.attached? %>
+              <%=cl_image_tag(collection.photos.first.key, height: 110) %>
+            <% end %>
           </div>
           <div class="home-collection-title">
-            <h3><%= collection.label %></h3>
+            <h3> <%= collection.label %></h3>
           </div>
         </div>
       <% end %>
