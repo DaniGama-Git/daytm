@@ -25,7 +25,29 @@
   padding: 10px 20px;
 }
 
-.item-show-infos-section{
+.item-show-title-buttons {
+  display: flex;
+  align-items: center;
+
+  a {
+    color: black;
+  }
+
+  i {
+    font-size: 20px;
+    margin-left: 20px;
+    color: grey;
+  }
+
+  i:hover {
+    cursor: pointer;
+    color: black;
+  }
+}
+
+.item-show-infos-section {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 20px;
 
   p {
@@ -45,6 +67,7 @@
 
   p {
     font-size: 11px;
+    margin: 0px;
   }
 }
 
@@ -58,4 +81,8 @@
       font-size: 10px;
     }
   }
+}
+
+.item-show-infos-section {
+  display: flex;
 }
