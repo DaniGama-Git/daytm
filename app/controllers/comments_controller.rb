@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @item = Item.find(params[:item_id])
+    @comment.time = Time.now
     @comment.item = @item
 
     respond_to do |format|
