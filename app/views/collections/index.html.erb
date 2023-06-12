@@ -1,5 +1,5 @@
 <div class="search-bar-container"> <! --div for the search bar-->
-  <div class="col-sm-8 my-5">
+  <div class="col-sm-8">
     <%= form_with url: collections_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
             params[:query],
@@ -23,7 +23,7 @@
   <%= link_to items_path do %> <!-- block to always display the all items collection -->
     <div class="home-collection-card-all-items">
       <div class="home-collection-image">
-          <%= image_tag "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Red_Torso_kyvgtb.png", alt: "all items", height: 110 %>
+          <%= image_tag "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png", alt: "all items", height: 110 %>
       </div>
       <div class="home-collection-title">
         <h3>All Items</h3>

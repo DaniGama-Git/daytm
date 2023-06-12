@@ -54,10 +54,12 @@
   touch-action: manipulation;
   width: fit-content;
   border: 0;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
 }
 
 .search-bar-container {
-  margin-top: 50px;
+  margin-top: 64px;
   display: flex;
   justify-content: center;
 }
