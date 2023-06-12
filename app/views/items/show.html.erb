@@ -8,11 +8,16 @@
     </div>
     <div class="item-show-content">
       <div class="item-show-infos-section">
-        <h1><%= @item.title %></h1>
-        <button arial-label="Edit item" data-action="click->edit-item#revealForm">
-          <i class="fa-solid fa-pen fa-xs ml-2"></i>
-        </button>
-        <p><%= @item.description %></p>
+        <div class="item-show-title-buttons">
+          <h1><%= @item.title %></h1>
+          <i class="fa-solid fa-pen fa-xs ml-2", data-action="click->edit-item#revealForm"></i>
+          <%= link_to item_path(@item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+            <i class="fa-solid fa-trash-can"></i>
+          <% end %>
+        </div>
+        <div>
+          <p><%= @item.description %></p>
+        </div>
       </div>
       <div class="item-show-tags-section">
         <h4>Tags</h4>
