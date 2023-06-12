@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
     @comment = Comment.new
     @tags = Tag.all
     @collections = Collection.all
+    @members = Member.all
   end
 
   def new
@@ -49,6 +50,7 @@ class ItemsController < ApplicationController
   def edit
     @tags = Tag.where(user: current_user)
     @members = Member.where(user: current_user)
+    @collections = Collection.where(user: current_user)
     @member_details = @members.map do |member|
       [member.first_name, member.id]
     end
@@ -58,6 +60,7 @@ class ItemsController < ApplicationController
   def update
     @item.tags.destroy_all
     @item.members.destroy_all
+    @item.collections.destroy_all
     @item.update(item_params)
     @item.user = current_user
     if @item.save
@@ -69,9 +72,17 @@ class ItemsController < ApplicationController
         next if id.to_i == 0
         Tag.find(id.to_i)
       end
+      collections = params[:item][:collection_ids].map do |id|
+        next if id.to_i == 0
+        Collection.find(id.to_i)
+      end
       @item.members.push(members.compact)
       @item.tags.push(tags.compact)
-      redirect_to @item, notice: "#{@item.title} has been successfully created."
+      @item.collections.push(collections.compact)
+      # respond_to do |format|
+      redirect_to @item, notice: "#{@item.title} has been successfully updated."
+      #   format.text { render }
+      # end
     else
       render :new, status: :unprocessable_entity
     end
