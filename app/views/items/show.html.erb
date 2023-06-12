@@ -1,11 +1,17 @@
-<div class="item-show-container">
-  <div class="item-show-card">
+<div class="item-show-container" data-controller="edit-item">
+  <div class="item-show-card" data-edit-item-target="card">
     <div class="item-show-image">
-      <%=cl_image_tag(@item.photos.first.key, width: 400, height: 600, crop: :fill, format: :jpg) %>
+      <% if @item.photos.first %>
+        <%=cl_image_tag(@item.photos.first.key, width: 400, height: 600, crop: :fill, format: :jpg) %>
+      <% else %>
+        <% end %>
     </div>
     <div class="item-show-content">
       <div class="item-show-infos-section">
         <h1><%= @item.title %></h1>
+        <button arial-label="Edit item" data-action="click->edit-item#revealForm">
+          <i class="fa-solid fa-pen fa-xs ml-2"></i>
+        </button>
         <p><%= @item.description %></p>
       </div>
       <div class="item-show-tags-section">
@@ -40,5 +46,17 @@
         <% end %>
       </div>
     </div>
+  </div>
+  <div data-edit-item-target="form" class="d-none">
+    <%= simple_form_for(@item) do |f| %>
+      <%= f.input :title %>
+      <%= f.input :date, html5: true %>
+      <%= f.input :description %>
+      <%= f.association :members, collection: @members, label_method: :full_name, as: :check_boxes %>
+      <%= f.association :collections, collection: @collections, label_method: :label, as: :check_boxes %>
+      <%= f.association :tags, collection: @tags, as: :check_boxes, item_wrapper_class: "tag-checkbox" %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <%= f.button :submit, "Update item" %>
+    <% end %>
   </div>
 </div>
