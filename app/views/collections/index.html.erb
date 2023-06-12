@@ -67,21 +67,33 @@
     <% end %>
   <% end %>
 </div>
+<!-- Button trigger modal -->
 <div class="add-button dropdown-button">
-  <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
     <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
       <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
     </svg>
   </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <div class="dropdown-item">
-      <p>Add a new collection:</p>
-      <%= simple_form_for(@collection) do |f| %>
-        <%= f.input :label %>
-        <%= f.input :description %>
-        <%= f.submit %>
-      <% end %>
+</div>
+<!-- Modal -->
+<div class="modal fade rounded-1" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-3">
+      <div class="modal-header d-flex flex-column align-items-center">
+        <h2 class="modal-title" id="exampleModalLabel">Add a Collection or Item</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex flex-column align-items-center">
+        <p><strong>Add a new collection</strong></p>
+        <%= simple_form_for(@collection, html: { class: "text-center" }) do |f| %>
+          <%= f.input :label %>
+          <%= f.input :description %>
+          <%= f.submit class: "daytm-btn-primary mb-2" %>
+        <% end %>
+        <button class="daytm-btn-primary m-5">
+          <%= link_to 'New Item', new_item_path, class:"text-decoration-none" %>
+        </button>
+      </div>
     </div>
-    <%= link_to 'Add a new item', new_item_path, class: "dropdown-item text-decoration-none" %>
   </div>
 </div>
