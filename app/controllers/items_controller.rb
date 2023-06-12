@@ -29,6 +29,10 @@ class ItemsController < ApplicationController
     @tags.each do |tag|
       @item.tags << tag
     end
+    @collections = Collection.where(id: params[:item][:collection_ids])
+    @collections.each do |collection|
+      @item.collections << collection
+    end
     if @item.save
       members = params[:item][:member_ids].map do |id|
         next if id.to_i == 0
@@ -40,13 +44,13 @@ class ItemsController < ApplicationController
       #   Tag.find(id.to_i)
       # end
 
-      collections = params[:item][:collection_ids].map do |id|
-        next if id.to_i == 0
-        Collection.find(id.to_i)
-      end
+      # collections = params[:item][:collection_ids].map do |id|
+      #   next if id.to_i == 0
+      #   Collection.find(id.to_i)
+      # end
       @item.members.push(members.compact)
       # @item.tags.push(tags.compact)
-      @item.collections.push(collections.compact)
+      # @item.collections.push(collections.compact)
       redirect_to @item, notice: "#{@item.title} has been successfully created."
     else
       render :new, status: :unprocessable_entity
