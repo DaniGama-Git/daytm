@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @tags = Tag.where(user: current_user)
+    @tag = Tag.new
     @members = Member.where(user: current_user)
     @collections = Collection.where(user: current_user)
     @member_details = @members.map do |member|
@@ -24,21 +25,27 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user = current_user
+    @tags = Tag.where(id: params[:item][:tag_ids])
+    @tags.each do |tag|
+      @item.tags << tag
+    end
     if @item.save
       members = params[:item][:member_ids].map do |id|
         next if id.to_i == 0
         Member.find(id.to_i)
       end
-      tags = params[:item][:tag_ids].map do |id|
-        next if id.to_i == 0
-        Tag.find(id.to_i)
-      end
+
+      # tags = params.map do |id|
+      #   next if id.to_i == 0
+      #   Tag.find(id.to_i)
+      # end
+
       collections = params[:item][:collection_ids].map do |id|
         next if id.to_i == 0
         Collection.find(id.to_i)
       end
       @item.members.push(members.compact)
-      @item.tags.push(tags.compact)
+      # @item.tags.push(tags.compact)
       @item.collections.push(collections.compact)
       redirect_to @item, notice: "#{@item.title} has been successfully created."
     else
