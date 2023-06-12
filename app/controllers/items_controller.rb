@@ -8,12 +8,14 @@ class ItemsController < ApplicationController
   def show
     @comment = Comment.new
     @tags = Tag.all
+    @collections = Collection.all
   end
 
   def new
     @item = Item.new
     @tags = Tag.where(user: current_user)
     @members = Member.where(user: current_user)
+    @collections = Collection.where(user: current_user)
     @member_details = @members.map do |member|
       [member.first_name, member.id]
     end
@@ -31,8 +33,13 @@ class ItemsController < ApplicationController
         next if id.to_i == 0
         Tag.find(id.to_i)
       end
+      collections = params[:item][:collection_ids].map do |id|
+        next if id.to_i == 0
+        Collection.find(id.to_i)
+      end
       @item.members.push(members.compact)
       @item.tags.push(tags.compact)
+      @item.collections.push(collections.compact)
       redirect_to @item, notice: "#{@item.title} has been successfully created."
     else
       render :new, status: :unprocessable_entity
