@@ -12,3 +12,9 @@ application.register("hello", HelloController)
 
 import InsertCommentController from "./insert_comment_controller"
 application.register("insert-comment", InsertCommentController)
+
+import NewTagController from "./new_tag_controller"
+application.register("new-tag", NewTagController)
+
+import TomSelectController from "./tom_select_controller"
+application.register("tom-select", TomSelectController)
