@@ -52,16 +52,27 @@
       </div>
     </div>
   </div>
-  <div data-edit-item-target="form" class="d-none">
-    <%= simple_form_for(@item) do |f| %>
-      <%= f.input :title %>
-      <%= f.input :date, html5: true %>
-      <%= f.input :description %>
-      <%= f.association :members, collection: @members, label_method: :full_name, as: :check_boxes %>
-      <%= f.association :collections, collection: @collections, label_method: :label, as: :check_boxes %>
-      <%= f.association :tags, collection: @tags, as: :check_boxes, item_wrapper_class: "tag-checkbox" %>
-      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-      <%= f.button :submit, "Update item" %>
-    <% end %>
+  <div class="edit-item-container"> <!-- Edit item using stimulus -->
+    <div data-edit-item-target="form" class="d-none">
+      <%= simple_form_for(@item) do |f| %>
+        <%= f.input :title %>
+          <%= f.input :date, html5: true, label: "Item date", as: :date, input_html: { placeholder: 'YYYY-MM-DD' }%>
+        <%= f.input :description %>
+        <%= f.association :members, collection: @members, label_method: :first_name, as: :check_boxes %>
+        <%= f.association :collections,
+              collection: Collection.all,
+              label_method: :label,
+              input_html: {multiple: true, data: {controller: "tom-select"}},
+              include_hidden: false
+              %>
+        <%= f.association :tags,
+                  collection: Tag.all,
+                  input_html: {multiple: true, data: {controller: "tom-select"}},
+                  include_hidden: false
+                  %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        <%= f.button :submit, "Update item" %>
+      <% end %>
+    </div>
   </div>
 </div>

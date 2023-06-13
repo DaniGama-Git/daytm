@@ -15,9 +15,9 @@
                   collection: Tag.all,
                   input_html: {multiple: true, data: {controller: "tom-select"}},
                   include_hidden: false
-              %>
+                  %>
             </div>
-            <div class="new-tag-modal">
+            <div class="new-tag-modal">  <!-- Button trigger modal -->
             <p>Don't see your tag? </p>
               <button type="button" class="blue-hollow-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <p>Create Tag</p>
@@ -32,7 +32,7 @@
               label_method: :label,
               input_html: {multiple: true, data: {controller: "tom-select"}},
               include_hidden: false
-          %>
+              %>
           <div class= "text-center mt-3 w-100">
             <%= f.button :submit, "Save", class: "black-primary-btn w-100" %>
           </div>
@@ -40,10 +40,6 @@
       </div>
 
     <% end %>
-
-    <!-- Button trigger modal -->
-
-
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
