@@ -67,14 +67,23 @@
     <% end %>
   <% end %>
 </div>
-<!-- Button trigger modal -->
+<!-- Button trigger add item -->
 <div class="add-button">
-  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    <svg class="plus-button" xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-    </svg>
-  </button>
+  <%= link_to new_item_path do %>
+    <button type="button" class="btn">
+      <svg class="plus-button" xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+      </svg>
+    </button>
+  <% end %>
 </div>
+
+
+
+<!-- button to bring up add collection modal -->
+<button type="button" class="daytm-btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <p class="m-2">Add new collection</p>
+</button>
 <!-- Modal -->
 <div class="modal fade rounded-1" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -90,21 +99,7 @@
           <%= f.input :description %>
           <%= f.submit class: "daytm-btn-primary mb-2" %>
         <% end %>
-        <button class="daytm-btn-primary m-5">
-          <%= link_to 'New Item', new_item_path, class:"text-decoration-none" %>
-        </button>
       </div>
     </div>
   </div>
-</div>
-
-<div class="home-page-dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown button
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-  </ul>
 </div>

@@ -146,7 +146,11 @@
   content: 'New Item';
 }
 
-.home-page-dropdown:hover > .dropdown-menu {
+.home-page-dropdown .dropdown-menu {
+  display: none; /* Hide the dropdown menu by default */
+}
+
+.dropdown:hover .dropdown-menu {
   display: block;
 }
 
