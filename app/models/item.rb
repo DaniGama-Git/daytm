@@ -8,10 +8,9 @@ class Item < ApplicationRecord
   has_many :members, through: :item_members, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many_attached :photos, dependent: :destroy
- 
+
   include PgSearch::Model
 
   multisearchable against: [:title, :description]
   PgSearch.multisearch_options = { using: { tsearch: { prefix: true, dictionary: "english"} } }
-
 end

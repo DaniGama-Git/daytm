@@ -1,1 +1,9 @@
-<h3><%= collection.searchable.label %></h3>
+<%= link_to collection_path(collection.searchable_id) do %>
+  <div class="home-collection-card">
+    <div class="home-collection-image">
+    </div>
+    <div class="home-collection-title">
+      <h3><%= collection.searchable.label %></h3>
+    </div>
+  </div>
+<% end %>

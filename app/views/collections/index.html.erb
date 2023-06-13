@@ -1,5 +1,5 @@
-<div class="row justify-content-center">
-  <div class="col-sm-8 my-5">
+<div class="search-bar-container"> <! --div for the search bar-->
+  <div class="col-sm-8">
     <%= form_with url: collections_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
             params[:query],
@@ -10,7 +10,7 @@
     <% end %>
   </div>
 </div>
-<% if params[:query].present? %>
+<% if params[:query].present? %> <!-- logic to display the collections heading / search results -->
   <div class="collections-header">
     <h2> Search Results</h2>
   </div>
@@ -20,37 +20,34 @@
   </div>
 <% end %>
 <div class="all-collections-container">
-  <%= link_to items_path do %>
-    <div class="home-collection-card">
+  <%= link_to items_path do %> <!-- block to always display the all items collection -->
+    <div class="home-collection-card-all-items">
       <div class="home-collection-image">
+          <%= image_tag "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png", alt: "all items", height: 110 %>
       </div>
       <div class="home-collection-title">
         <h3>All Items</h3>
       </div>
     </div>
   <% end %>
-  <% if params[:query].present? %>
+  <% if params[:query].present? %> <!-- logic to show either all collections or search results -->
+      <% if @results.empty? %>
+        <div class="no-results-card">
+          <h2>No results for this search, please try again</h2>
+        </div>
+      <% end %>
     <% @results.each do |result| %>
       <% if result.searchable_type == "Collection" %>
-        <%= link_to collection_path(result.searchable_id) do %>
-          <div class="home-collection-card">
-            <div class="home-collection-image">
-            </div>
-            <div class="home-collection-title">
-              <%= render "collection", collection: result   %>
-            </div>
-          </div>
-        <% end %>
-      <% else %>
-        <%= link_to item_path(result.searchable_id) do %>
-          <div class="home-collection-card">
-            <div class="home-collection-image">
-            </div>
-            <div class="home-collection-title">
-              <%= render "item", item: result %>
-            </div>
-          </div>
-        <% end %>
+        <%= render "collection", collection: result %>
+      <% end %>
+      <% if result.searchable_type == "Item" %>
+        <%= render "item", item: result %>
+      <% end %>
+      <% if result.searchable_type == "Member" %>
+        <%= render "member", member: result %>
+      <% end %>
+      <% if result.searchable_type == "Tag" %>
+        <%= render "tag", tag: result %>
       <% end %>
     <% end %>
   <% else %>
@@ -58,30 +55,45 @@
       <%= link_to collection_path(collection) do %>
         <div class="home-collection-card">
           <div class="home-collection-image">
+            <% if collection.photos.attached? %>
+              <%=cl_image_tag(collection.photos.first.key, height: 110) %>
+            <% end %>
           </div>
           <div class="home-collection-title">
-            <h3><%= collection.label %></h3>
+            <h3> <%= collection.label %></h3>
           </div>
         </div>
       <% end %>
     <% end %>
   <% end %>
 </div>
+<!-- Button trigger modal -->
 <div class="add-button dropdown-button">
-  <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
     <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
       <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
     </svg>
   </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <div class="dropdown-item">
-      <p>Add a new collection:</p>
-      <%= simple_form_for(@collection) do |f| %>
-        <%= f.input :label %>
-        <%= f.input :description %>
-        <%= f.submit %>
-      <% end %>
+</div>
+<!-- Modal -->
+<div class="modal fade rounded-1" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-3">
+      <div class="modal-header d-flex flex-column align-items-center">
+        <h2 class="modal-title" id="exampleModalLabel">Add a Collection or Item</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex flex-column align-items-center">
+        <p><strong>Add a new collection</strong></p>
+        <%= simple_form_for(@collection, html: { class: "text-center" }) do |f| %>
+          <%= f.input :label %>
+          <%= f.input :description %>
+          <%= f.submit class: "daytm-btn-primary mb-2" %>
+        <% end %>
+        <button class="daytm-btn-primary m-5">
+          <%= link_to 'New Item', new_item_path, class:"text-decoration-none" %>
+        </button>
+      </div>
     </div>
-    <%= link_to 'Add a new item', new_item_path, class: "dropdown-item text-decoration-none" %>
   </div>
 </div>

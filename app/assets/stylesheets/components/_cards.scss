@@ -90,6 +90,19 @@
   box-shadow: 20px 20px 30px rgba(0, 0, 0, .05);
 }
 
+.home-collection-card-all-items {
+  height: 180px;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(197, 201, 238);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, .05);
+}
+
 .home-collection-title {
   h3 {
     font-size: 16pt;
@@ -100,8 +113,9 @@
 .home-collection-image {
   width: 80px;
   height: 150px;
-  border: 1px solid pink;
   margin: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .collections-header {
@@ -119,6 +133,11 @@
   position: fixed;
   bottom: 100px;
   right: 100px;
+}
+
+.no-results-card {
+  display: flex;
+  justify-content: center;
 }
 
 @media(max-width: 992px) {
