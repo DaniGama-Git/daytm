@@ -125,14 +125,28 @@
 }
 
 .add-button {
-  display: flex;
-  justify-content: right;
-}
-
-.add-button {
   position: fixed;
   bottom: 100px;
   right: 100px;
+  margin: 0;
+}
+
+.plus-button {
+  transition: all 0.3s ease-in-out 0s;
+  color: #000000;
+  margin: 0;
+}
+
+.plus-button:hover {
+  cursor: default;
+  transform: rotate(90deg);
+  transition: all 0.6s ease-in-out 0s;
+  color: #95A5DF;
+  content: 'New Item';
+}
+
+.home-page-dropdown:hover > .dropdown-menu {
+  display: block;
 }
 
 .no-results-card {
