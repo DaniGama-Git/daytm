@@ -23,7 +23,7 @@
   <%= link_to items_path do %> <!-- block to always display the all items collection -->
     <div class="home-collection-card-all-items">
       <div class="home-collection-image">
-          <%= image_tag "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png", alt: "all items", height: 110 %>
+          <%= image_tag "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png", alt: "all items", height: 110 %>
       </div>
       <div class="home-collection-title">
         <h3>All Items</h3>
@@ -67,14 +67,21 @@
     <% end %>
   <% end %>
 </div>
-<!-- Button trigger modal -->
+<!-- Button trigger add item -->
 <div class="add-button">
-  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    <svg class="plus-button" xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-    </svg>
-  </button>
+  <%= link_to new_item_path do %>
+    <button type="button" class="btn">
+      <svg class="plus-button" xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+      </svg>
+    </button>
+  <% end %>
 </div>
+
+<!-- button to bring up add collection modal -->
+<button type="button" class="blue-primary-btn mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <p class="m-2">Add new collection</p>
+</button>
 <!-- Modal -->
 <div class="modal fade rounded-1" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -88,23 +95,22 @@
         <%= simple_form_for(@collection, html: { class: "text-center" }) do |f| %>
           <%= f.input :label %>
           <%= f.input :description %>
-          <%= f.submit class: "daytm-btn-primary mb-2" %>
+          <%= f.input :photo_url, collection: [
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Torso_kyvgtb.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Torso_kyvgtb.png"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Power_Moves_-_Standing_hskmff.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Power_Moves_-_Standing_hskmff.png"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_1_axhaln.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_1_axhaln.png"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_zgipgr.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_zgipgr.png"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Power_Moves_-_Full_Body_gt0c22.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Power_Moves_-_Full_Body_gt0c22.png"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Citta%CC%80_-_Standing_nnuzjb.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Citta%CC%80_-_Standing_nnuzjb.png"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_1_Character_ysea51.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_1_Character_ysea51.png"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_Standing_gu2xqc.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_Standing_gu2xqc.png"]
+          ], as: :radio_buttons %>
+          <%= f.submit class: "blue-primary-btn mb-2" %>
         <% end %>
-        <button class="daytm-btn-primary m-5">
-          <%= link_to 'New Item', new_item_path, class:"text-decoration-none" %>
-        </button>
       </div>
     </div>
   </div>
-</div>
-
-<div class="home-page-dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown button
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-  </ul>
 </div>

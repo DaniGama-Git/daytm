@@ -1,3 +1,5 @@
+require "open-uri"
+
 class CollectionsController < ApplicationController
   before_action :set_collection, only: %i[show edit update destroy]
 
@@ -8,11 +10,11 @@ class CollectionsController < ApplicationController
       PgSearch::Multisearch.rebuild(Tag)
       PgSearch::Multisearch.rebuild(Member)
       pg_results = PgSearch.multisearch(params[:query])
-      @results = pg_results
+      @results = pg_results.uniq
     else
       @collections = Collection.all
     end
-      @collection = Collection.new
+    @collection = Collection.new
   end
 
   def show
@@ -22,11 +24,13 @@ class CollectionsController < ApplicationController
 
   def create
     @collection = Collection.new(collection_params)
-    @collection.user_id = current_user.id
+    @collection.user = current_user # Use lowercase 'collection' instead of 'Collection'
+    file = URI.open(collection_params[:photo_url])
+    @collection.photos.attach(io: file, filename: "photo.png", content_type: "image/png")
     if @collection.save
-      redirect_to collections_path, notice: "#{@collection.label} has been created"
+      redirect_to root_path, notice: 'Collection was successfully created.'
     else
-      render :new, status: :unprocessable_entity
+      render :new
     end
   end
 
@@ -53,6 +57,6 @@ class CollectionsController < ApplicationController
   end
 
   def collection_params
-    params.require(:collection).permit(:label, :description, :type)
+    params.require(:collection).permit(:label, :description, :photo_url)
   end
 end
