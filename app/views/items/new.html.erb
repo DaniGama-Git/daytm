@@ -24,7 +24,7 @@
               </button>
             </div>
           </div>
-          <%= f.input :date, html5: true %>
+          <%= f.input :date, html5: true  %>
           <%= f.input :description %>
           <%= f.association :members, collection: @members, label_method: :first_name, as: :check_boxes %>
           <%= f.association :collections,
@@ -60,7 +60,7 @@
             <% end %>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>

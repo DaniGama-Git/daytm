@@ -6,7 +6,6 @@ export default class extends Controller {
   connect() {
     new TomSelect(this.element, {
       allowEmptyOption: true,
-      create: true
     })
   }
 }
