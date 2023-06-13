@@ -10,12 +10,11 @@
   border-radius: 12px;
   box-shadow: 10px 10px 15px gray;
   margin-top: 20px;
-  padding: 0px 20px;
+  padding: 0px 20px 20px 20px;
     h1 {
       text-align: center;
       padding: 18px 0px;
     }
-
 }
 
 .new-item-form-inputs-container {
@@ -23,8 +22,8 @@
 }
 
 .new-item-form-photos {
-  background-color: #89C5CD ;
-  padding: 10px;
+  background-color: #F3F0EF;
+  padding: 18px;
   border-radius: 20px;
   margin-right: 40px;
 
@@ -38,7 +37,7 @@
   align-items: center;
 }
 .new-item-form-tag-collection {
-  flex-grow: 1;
+  flex-grow: 1 ;
 }
 
 .new-tag-modal {
@@ -73,16 +72,44 @@
   .ts-control {
     border: white;
   }
+
+  .btn {
+    color: white;
+    font-weight: 0;
+    font-size: 14;
+  }
 }
 
-.new-item-form-submit {
-  text-align: center;
+#item_description.form-control.text.optional
+{
+  border: grey solid 1px;
+}
 
-    .btn {
-    font-size: 23px;
-    background-color: aquamarine;
-    padding: 12px 24px;
-    border-radius: 8px;
+#item_photos.form-control.file.optional.photo-drag {
+  background-color: #F3F0EF;
+
+}
+
+.photo-drag {
+  padding: 20px 0px 20px 20px;
+  height: 60px;
+  border-radius: 2px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  justify-content: center;
+  border: 2px dashed gray !important;
+}
+
+.new-tag-modal{
+  p {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .blue-hollow-btn {
+    p {
+      font-size: 14px;
+      margin: 0;
     }
-
+  }
 }

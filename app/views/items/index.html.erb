@@ -1,23 +1,25 @@
+<div>
   <h1>All Items</h1>
+</div>
 
-<div class="items-cards">
+<div class="collections-show-items-cards">
   <% @items.each do |item|%>
     <%= link_to item_path(item) do %>
-      <div class="item-card">
+      <div class="collections-show-item-card">
           <% if item.photos.attached? %>
             <%=cl_image_tag(item.photos.first.key, format: :jpg) %>
           <% else %>
             <%=cl_image_tag("eb29e166f6bd2b605ac17b58a9f2f7ac_lugu4k", width: 400, height: 600, crop: :fill, format: :jpg) %>
           <% end %>
-        <div class="item-card-info">
-            <h1 class="title"><%= item.title %></h1>
-            <div class="item-card-description">
+        <div class="collections-show-item-card-info">
+            <h1 class="collections-show-title"><%= item.title %></h1>
+            <div class="collections-show-item-card-description">
               <%= item.description %>
             </div>
               <% item.members.each do |member| %>
                 <i class="fa-solid fa-user"> </i><%= member.first_name %>
             <% end %>
-            <div class = "item-card-comments">
+            <div class = "collections-show-item-card-comments">
             <%= item.comments.count %> <i class="fa-solid fa-comment"></i>
             </div>
         </div>
@@ -25,5 +27,6 @@
     <% end %>
   <% end %>
 </div>
-
+<div>
   <%= link_to "Add Item", new_item_path %>
+</div>
