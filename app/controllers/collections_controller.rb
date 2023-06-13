@@ -8,7 +8,7 @@ class CollectionsController < ApplicationController
       PgSearch::Multisearch.rebuild(Tag)
       PgSearch::Multisearch.rebuild(Member)
       pg_results = PgSearch.multisearch(params[:query])
-      @results = pg_results
+      @results = pg_results.uniq
     else
       @collections = Collection.all
     end

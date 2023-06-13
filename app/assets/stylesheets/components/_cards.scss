@@ -94,13 +94,14 @@
   height: 180px;
   width: auto;
   display: flex;
+  background-color: white;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(197, 201, 238);
   border-radius: 10px;
   padding: 10px;
   text-align: center;
   box-shadow: 20px 20px 30px rgba(0, 0, 0, .05);
+  box-shadow: inset 5px 10px 50px rgb(197, 201, 238);
 }
 
 .home-collection-title {
