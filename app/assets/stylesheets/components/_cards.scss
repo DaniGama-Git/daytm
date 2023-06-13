@@ -1,26 +1,6 @@
-.item-show-container {
-  width: 1205px;
-  display: flex;
-  justify-content: center;
-}
+/* START OF CSS STYLES FOR COLLECTIONS SHOW PAGE */
 
-.item-info{
-  width: 55%;
-  padding: 100px;
-  padding-top: 10px;
-  font-size: 16px;
-  border: solid rgb(71, 71, 71) 1px;
-  justify-content: center;
-}
-
-.item-file-container{
-  width: 50%;
-  border: 100%;
-}
-
-
-/* CSS STYLES FOR COLLECTIONS SHOW PAGE*/
-.items-cards {
+.collections-show-items-cards {
   display: flex;
 	flex-wrap: wrap;
 	align-items: flex-start;
@@ -33,7 +13,7 @@
   }
 }
 
-.item-card {
+.collections-show-item-card {
   display: flex;
   width: 420px;
   height: 200px;
@@ -48,22 +28,22 @@
   }
 }
 
-.item-card img {
+.collections-show-item-card img {
   width: 40%;
   height: 100%;
 }
 
-.item-card-info {
+.collections-show-item-card-info {
   padding: 15px;
 }
 
-.title {
+.collections-show-title {
   font-weight: 220;
   font-size: 24px;
   color: rgb(31, 48, 70);
 }
 
-.item-card-description {
+.collections-show-item-card-description {
   margin-top: 1rem;
   margin-bottom: 1rem;
   font-size: 0.875rem;
@@ -71,14 +51,17 @@
   color: rgb(78, 88, 101);
 }
 
-.item-card-comments {
+.collections-show-item-card-comments {
   position: absolute;
   bottom: 5px;
   right: 5px;
   padding: 20px
 }
 
-// for home page
+/* END OF CSS STYLES FOR COLLECTIONS SHOW PAGE*/
+
+
+/* START OF CSS FOR HOME PAGE */
 
 .all-collections-container {
   margin: 0 auto;
@@ -168,3 +151,5 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* END OF CSS FOR HOME PAGE */

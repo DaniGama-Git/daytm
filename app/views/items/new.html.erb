@@ -1,32 +1,69 @@
-<div class="new-item-container">
-  <h1>Add New Item</h1>
-  <div class="new-item-form-container">
-    <div class="new-item-image-container">
-      <%= simple_form_for(@item) do |f| %>
-        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-        <%= f.button :submit, "Save" %>
-      <% end %>
 
-    </div>
-    <div class="form-inputs-container">
-      <%= simple_form_for(@item) do |f| %>
-        <%= f.input :title %>
-        <%= f.input :format %>
-        <%= f.input :date, html5: true %>
-        <%= f.input :description %>
-        <%= f.association :members, collection: @members, label_method: :full_name, as: :check_boxes %>
-        <div class="tags-container">
-          <div class="tag-checkboxes">
-            <%= f.association :tags, collection: @tags, as: :check_boxes, item_wrapper_class: "tag-checkbox" %>
+
+<div class="new-item-container">
+  <div class="new-item-form-container">
+    <h1>Add New Item</h1>
+    <%= simple_form_for(@item) do |f| %>
+      <div class="new-item-form-inputs-container">
+        <div class="new-item-form-photos">
+          <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        </div>
+        <div class="new-item-form-inputs">
+          <%= f.input :title %>
+          <div class="new-item-form-tags">
+            <div class="new-item-form-tag-collection">
+              <%= f.association :tags,
+                  collection: Tag.all,
+                  input_html: {multiple: true, data: {controller: "tom-select"}},
+                  include_hidden: false
+              %>
+            </div>
+            <div class="new-tag-modal">
+              <button type="button" class="add-new-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <p>New Tag</p>
+              </button>
+            </div>
+          </div>
+          <%= f.input :date, html5: true %>
+          <%= f.input :description %>
+          <%= f.association :members, collection: @members, label_method: :first_name, as: :check_boxes %>
+          <%= f.association :collections,
+              collection: Collection.all,
+              label_method: :label,
+              input_html: {multiple: true, data: {controller: "tom-select"}},
+              include_hidden: false
+          %>
+        </div>
+      </div>
+      <div class="new-item-form-submit">
+        <%= f.button :submit, "Save" %>
+      </div>
+
+    <% end %>
+
+    <!-- Button trigger modal -->
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add new tag</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for(@tag) do |f| %>
+            <%= f.input :name %>
+            <%= f.submit %>
+            <% end %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
-        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-        <%= f.button :submit, "Save" %>
-      <% end %>
+      </div>
     </div>
-  </div>
-
-  <div>
-    <%= link_to "Back to items", items_path %>
   </div>
 </div>
