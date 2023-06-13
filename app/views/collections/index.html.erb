@@ -23,7 +23,7 @@
   <%= link_to items_path do %> <!-- block to always display the all items collection -->
     <div class="home-collection-card-all-items">
       <div class="home-collection-image">
-          <%= image_tag "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png", alt: "all items", height: 110 %>
+          <%= image_tag "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png", alt: "all items", height: 110 %>
       </div>
       <div class="home-collection-title">
         <h3>All Items</h3>
@@ -78,10 +78,8 @@
   <% end %>
 </div>
 
-
-
 <!-- button to bring up add collection modal -->
-<button type="button" class="daytm-btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="blue-primary-btn mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
   <p class="m-2">Add new collection</p>
 </button>
 <!-- Modal -->
@@ -97,7 +95,20 @@
         <%= simple_form_for(@collection, html: { class: "text-center" }) do |f| %>
           <%= f.input :label %>
           <%= f.input :description %>
-          <%= f.submit class: "daytm-btn-primary mb-2" %>
+          <%= f.input :photos, as: :file, collection: [
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Torso_kyvgtb.png", height: 75), "Red Torso"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png", height: 75), "Walking in the park"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Power_Moves_-_Standing_hskmff.png", height: 75), "Power Moves"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png", height: 75), "Red Sitting On Chair"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_1_axhaln.png", height: 75), "Brazuca Planning"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_zgipgr.png", height: 75), "Planning clipboard"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Power_Moves_-_Full_Body_gt0c22.png", height: 75), "Power Moves Full Body"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Citta%CC%80_-_Standing_nnuzjb.png", height: 75), "Citta Standing"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_1_Character_ysea51.png", height: 75), "Humaans Character"],
+            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_Standing_gu2xqc.png", height: 75), "Humaans Standing"]
+          ], as: :radio_buttons %>
+          <%= f.submit class: "blue-primary-btn mb-2" %>
         <% end %>
       </div>
     </div>
