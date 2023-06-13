@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.0].define(version: 2023_06_13_152503) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -117,12 +119,27 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_152503) do
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
   end
 
+  create_table "suggestions", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_tags_on_user_id"
+  end
+
+  create_table "user_suggestions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "suggestion_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["suggestion_id"], name: "index_user_suggestions_on_suggestion_id"
+    t.index ["user_id"], name: "index_user_suggestions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -152,4 +169,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_152503) do
   add_foreign_key "items", "users"
   add_foreign_key "members", "users"
   add_foreign_key "tags", "users"
+  add_foreign_key "user_suggestions", "suggestions"
+  add_foreign_key "user_suggestions", "users"
 end

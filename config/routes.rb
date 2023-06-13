@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   resources :collections
   resources :tags, only: [:new, :create]
   resources :members, only: [:new, :create]
+  resources :user_suggestions, only: :create
   get 'landing', to: 'pages#landing'
 end
