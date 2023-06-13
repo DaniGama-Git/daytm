@@ -32,6 +32,17 @@ member_2 = Member.create(first_name: 'Lis', last_name: 'Legend', user: user_1)
 member_3 = Member.create(first_name: 'Liam', last_name: 'Legend', user: user_1)
 member_4 = Member.create(first_name: 'Lila', last_name: 'Legend', user: user_1)
 
+avatar_1 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686672432/Screenshot_2023-06-13_at_18.05.58_m97mx4.png")
+member_1.photos.attach(io: avatar_1, filename: "avatar_1.jpg", content_type: "image/jpg")
+
+avatar_2 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686670592/IMG_8639_ugdpkk.jpg")
+member_2.photos.attach(io: avatar_2, filename: "avatar_2.jpg", content_type: "image/jpg")
+
+avatar_3 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686672432/Screenshot_2023-06-13_at_18.05.58_m97mx4.png")
+member_3.photos.attach(io: avatar_3, filename: "avatar_3.jpg", content_type: "image/jpg")
+
+avatar_4 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686672432/Screenshot_2023-06-13_at_18.05.58_m97mx4.png")
+member_4.photos.attach(io: avatar_4, filename: "avatar_4.jpg", content_type: "image/jpg")
 
 # CREATING COLLECTIONS SEED
 p "CREATING COLLECTIONS SEED"
@@ -223,51 +234,51 @@ item_2_2.save
 
 # ATTACHING IMAGE TO COLLECTIONS
 
-collection_image_1 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Brazuca_-_Planning_zgipgr.png")
-collection_1.photos.attach(io: collection_image_1, filename: "collection_image_1", content_type: "png")
-collection_1.save
-collection_image_2 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Humaaans_-_1_Character_ysea51.png")
-collection_2.photos.attach(io: collection_image_2, filename: "collection_image_2", content_type: "png")
-collection_2.save
-collection_image_3 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Brazuca_-_Planning_1_axhaln.png")
-collection_3.photos.attach(io: collection_image_3, filename: "collection_image_3", content_type: "png")
-collection_3.save
-collection_image_5 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Red_Torso_kyvgtb.png")
-collection_4.photos.attach(io: collection_image_5, filename: "collection_image_5", content_type: "png")
-collection_4.save
-collection_image_4 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png")
-collection_5.photos.attach(io: collection_image_4, filename: "collection_image_4", content_type: "png")
-collection_5.save
-collection_image_6 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png")
-collection_6.photos.attach(io: collection_image_6, filename: "collection_image_6", content_type: "png")
-collection_6.save
-collection_image_1 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Brazuca_-_Planning_zgipgr.png")
-collection_7.photos.attach(io: collection_image_1, filename: "collection_image_1", content_type: "png")
-collection_7.save
-collection_image_3 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Brazuca_-_Planning_1_axhaln.png")
-collection_8.photos.attach(io: collection_image_3, filename: "collection_image_3", content_type: "png")
-collection_8.save
-collection_image_6 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png")
-collection_9.photos.attach(io: collection_image_6, filename: "collection_image_6", content_type: "png")
-collection_9.save
-collection_image_2 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Humaaans_-_1_Character_ysea51.png")
-collection_10.photos.attach(io: collection_image_2, filename: "collection_image_2", content_type: "png")
-collection_10.save
-collection_image_4 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png")
-collection_11.photos.attach(io: collection_image_4, filename: "collection_image_4", content_type: "png")
-collection_11.save
-collection_image_5 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Red_Torso_kyvgtb.png")
-collection_12.photos.attach(io: collection_image_5, filename: "collection_image_5", content_type: "png")
-collection_12.save
-collection_image_1 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Brazuca_-_Planning_zgipgr.png")
-collection_13.photos.attach(io: collection_image_1, filename: "collection_image_1", content_type: "png")
-collection_13.save
-collection_image_3 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Brazuca_-_Planning_1_axhaln.png")
-collection_14.photos.attach(io: collection_image_3, filename: "collection_image_3", content_type: "png")
-collection_14.save
-collection_image_2 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Humaaans_-_1_Character_ysea51.png")
-collection_15.photos.attach(io: collection_image_2, filename: "collection_image_2", content_type: "png")
-collection_15.save
+# collection_image_1 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Brazuca_-_Planning_zgipgr.png")
+# collection_1.photos.attach(io: collection_image_1, filename: "collection_image_1", content_type: "png")
+# collection_1.save
+# collection_image_2 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Humaaans_-_1_Character_ysea51.png")
+# collection_2.photos.attach(io: collection_image_2, filename: "collection_image_2", content_type: "png")
+# collection_2.save
+# collection_image_3 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Brazuca_-_Planning_1_axhaln.png")
+# collection_3.photos.attach(io: collection_image_3, filename: "collection_image_3", content_type: "png")
+# collection_3.save
+# collection_image_5 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Red_Torso_kyvgtb.png")
+# collection_4.photos.attach(io: collection_image_5, filename: "collection_image_5", content_type: "png")
+# collection_4.save
+# collection_image_4 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png")
+# collection_5.photos.attach(io: collection_image_4, filename: "collection_image_4", content_type: "png")
+# collection_5.save
+# collection_image_6 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png")
+# collection_6.photos.attach(io: collection_image_6, filename: "collection_image_6", content_type: "png")
+# collection_6.save
+# collection_image_1 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Brazuca_-_Planning_zgipgr.png")
+# collection_7.photos.attach(io: collection_image_1, filename: "collection_image_1", content_type: "png")
+# collection_7.save
+# collection_image_3 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Brazuca_-_Planning_1_axhaln.png")
+# collection_8.photos.attach(io: collection_image_3, filename: "collection_image_3", content_type: "png")
+# collection_8.save
+# collection_image_6 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png")
+# collection_9.photos.attach(io: collection_image_6, filename: "collection_image_6", content_type: "png")
+# collection_9.save
+# collection_image_2 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Humaaans_-_1_Character_ysea51.png")
+# collection_10.photos.attach(io: collection_image_2, filename: "collection_image_2", content_type: "png")
+# collection_10.save
+# collection_image_4 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png")
+# collection_11.photos.attach(io: collection_image_4, filename: "collection_image_4", content_type: "png")
+# collection_11.save
+# collection_image_5 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Red_Torso_kyvgtb.png")
+# collection_12.photos.attach(io: collection_image_5, filename: "collection_image_5", content_type: "png")
+# collection_12.save
+# collection_image_1 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Brazuca_-_Planning_zgipgr.png")
+# collection_13.photos.attach(io: collection_image_1, filename: "collection_image_1", content_type: "png")
+# collection_13.save
+# collection_image_3 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Brazuca_-_Planning_1_axhaln.png")
+# collection_14.photos.attach(io: collection_image_3, filename: "collection_image_3", content_type: "png")
+# collection_14.save
+# collection_image_2 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Humaaans_-_1_Character_ysea51.png")
+# collection_15.photos.attach(io: collection_image_2, filename: "collection_image_2", content_type: "png")
+# collection_15.save
 
 # ATTACHING IMAGES/PDF'S TO ITEMS 2.1 , 2.2
 file_2_1 = URI.open("https://beafunmum.com/wp-content/uploads/2011/01/bugs.jpg")
