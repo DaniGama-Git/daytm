@@ -39,7 +39,6 @@ class ItemsController < ApplicationController
         next if id.to_i == 0
         Member.find(id.to_i)
       end
-
       # tags = params.map do |id|
       #   next if id.to_i == 0
       #   Tag.find(id.to_i)

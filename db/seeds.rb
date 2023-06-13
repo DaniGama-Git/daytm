@@ -18,6 +18,8 @@ Comment.destroy_all
 Item.destroy_all
 Collection.destroy_all
 Member.destroy_all
+UserSuggestion.destroy_all
+Suggestion.destroy_all
 User.destroy_all
 
 # CREATING USER SEED - LILA, MOTHER OF THREE
@@ -25,7 +27,7 @@ p "CREATING USER SEED - LILA, MOTHER OF THREE"
 user_1 = User.create(email: 'lila@legend.com', password: 'password', first_name: 'Lila', last_name: 'Legend')
 
 # CREATING MEMBER'S SEED - LILA'S THREE KIDS, KIKI, LIS, LIAM
-p"CREATING MEMBER'S SEED - LILA'S THREE KIDS, KIKI, LIS, LIAM"
+p "CREATING MEMBER'S SEED - LILA'S THREE KIDS, KIKI, LIS, LIAM"
 
 member_1 = Member.create(first_name: 'Kiki', last_name: 'Legend', user: user_1)
 member_2 = Member.create(first_name: 'Lis', last_name: 'Legend', user: user_1)
@@ -234,51 +236,51 @@ item_2_2.save
 
 # ATTACHING IMAGE TO COLLECTIONS
 
-# collection_image_1 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Brazuca_-_Planning_zgipgr.png")
-# collection_1.photos.attach(io: collection_image_1, filename: "collection_image_1", content_type: "png")
-# collection_1.save
-# collection_image_2 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Humaaans_-_1_Character_ysea51.png")
-# collection_2.photos.attach(io: collection_image_2, filename: "collection_image_2", content_type: "png")
-# collection_2.save
-# collection_image_3 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Brazuca_-_Planning_1_axhaln.png")
-# collection_3.photos.attach(io: collection_image_3, filename: "collection_image_3", content_type: "png")
-# collection_3.save
-# collection_image_5 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Red_Torso_kyvgtb.png")
-# collection_4.photos.attach(io: collection_image_5, filename: "collection_image_5", content_type: "png")
-# collection_4.save
-# collection_image_4 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png")
-# collection_5.photos.attach(io: collection_image_4, filename: "collection_image_4", content_type: "png")
-# collection_5.save
-# collection_image_6 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png")
-# collection_6.photos.attach(io: collection_image_6, filename: "collection_image_6", content_type: "png")
-# collection_6.save
-# collection_image_1 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Brazuca_-_Planning_zgipgr.png")
-# collection_7.photos.attach(io: collection_image_1, filename: "collection_image_1", content_type: "png")
-# collection_7.save
-# collection_image_3 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Brazuca_-_Planning_1_axhaln.png")
-# collection_8.photos.attach(io: collection_image_3, filename: "collection_image_3", content_type: "png")
-# collection_8.save
-# collection_image_6 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png")
-# collection_9.photos.attach(io: collection_image_6, filename: "collection_image_6", content_type: "png")
-# collection_9.save
-# collection_image_2 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Humaaans_-_1_Character_ysea51.png")
-# collection_10.photos.attach(io: collection_image_2, filename: "collection_image_2", content_type: "png")
-# collection_10.save
-# collection_image_4 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png")
-# collection_11.photos.attach(io: collection_image_4, filename: "collection_image_4", content_type: "png")
-# collection_11.save
-# collection_image_5 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/Tutto_Ricco_-_Red_Torso_kyvgtb.png")
-# collection_12.photos.attach(io: collection_image_5, filename: "collection_image_5", content_type: "png")
-# collection_12.save
-# collection_image_1 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Brazuca_-_Planning_zgipgr.png")
-# collection_13.photos.attach(io: collection_image_1, filename: "collection_image_1", content_type: "png")
-# collection_13.save
-# collection_image_3 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Brazuca_-_Planning_1_axhaln.png")
-# collection_14.photos.attach(io: collection_image_3, filename: "collection_image_3", content_type: "png")
-# collection_14.save
-# collection_image_2 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/Humaaans_-_1_Character_ysea51.png")
-# collection_15.photos.attach(io: collection_image_2, filename: "collection_image_2", content_type: "png")
-# collection_15.save
+collection_image_1 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_1_axhaln.png")
+collection_1.photos.attach(io: collection_image_1, filename: "collection_image_1", content_type: "png")
+collection_1.save
+collection_image_2 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_1_Character_ysea51.png")
+collection_2.photos.attach(io: collection_image_2, filename: "collection_image_2", content_type: "png")
+collection_2.save
+collection_image_3 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_zgipgr.png")
+collection_3.photos.attach(io: collection_image_3, filename: "collection_image_3", content_type: "png")
+collection_3.save
+collection_image_5 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Torso_kyvgtb.png")
+collection_4.photos.attach(io: collection_image_5, filename: "collection_image_5", content_type: "png")
+collection_4.save
+collection_image_4 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png")
+collection_5.photos.attach(io: collection_image_4, filename: "collection_image_4", content_type: "png")
+collection_5.save
+collection_image_6 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png")
+collection_6.photos.attach(io: collection_image_6, filename: "collection_image_6", content_type: "png")
+collection_6.save
+collection_image_1 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_zgipgr.png")
+collection_7.photos.attach(io: collection_image_1, filename: "collection_image_1", content_type: "png")
+collection_7.save
+collection_image_3 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_1_axhaln.png")
+collection_8.photos.attach(io: collection_image_3, filename: "collection_image_3", content_type: "png")
+collection_8.save
+collection_image_6 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png")
+collection_9.photos.attach(io: collection_image_6, filename: "collection_image_6", content_type: "png")
+collection_9.save
+collection_image_2 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_1_Character_ysea51.png")
+collection_10.photos.attach(io: collection_image_2, filename: "collection_image_2", content_type: "png")
+collection_10.save
+collection_image_4 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png")
+collection_11.photos.attach(io: collection_image_4, filename: "collection_image_4", content_type: "png")
+collection_11.save
+collection_image_5 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Torso_kyvgtb.png")
+collection_12.photos.attach(io: collection_image_5, filename: "collection_image_5", content_type: "png")
+collection_12.save
+collection_image_1 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_zgipgr.png")
+collection_13.photos.attach(io: collection_image_1, filename: "collection_image_1", content_type: "png")
+collection_13.save
+collection_image_3 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_1_axhaln.png")
+collection_14.photos.attach(io: collection_image_3, filename: "collection_image_3", content_type: "png")
+collection_14.save
+collection_image_2 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_1_Character_ysea51.png")
+collection_15.photos.attach(io: collection_image_2, filename: "collection_image_2", content_type: "png")
+collection_15.save
 
 # ATTACHING IMAGES/PDF'S TO ITEMS 2.1 , 2.2
 file_2_1 = URI.open("https://beafunmum.com/wp-content/uploads/2011/01/bugs.jpg")
@@ -289,4 +291,21 @@ file_2_2 = URI.open("https://artsymomma.com/wp-content/uploads/2016/09/DIY-Clay-
 item_2_2.photos.attach(io: file_2_2, filename: "image_1_1.jpg", content_type: "image/jpg")
 item_2_2.save
 
+# CREATING SUGGESTIONS SEED
+p "CREATING SUGGESTIONS SEED"
+Suggestion.create(content: "Lila - Passport: Proof of identity and international travel document.")
+Suggestion.create(content: "Kiki - Childcare enrollment documents: Required forms for enrolling the baby in daycare or preschool.")
+Suggestion.create(content: "Lis - Babysitter authorization form: Permission for someone to care for the baby in your absence.")
+Suggestion.create(content: "Liam - Emergency contact list: Important contacts in case of emergencies.")
+Suggestion.create(content: "Lila - Social Security card: Government-issued identification for social security benefits.")
+Suggestion.create(content: "Kiki - Guardian designation: Legal document specifying a guardian for the baby if needed.")
+Suggestion.create(content: "Lis - Pediatrician contact information: Details of the baby's primary healthcare provider.")
+Suggestion.create(content: "Liam - Health insurance card: Proof of the baby's coverage for medical care.")
+Suggestion.create(content: "Lila - Birth certificate: Proof of birth and citizenship.")
+Suggestion.create(content: "Kiki - Immunization records: Documentation of the baby's vaccinations and health history.")
+Suggestion.create(content: "Lis - Passport: Document for international travel with the baby.")
+Suggestion.create(content: "Liam - Social Security card: Government-issued identification for the baby.")
+Suggestion.create(content: "Kiki - Birth certificate: Proof of the baby's birth and identity.")
+Suggestion.create(content: "Lila - Health insurance card: Proof of coverage for medical expenses.")
+Suggestion.create(content: "Lila - Driver's license: Official identification and permit for operating vehicles.")
 p "FINISHED SEEDING THE DATABASE"
