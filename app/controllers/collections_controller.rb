@@ -25,8 +25,8 @@ class CollectionsController < ApplicationController
   def create
     @collection = Collection.new(collection_params)
     @collection.user = current_user # Use lowercase 'collection' instead of 'Collection'
-    # file = URI.open(collection_params.photo)
-    # @collection.photo.attach(io: file, filename: "photo.png", content_type: "image/png")
+    file = URI.open(collection_params[:photo_url])
+    @collection.photos.attach(io: file, filename: "photo.png", content_type: "image/png")
     if @collection.save
       redirect_to root_path, notice: 'Collection was successfully created.'
     else
@@ -57,6 +57,6 @@ class CollectionsController < ApplicationController
   end
 
   def collection_params
-    params.require(:collection).permit(:label, :description, :photos)
+    params.require(:collection).permit(:label, :description, :photo_url)
   end
 end
