@@ -18,6 +18,8 @@ Comment.destroy_all
 Item.destroy_all
 Collection.destroy_all
 Member.destroy_all
+UserSuggestion.destroy_all
+Suggestion.destroy_all
 User.destroy_all
 
 # CREATING USER SEED - LILA, MOTHER OF THREE
@@ -25,7 +27,7 @@ p "CREATING USER SEED - LILA, MOTHER OF THREE"
 user_1 = User.create(email: 'lila@legend.com', password: 'password', first_name: 'Lila', last_name: 'Legend')
 
 # CREATING MEMBER'S SEED - LILA'S THREE KIDS, KIKI, LIS, LIAM
-p"CREATING MEMBER'S SEED - LILA'S THREE KIDS, KIKI, LIS, LIAM"
+p "CREATING MEMBER'S SEED - LILA'S THREE KIDS, KIKI, LIS, LIAM"
 
 member_1 = Member.create(first_name: 'Kiki', last_name: 'Legend', user: user_1)
 member_2 = Member.create(first_name: 'Lis', last_name: 'Legend', user: user_1)
@@ -278,4 +280,21 @@ file_2_2 = URI.open("https://artsymomma.com/wp-content/uploads/2016/09/DIY-Clay-
 item_2_2.photos.attach(io: file_2_2, filename: "image_1_1.jpg", content_type: "image/jpg")
 item_2_2.save
 
+# CREATING SUGGESTIONS SEED
+p "CREATING SUGGESTIONS SEED"
+Suggestion.create(content: "Passport: Proof of identity and international travel document.")
+Suggestion.create(content: "Driver's license: Official identification and permit for operating vehicles.")
+Suggestion.create(content: "Birth certificate: Proof of birth and citizenship.")
+Suggestion.create(content: "Social Security card: Government-issued identification for social security benefits.")
+Suggestion.create(content: "Health insurance card: Proof of coverage for medical expenses.")
+Suggestion.create(content: "Guardian designation: Legal document specifying a guardian for the baby if needed.")
+Suggestion.create(content: "Childcare enrollment documents: Required forms for enrolling the baby in daycare or preschool.")
+Suggestion.create(content: "Babysitter authorization form: Permission for someone to care for the baby in your absence.")
+Suggestion.create(content: "Emergency contact list: Important contacts in case of emergencies.")
+Suggestion.create(content: "Pediatrician contact information: Details of the baby's primary healthcare provider.")
+Suggestion.create(content: "Health insurance card: Proof of the baby's coverage for medical care.")
+Suggestion.create(content: "Immunization records: Documentation of the baby's vaccinations and health history.")
+Suggestion.create(content: "Passport: Document for international travel with the baby.")
+Suggestion.create(content: "Social Security card: Government-issued identification for the baby.")
+Suggestion.create(content: "Birth certificate: Proof of the baby's birth and identity.")
 p "FINISHED SEEDING THE DATABASE"
