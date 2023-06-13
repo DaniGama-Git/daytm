@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :items
   has_many :members
   has_many :tags
+  has_many :user_suggestions
+  has_many :suggestions, through: :user_suggestions, dependent: :destroy
+
 
   include PgSearch::Model
 
