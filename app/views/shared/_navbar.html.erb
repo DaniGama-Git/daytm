@@ -7,12 +7,12 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav me-auto d-flex align-items-center">
         <% if user_signed_in? %>
-          <li class="nav-item suggestions">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-solid fa-flag"></i>
+          <li class="nav-link suggestions">
+            <div class="dropdown black-hollow-btn">
+              <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-regular fa-lightbulb"></i>
               </button>
               <%= simple_form_for @user_suggestion, html: { class: "dropdown-menu dropdown-menu-end ", id: "user-suggestion-form" } do |f| %>
                 <%= f.association :suggestion, collection: @suggestions, label_method: :content, as: :check_boxes, wrapper_html: { class: "form-group" } %>
@@ -20,8 +20,72 @@
               <% end %>
             </div>
           </li>
-          <li class="nav-item active">
-            <%= link_to "Home", "/", class: "nav-link" %>
+          <li class="nav-link">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn black-hollow-btn" data-bs-toggle="modal" data-bs-target="#MemberModal">
+              Add Member
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="MemberModal" tabindex="-1" aria-labelledby="MemberModalLabel" aria-hidden="true">
+              <div class="modal-dialog ">
+                <div class="modal-content">
+                  <div class="modal-header d-flex flex-column align-items-center">
+                    <h5 class="modal-title" id="MemberModalLabel">Add a Member</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <%= simple_form_for(@member, html: { class: "text-center" }) do |f| %>
+                        <%= f.input :first_name %>
+                        <%= f.input :last_name %>
+                        <%= f.input :photos, as: :file, input_html: { multiple: false }, label: "Drag & drop your photo here"%>
+                        <%= f.submit class: "blue-primary-btn mb-2" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-link">
+            <button type="button" class="black-hollow-btn" data-bs-toggle="modal" data-bs-target="#CollectionModal">
+              <p class="">Add collection</p>
+            </button>
+            <!-- Modal -->
+            <div class="modal fade rounded-1" id="CollectionModal" tabindex="-1" aria-labelledby="CollectionModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header d-flex flex-column align-items-center">
+                    <h2 class="modal-title" id="CollectionModalLabel">Add a Collection</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                  </div>
+                  <div class="modal-body d-flex flex-column align-items-center">
+                    <p><strong>Add a new collection</strong></p>
+                      <%= simple_form_for(@collection, html: { class: "text-center" }) do |f| %>
+                        <%= f.input :label %>
+                        <%= f.input :description %>
+                          <%= f.input :photo_url, collection: [
+                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png"],
+                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Torso_kyvgtb.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Torso_kyvgtb.png"],
+                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png"],
+                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Power_Moves_-_Standing_hskmff.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Power_Moves_-_Standing_hskmff.png"],
+                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png"],
+                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_1_axhaln.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_1_axhaln.png"],
+                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_zgipgr.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_zgipgr.png"],
+                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Power_Moves_-_Full_Body_gt0c22.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Power_Moves_-_Full_Body_gt0c22.png"],
+                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Citta%CC%80_-_Standing_nnuzjb.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Citta%CC%80_-_Standing_nnuzjb.png"],
+                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_1_Character_ysea51.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_1_Character_ysea51.png"],
+                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_Standing_gu2xqc.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_Standing_gu2xqc.png"]
+                          ], as: :radio_buttons, wrapper_html: { class: "d-flex flex-wrap justify-content-center" } %>
+                      <%= f.submit class: "blue-primary-btn mb-2" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-link">
+            <%= link_to "Home", "/", class: "black-hollow-btn text-decoration-none" %>
           </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,3 +104,5 @@
     </div>
   </div>
 </div>
+<div>
+

@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   def set_new_user_suggestion
     @user_suggestion = UserSuggestion.new
+    @member = Member.new
   end
 
   def get_suggestions

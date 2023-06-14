@@ -18,8 +18,9 @@ class CollectionsController < ApplicationController
   end
 
   def show
-    @collection = Collection.find(params[:id])
-    @items = @collection.items
+    @this_collection = Collection.find(params[:id])
+    @items = @this_collection.items
+    @collection = Collection.new
   end
 
   def create

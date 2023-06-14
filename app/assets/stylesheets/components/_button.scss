@@ -40,6 +40,7 @@
   background: #F6F9FE;
   color: #2949BF;
   border: #2949BF solid 2px;
+  transition: all 0.4s ease-in-out 0s;
 }
 
 .blue-primary-btn:active {
@@ -115,6 +116,7 @@ background-color: black;
   background: white;
   color: black;
   border: black solid 2px;
+  transition: all 0.4s ease-in-out 0s;
 }
 
 .black-primary-btn:active {
@@ -190,6 +192,7 @@ background-color: black;
   background: #F6F9FE;
   color: #E6460E;
   border: #E6460E solid 2px;
+  transition: all 0.4s ease-in-out 0s;
 }
 
 .orange-primary-btn:active {
@@ -265,6 +268,7 @@ background-color: black;
   background: #F6F9FE;
   color: #1B307F;
   border: #95A5DF solid 2px;
+  transition: all 0.4s ease-in-out 0s;
 }
 
 .blue-secondary-btn:active {
@@ -341,6 +345,7 @@ background-color: black;
   background: #F6F9FE;
   color: #722307;
   border: #F3A488 solid 2px;
+  transition: all 0.4s ease-in-out 0s;
 }
 
 .orange-secondary-btn:active {
@@ -416,6 +421,7 @@ background-color: black;
   background: #95A5DF;
   color: #1B307F;
   border: #95A5DF solid 2px;
+  transition: all 0.4s ease-in-out 0s;
 }
 
 .blue-hollow-btn:active {
@@ -447,7 +453,6 @@ background-color: black;
 .blue-hollow-btn:disabled {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
-
 
 /* BLACK HOLLOW BTN */
 
@@ -492,6 +497,7 @@ background-color: black;
   background: black;
   color: white;
   border: black solid 2px;
+  transition: all 0.4s ease-in-out 0s;
 }
 
 .black-hollow-btn:active {
@@ -568,6 +574,7 @@ background-color: black;
   background: #F3A488;
   color: #722307;
   border: #F3A488 solid 2px;
+  transition: all 0.4s ease-in-out 0s;
 }
 
 .orange-hollow-btn:active {

@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @collection = Collection.new
   end
 
   def show
@@ -10,6 +11,7 @@ class ItemsController < ApplicationController
     @tags = Tag.all
     @collections = Collection.all
     @members = Member.all
+    @collection = Collection.new
   end
 
   def new
@@ -17,6 +19,7 @@ class ItemsController < ApplicationController
     @tags = Tag.where(user: current_user)
     @tag = Tag.new
     @members = Member.where(user: current_user)
+    @collection = Collection.new
     @collections = Collection.where(user: current_user)
     @member_details = @members.map do |member|
       [member.first_name, member.id]
