@@ -1,8 +1,8 @@
 <%= link_to collection_path(collection.searchable_id) do %>
   <div class="home-collection-card">
     <div class="home-collection-image">
-      <% if collection.photo.attached? %>
-        <%=cl_image_tag(collection.photo.key, height: 110) %>
+      <% if collection.searchable.photos.attached? %>
+        <%=cl_image_tag(collection.searchable.photos.first.key, height: 110) %>
       <% end %>
     </div>
     <div class="home-collection-title">
