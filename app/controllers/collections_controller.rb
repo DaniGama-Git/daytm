@@ -31,7 +31,7 @@ class CollectionsController < ApplicationController
     if @collection.save
       redirect_to root_path, notice: 'Collection was successfully created.'
     else
-      render :new
+      redirect_to root_path :index, status: :unprocessable_entity
     end
   end
 
@@ -42,7 +42,7 @@ class CollectionsController < ApplicationController
     if @collection.update(collection_params)
       redirect_to @collection, notice: "#{@collection.label} has been updated"
     else
-      render :edit, status: unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
