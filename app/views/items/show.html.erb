@@ -1,0 +1,78 @@
+<div class="item-show-container" data-controller="edit-item">
+  <div class="item-show-card" data-edit-item-target="card">
+    <div class="item-show-image">
+      <% if @item.photos.first %>
+        <%=cl_image_tag(@item.photos.first.key, width: 400, height: 600, crop: :fill, format: :jpg) %>
+      <% else %>
+        <% end %>
+    </div>
+    <div class="item-show-content">
+      <div class="item-show-infos-section">
+        <div class="item-show-title-buttons">
+          <h1><%= @item.title %></h1>
+          <i class="fa-solid fa-pen fa-xs ml-2", data-action="click->edit-item#revealForm"></i>
+          <%= link_to item_path(@item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+            <i class="fa-solid fa-trash-can"></i>
+          <% end %>
+        </div>
+        <div>
+          <p><%= @item.description %></p>
+        </div>
+      </div>
+      <div class="item-show-tags-section">
+        <h4>Tags</h4>
+        <div class="item-show-tags">
+          <% @item.tags.each do |tag|%>
+            <div class="item-show-tag">
+              <p><%= tag.name %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="item-show-comments-section" id="comment-container" data-controller="insert-comment">
+        <h4>Comments</h4>
+        <%= simple_form_for([@item, @comment], data: { behavior: "submit-on-enter" })  do |f| %>
+          <%= f.input :content, label: false, class: "test" %>
+          <%= f.submit "Submit comment", class: "btn btn-primary"%>
+        <% end %>
+        <div class="item-show-comments" data-insert-comment-target="comments">
+          <% @item.comments.reverse.first(5).each do |comment| %>
+          <div class="item-show-comment">
+            <%= render 'items/comment', comment: comment %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="item-show-members">
+        <% @item.members.each do |member| %>
+          <div class="item-member-tag">
+            <%= cl_image_tag(member.photos.first.key, class: "avatar") %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="edit-item-container"> <!-- Edit item using stimulus -->
+    <div data-edit-item-target="form" class="d-none">
+      <%= simple_form_for(@item) do |f| %>
+        <%= f.input :title %>
+          <%= f.input :date, html5: true, label: "Item date", as: :date, input_html: { placeholder: 'YYYY-MM-DD' }%>
+        <%= f.input :description %>
+        <%= f.association :members, collection: @members, label_method: :full_name, as: :check_boxes %>
+        <%= f.association :collections,
+              collection: Collection.all,
+              label_method: :label,
+              input_html: {multiple: true, data: {controller: "tom-select"}},
+              include_hidden: false
+              %>
+        <%= f.association :tags,
+                  collection: Tag.all,
+                  input_html: {multiple: true, data: {controller: "tom-select"}},
+                  include_hidden: false
+                  %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        <%= f.button :submit, "Update item" %>
+      <% end %>
+    </div>
+  </div>
+</div>
