@@ -5,10 +5,10 @@
 
 // // External libraries
 // @import "bootstrap/scss/bootstrap";
-// @import "font-awesome";
+@import "font-awesome";
 
-// // Your CSS partials
-// @import "components/index";
-// @import "pages/index";
+// Your CSS partials
+@import "components/index";
+@import "pages/index";
 
-// @import "tom-select/dist/css/tom-select.css";
+@import "tom-select/dist/css/tom-select.css";
