@@ -9,6 +9,9 @@ class Item < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many_attached :photos, dependent: :destroy
 
+  validates :title, length: { maximum: 40, too_long: "%{count} characters is the maximum allowed" }
+
+
   include PgSearch::Model
 
   multisearchable against: [:title, :description]
