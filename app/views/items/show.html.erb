@@ -46,7 +46,7 @@
       <div class="item-show-members">
         <% @item.members.each do |member| %>
           <div class="item-member-tag">
-            <p><%= member.photos.first %></p>
+            <%= cl_image_tag(member.photos.first.key, class: "avatar") %>
           </div>
         <% end %>
       </div>
@@ -58,7 +58,7 @@
         <%= f.input :title %>
           <%= f.input :date, html5: true, label: "Item date", as: :date, input_html: { placeholder: 'YYYY-MM-DD' }%>
         <%= f.input :description %>
-        <%= f.association :members, collection: @members, label_method: :first_name, as: :check_boxes %>
+        <%= f.association :members, collection: @members, label_method: :full_name, as: :check_boxes %>
         <%= f.association :collections,
               collection: Collection.all,
               label_method: :label,
