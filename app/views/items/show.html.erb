@@ -9,7 +9,7 @@
     <div class="item-show-content">
       <div class="item-show-infos-section">
         <div class="item-show-title-buttons">
-          <h1><%= @item.title %></h1>
+          <h1 class="mb-3"><%= @item.title %></h1>
           <i class="fa-solid fa-pen fa-xs ml-2", data-action="click->edit-item#revealForm"></i>
           <%= link_to item_path(@item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
             <i class="fa-solid fa-trash-can"></i>
@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="item-show-tags-section">
-        <h4>Tags</h4>
+        <p>Tags</p>
         <div class="item-show-tags">
           <% @item.tags.each do |tag|%>
             <div class="item-show-tag">
@@ -29,11 +29,19 @@
           <% end %>
         </div>
       </div>
+      <div class="item-show-members">
+        <% @item.members.each do |member| %>
+          <div class="item-member-tag">
+            <%= cl_image_tag(member.photos.first.key, class: "avatar") %>
+          </div>
+        <% end %>
+      </div>
       <div class="item-show-comments-section" id="comment-container" data-controller="insert-comment">
-        <h4>Comments</h4>
+        <p class="item-show-comment-wording">Note's about this item:</p>
+        <p>What do you want to remember about this item?</p>
         <%= simple_form_for([@item, @comment], data: { behavior: "submit-on-enter" })  do |f| %>
           <%= f.input :content, label: false, class: "test" %>
-          <%= f.submit "Submit comment", class: "btn btn-primary"%>
+          <%= f.submit "Submit comment", class: "orange-hollow-btn"%>
         <% end %>
         <div class="item-show-comments" data-insert-comment-target="comments">
           <% @item.comments.reverse.first(5).each do |comment| %>
@@ -43,13 +51,6 @@
           <% end %>
         </div>
       </div>
-      <div class="item-show-members">
-        <% @item.members.each do |member| %>
-          <div class="item-member-tag">
-            <p><%= member.photos.first %></p>
-          </div>
-        <% end %>
-      </div>
     </div>
   </div>
   <div class="edit-item-container"> <!-- Edit item using stimulus -->
@@ -58,7 +59,7 @@
         <%= f.input :title %>
           <%= f.input :date, html5: true, label: "Item date", as: :date, input_html: { placeholder: 'YYYY-MM-DD' }%>
         <%= f.input :description %>
-        <%= f.association :members, collection: @members, label_method: :first_name, as: :check_boxes %>
+        <%= f.association :members, collection: @members, label_method: :full_name, as: :check_boxes %>
         <%= f.association :collections,
               collection: Collection.all,
               label_method: :label,
