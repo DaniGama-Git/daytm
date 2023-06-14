@@ -2,6 +2,7 @@ class Member < ApplicationRecord
   belongs_to :user
   has_many :item_members
   has_many :items, through: :item_members
+  has_many_attached :photos, dependent: :destroy
 
   def full_name
     "#{first_name} #{last_name}"

@@ -34,6 +34,17 @@ member_2 = Member.create(first_name: 'Lis', last_name: 'Legend', user: user_1)
 member_3 = Member.create(first_name: 'Liam', last_name: 'Legend', user: user_1)
 member_4 = Member.create(first_name: 'Lila', last_name: 'Legend', user: user_1)
 
+avatar_1 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686672432/Screenshot_2023-06-13_at_18.05.58_m97mx4.png")
+member_1.photos.attach(io: avatar_1, filename: "avatar_1.jpg", content_type: "image/jpg")
+
+avatar_2 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686670592/IMG_8639_ugdpkk.jpg")
+member_2.photos.attach(io: avatar_2, filename: "avatar_2.jpg", content_type: "image/jpg")
+
+avatar_3 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686672432/Screenshot_2023-06-13_at_18.05.58_m97mx4.png")
+member_3.photos.attach(io: avatar_3, filename: "avatar_3.jpg", content_type: "image/jpg")
+
+avatar_4 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686672432/Screenshot_2023-06-13_at_18.05.58_m97mx4.png")
+member_4.photos.attach(io: avatar_4, filename: "avatar_4.jpg", content_type: "image/jpg")
 
 # CREATING COLLECTIONS SEED
 p "CREATING COLLECTIONS SEED"
