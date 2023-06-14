@@ -46,7 +46,7 @@
       <div class="item-show-members">
         <% @item.members.each do |member| %>
           <div class="item-member-tag">
-            <p><%= member.full_name %></p>
+            <p><%= member.photos.first %></p>
           </div>
         <% end %>
       </div>
