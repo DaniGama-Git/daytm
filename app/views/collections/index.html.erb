@@ -1,0 +1,116 @@
+<div class="search-bar-container"> <! --div for the search bar-->
+  <div class="col-sm-8">
+    <%= form_with url: collections_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "search-bar",
+            placeholder: "A search engine for your life"
+        %>
+      <%= submit_tag "Search", class: "search-button" %>
+    <% end %>
+  </div>
+</div>
+<% if params[:query].present? %> <!-- logic to display the collections heading / search results -->
+  <div class="collections-header">
+    <h2> Search Results</h2>
+  </div>
+<% else %>
+  <div class="collections-header">
+    <h2>Collections</h2>
+  </div>
+<% end %>
+<div class="all-collections-container">
+  <%= link_to items_path do %> <!-- block to always display the all items collection -->
+    <div class="home-collection-card-all-items">
+      <div class="home-collection-image">
+          <%= image_tag "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png", alt: "all items", height: 110 %>
+      </div>
+      <div class="home-collection-title">
+        <h3>All Items</h3>
+      </div>
+    </div>
+  <% end %>
+  <% if params[:query].present? %> <!-- logic to show either all collections or search results -->
+      <% if @results.empty? %>
+        <div class="no-results-card">
+          <h2>No results for this search, please try again</h2>
+        </div>
+      <% end %>
+    <% @results.each do |result| %>
+      <% if result.searchable_type == "Collection" %>
+        <%= render "collection", collection: result %>
+      <% end %>
+      <% if result.searchable_type == "Item" %>
+        <%= render "item", item: result %>
+      <% end %>
+      <% if result.searchable_type == "Member" %>
+        <%= render "member", member: result %>
+      <% end %>
+      <% if result.searchable_type == "Tag" %>
+        <%= render "tag", tag: result %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <% @collections.each do |collection| %>
+      <%= link_to collection_path(collection) do %>
+        <div class="home-collection-card">
+          <div class="home-collection-image">
+            <% if collection.photos.attached? %>
+              <%=cl_image_tag(collection.photos.first.key, height: 110) %>
+            <% end %>
+          </div>
+          <div class="home-collection-title">
+            <h3> <%= collection.label %></h3>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+<!-- Button trigger add item -->
+<div class="add-button">
+  <%= link_to new_item_path do %>
+    <button type="button" class="btn">
+      <svg class="plus-button" xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+      </svg>
+    </button>
+  <% end %>
+</div>
+
+<!-- button to bring up add collection modal -->
+<button type="button" class="blue-primary-btn mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <p class="m-2">Add new collection</p>
+</button>
+<!-- Modal -->
+<div class="modal fade rounded-1" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-3">
+      <div class="modal-header d-flex flex-column align-items-center">
+        <h2 class="modal-title" id="exampleModalLabel">Add a Collection or Item</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body d-flex flex-column align-items-center">
+        <p><strong>Add a new collection</strong></p>
+          <%= simple_form_for(@collection, html: { class: "text-center" }) do |f| %>
+            <%= f.input :label %>
+            <%= f.input :description %>
+              <%= f.input :photo_url, collection: [
+                [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png"],
+                [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Torso_kyvgtb.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Torso_kyvgtb.png"],
+                [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png"],
+                [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Power_Moves_-_Standing_hskmff.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Power_Moves_-_Standing_hskmff.png"],
+                [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png"],
+                [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_1_axhaln.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_1_axhaln.png"],
+                [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_zgipgr.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_zgipgr.png"],
+                [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Power_Moves_-_Full_Body_gt0c22.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Power_Moves_-_Full_Body_gt0c22.png"],
+                [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Citta%CC%80_-_Standing_nnuzjb.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Citta%CC%80_-_Standing_nnuzjb.png"],
+                [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_1_Character_ysea51.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_1_Character_ysea51.png"],
+                [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_Standing_gu2xqc.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_Standing_gu2xqc.png"]
+              ], as: :radio_buttons, wrapper_html: { class: "d-flex flex-wrap justify-content-center" } %>
+          <%= f.submit class: "blue-primary-btn mb-2" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
