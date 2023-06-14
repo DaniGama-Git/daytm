@@ -154,7 +154,7 @@
   margin: 64px;
 }
 
-.add-button {
+.new-item-button {
   position: fixed;
   bottom: 100px;
   right: 100px;
@@ -177,10 +177,6 @@
 
 .home-page-dropdown .dropdown-menu {
   display: none; /* Hide the dropdown menu by default */
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block;
 }
 
 .no-results-card {

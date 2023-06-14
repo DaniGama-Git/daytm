@@ -7,12 +7,12 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav me-auto d-flex align-items-center">
         <% if user_signed_in? %>
-          <li class="nav-item suggestions">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-solid fa-flag"></i>
+          <li class="nav-link suggestions">
+            <div class="dropdown black-hollow-btn">
+              <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-regular fa-lightbulb"></i>
               </button>
               <%= simple_form_for @user_suggestion, html: { class: "dropdown-menu dropdown-menu-end ", id: "user-suggestion-form" } do |f| %>
                 <%= f.association :suggestion, collection: @suggestions, label_method: :content, as: :check_boxes, wrapper_html: { class: "form-group" } %>
@@ -20,33 +20,44 @@
               <% end %>
             </div>
           </li>
-          <li class="nav-item active">
-            <%= link_to "Home", "/", class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://cdn.onlinewebfonts.com/svg/img_550782.png", class: "avatar", alt: "dropdown menu" %>
-          </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+          <li class="nav-link">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn black-hollow-btn" data-bs-toggle="modal" data-bs-target="#MemberModal">
+              Add Member
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="MemberModal" tabindex="-1" aria-labelledby="MemberModalLabel" aria-hidden="true">
+              <div class="modal-dialog ">
+                <div class="modal-content">
+                  <div class="modal-header d-flex flex-column align-items-center">
+                    <h5 class="modal-title" id="MemberModalLabel">Add a Member</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <%= simple_form_for(@member, html: { class: "text-center" }) do |f| %>
+                        <%= f.input :first_name %>
+                        <%= f.input :last_name %>
+                        <%= f.input :photos, as: :file, input_html: { multiple: false }, label: "Drag & drop your photo here"%>
+                        <%= f.submit class: "blue-primary-btn mb-2" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
             </div>
           </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
-          <div>
-            <div class="modal fade rounded-1" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <li class="nav-link">
+            <button type="button" class="black-hollow-btn" data-bs-toggle="modal" data-bs-target="#CollectionModal">
+              <p class="">Add collection</p>
+            </button>
+            <!-- Modal -->
+            <div class="modal fade rounded-1" id="CollectionModal" tabindex="-1" aria-labelledby="CollectionModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content rounded-3">
+                <div class="modal-content">
                   <div class="modal-header d-flex flex-column align-items-center">
-                    <h2 class="modal-title" id="exampleModalLabel">Add a Collection or Item</h2>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h2 class="modal-title" id="CollectionModalLabel">Add a Collection</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
                   </div>
                   <div class="modal-body d-flex flex-column align-items-center">
                     <p><strong>Add a new collection</strong></p>
@@ -72,4 +83,25 @@
                 </div>
               </div>
             </div>
-          </div>
+          </li>
+          <li class="nav-link">
+            <%= link_to "Home", "/", class: "black-hollow-btn text-decoration-none" %>
+          </li>
+          <li class="nav-item dropdown">
+          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= image_tag "https://cdn.onlinewebfonts.com/svg/img_550782.png", class: "avatar", alt: "dropdown menu" %>
+          </a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<div>
