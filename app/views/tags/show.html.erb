@@ -1,5 +1,9 @@
-<h1>This is the tags show page</h1>
+<div>
+  <h1 class="text-center mt-4" ><%= @tag.name.capitalize%></h1>
+</div>
 
-<% @items.each do |item| %>
-  <%= render partial: "items/item_card", locals: { item: item } %>
-<% end %>
+<div class="collections-show-items-cards">
+  <% @items.each do |item| %>
+    <%= render partial: "items/item_card", locals: { item: item } %>
+  <% end %>
+</div>
