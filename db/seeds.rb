@@ -131,9 +131,9 @@ item_1_2 = Item.create(title: "Lila's Hospital Visit", description: "Details my 
 item_1_3 = Item.create(title: "Liam's dentist appointment", description: "Visit to the dentist 2023, all clear from the dentist, have to go back in six months.", format: "PDF", date: Date.parse("2023-02-02"), user: user_1)
 item_1_4 = Item.create(title: "Lis's dentist app", description: "Visit to the dentist 2023, she has the best smile.", format: "PDF", date: Date.parse("2023-02-02"), user: user_1)
 item_1_5 = Item.create(title: "Kiki's annual checkup", description: "The family did checkups with Dr Joe at the City of Cape Town hospital, all clear.", format: "JPEG", date: Date.parse("2022/05/03"), user: user_1)
-item_1_6 = Item.create(title: "Lis's annual checkup", description: "The family did checkups with Dr Joe at the City of Cape Town hospital, all clear - no issues.", format: "JPEG", date: Date.parse("2023-06-07"), user: user_1)
-item_1_7 = Item.create(title: "Lila's annual checkup", description: "The family did checkups with Dr Joe at the City of Cape Town hospital - dr said I may have low blood pressure, waiting on test results.", format: "JPEG", date: Date.parse("2023-02-02"), user: user_1)
-item_1_8 = Item.create(title: "Liam's's annual checkup", description: "The family did checkups with Dr Joe - he said Liam is super tall for his age group.", format: "JPEG", date: Date.parse("2023-02-02"), user: user_1)
+item_1_6 = Item.create(title: "Lis's annual checkup", description: "The family did checkups with Dr Joe at CT hospital, all clear - no issues.", format: "JPEG", date: Date.parse("2023-06-07"), user: user_1)
+item_1_7 = Item.create(title: "Lila's annual checkup", description: "The family did checkups with Dr Joe at at CT hospital- dr said I may have low blood pressure, waiting on test results.", format: "JPEG", date: Date.parse("2023-02-02"), user: user_1)
+item_1_8 = Item.create(title: "Liam's's annual checkup", description: "Checkups with Dr - he said Liam is super tall for his age group.", format: "JPEG", date: Date.parse("2023-02-02"), user: user_1)
 
 
 collection_1.items << item_1_1
@@ -211,7 +211,7 @@ item_1_8.save
 # CREATING ITEMS & TAGS SEED COLLECTION 2
 p "CREATING ITEMS & TAGSNEED COLLECTION 2"
 
-item_2_1 = Item.create(title: "Liam's drawing of a bug", description: "Liam's drawing done with granny on school holidays", format: "JPEG", date: Date.parse("2021/06/02"), user: user_1)
+item_2_1 = Item.create(title: "Liam's drawing of a bug", description: "Liam's drawing done with Nonna on school holidays", format: "JPEG", date: Date.parse("2021/06/02"), user: user_1)
 item_2_2 = Item.create(title: "Lis's pottery", description: "Lis's pottery done at clay cafe for her cousin's birthday", format: "JPEG", date: Date.parse("2023/08/14"), user: user_1)
 
 collection_2.items << item_2_1
@@ -290,7 +290,7 @@ p "CREATING ITEMS & TAGS SEED COLLECTION 4"
 
 item_4_1 = Item.create(title: "Kiki's School Application Form ", description: "Kiki's School Enrollment Document", format: "PDF", date: Date.parse("2017/06/02"), user: user_1)
 item_4_2 = Item.create(title: "Lis's admission letter", description: "Lis's School Enrollment Document", format: "PDF", date: Date.parse("2017/10/14"), user: user_1)
-item_4_3 = Item.create(title: "Liam's Progress Report", description: "Liam's records of the academic performance and progress", format: "PDF", date: Date.parse("2017/12/28"), user: user_1)
+item_4_3 = Item.create(title: "Liam's Progress Report", description: "Liam's school progress report.", format: "PDF", date: Date.parse("2017/12/28"), user: user_1)
 
 collection_4.items << item_4_1
 collection_4.items << item_4_2
@@ -335,8 +335,8 @@ item_4_3.save
 p "CREATING ITEMS & TAGS SEED COLLECTION 7"
 
 item_7_1 = Item.create(title: "Lila's Travel Itinerary", description: "Lila's details of the travel plans ", format: "PDF", date: Date.parse("2023/06/15"), user: user_1)
-item_7_2 = Item.create(title: "Lis's Boarding Pass", description: "Lis's document for boarding the flight to America", format: "PDF", date: Date.parse("2023/06/14"), user: user_1)
-item_7_3 = Item.create(title: "Lila's Travel Insurance", description: "Lila's documentaion of travel insurance coverage", format: "PDF", date: Date.parse("2023/06/14"), user: user_1)
+item_7_2 = Item.create(title: "Lis's Boarding Pass", description: "Boarding pass and Visa for America trip.", format: "PDF", date: Date.parse("2023/06/14"), user: user_1)
+item_7_3 = Item.create(title: "Lila's Travel Insurance", description: "Travel insruance purchased from AIG for India trip.", format: "PDF", date: Date.parse("2023/06/14"), user: user_1)
 
 collection_7.items << item_7_1
 collection_7.items << item_7_2
@@ -377,9 +377,9 @@ item_7_3.save
 # CREATING ITEMS & TAGS SEED COLLECTION 15
 p "CREATING ITEMS & TAGS SEED COLLECTION 15"
 
-item_15_1 = Item.create(title: "Lila's Business Income", description: "Lila's Records of Income", format: "PDF", date: Date.parse("2023/02/15"), user: user_1)
-item_15_2 = Item.create(title: "Lila's Expense Records", description: "Lila's businesses expenses", format: "PDF", date: Date.parse("2023/01/21"), user: user_1)
-item_15_3 = Item.create(title: "Lila's Property Tax Records", description: "Lila's documents related to property taxes paid", format: "PDF", date: Date.parse("2023/03/14"), user: user_1)
+item_15_1 = Item.create(title: "Lila's Business Income", description: "Records of Income - for SARS audit 2023", format: "PDF", date: Date.parse("2023/02/15"), user: user_1)
+item_15_2 = Item.create(title: "Lila's Expense Records", description: "Businesses expenses for cupcakes and shakes", format: "PDF", date: Date.parse("2023/01/21"), user: user_1)
+item_15_3 = Item.create(title: "Lila's Property Tax Records", description: "SOA from SARS for 19 Jolene.", format: "PDF", date: Date.parse("2023/03/14"), user: user_1)
 
 collection_15.items << item_15_1
 collection_15.items << item_15_2
@@ -418,9 +418,9 @@ item_15_3.save
 # CREATING ITEMS & TAGS SEED COLLECTION 12
 p "CREATING ITEMS & TAGS SEED COLLECTION 12"
 
-item_12_1 = Item.create(title: "Lila's Resume", description: "Lila's document with her working experience", format: "PDF", date: Date.parse("2015/02/15"), user: user_1)
-item_12_2 = Item.create(title: "Lila's Cover Letter", description: "Lila's personalized introductory letter", format: "PDF", date: Date.parse("2014/01/21"), user: user_1)
-item_12_3 = Item.create(title: "Lila's Letter of Recommendation", description: "Lila's written recommendations from professors, supervisors, or colleagues", format: "PDF", date: Date.parse("2015/03/14"), user: user_1)
+item_12_1 = Item.create(title: "Lila's Resume", description: "My resume from 2023 + updates.", format: "PDF", date: Date.parse("2015/02/15"), user: user_1)
+item_12_2 = Item.create(title: "Lila's Cover Letter", description: "My cover letter used to apply to Apple.", format: "PDF", date: Date.parse("2014/01/21"), user: user_1)
+item_12_3 = Item.create(title: "Lila's Letter of Recommendation", description: "Written recommendations from professors and colleagues", format: "PDF", date: Date.parse("2015/03/14"), user: user_1)
 
 collection_12.items << item_12_1
 collection_12.items << item_12_2
