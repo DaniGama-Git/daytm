@@ -7,6 +7,10 @@ class TagsController < ApplicationController
   def new
   end
 
+  def show
+    
+  end
+
   def create
     @tag = Tag.new(tag_params)
     @tag.user = current_user
