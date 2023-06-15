@@ -58,7 +58,9 @@
           <div class="d-flex">
             <% @item.members.each do |member| %>
               <div class="item-member-avatar">
-                <%= cl_image_tag(member.photos.first.key, class: "avatar") %>
+                  <%= link_to member_path(member) do %>
+                    <%= cl_image_tag(member.photos.first.key, class: "avatar")%>
+                  <% end %>
               </div>
             <% end %>
           </div>

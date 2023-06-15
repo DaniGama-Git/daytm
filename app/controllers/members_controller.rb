@@ -6,6 +6,12 @@ class MembersController < ApplicationController
   def new
   end
 
+  def show
+    @collection = Collection.new
+    @member = Member.find(params[:id])
+    # @items = @member.items
+  end
+
   def create
     @member = Member.new(member_params)
     @member.user = current_user
