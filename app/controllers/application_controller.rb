@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
   def get_suggestions
     @suggestions = Suggestion.all.reject do |suggestion|
       suggestion.users.include?(current_user)
-    end.take(4)
+    end.take(5)
   end
 end
