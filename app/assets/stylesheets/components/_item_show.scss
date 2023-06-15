@@ -2,7 +2,7 @@
 .item-show-container {
   padding: 75px;
   display: flex;
-  
+
   justify-content: space-around;
 }
 
@@ -178,10 +178,6 @@
 .item-show-comments-inner {
   height: 150px;
   overflow:auto;
-}
-
-#comment-container.item-show-comments-section {
-  overflow: scroll;
 }
 
 .item-show-comment {
