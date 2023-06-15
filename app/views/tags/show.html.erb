@@ -1,1 +1,5 @@
 <h1>This is the tags show page</h1>
+
+<% @items.each do |item| %>
+  <p><%= item.title %></p>
+<% end %>

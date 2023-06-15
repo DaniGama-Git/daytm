@@ -8,7 +8,9 @@ class TagsController < ApplicationController
   end
 
   def show
-    
+    @collection = Collection.new
+    @tag = Tag.find(params[:id])
+    @items = @tag.items
   end
 
   def create
