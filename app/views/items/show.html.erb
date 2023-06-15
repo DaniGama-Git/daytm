@@ -23,6 +23,10 @@
             <h1><%= @item.title %></h1>
         </div>
 
+    <!-- DATE SECTION -->
+      <div class="item-show-tags-heading">
+        <i class="fa-solid fa-calendar-days mx-1 mb-3"></i> <%= @item.date.strftime('%Y-%m-%d') %>
+      </div>
 
     <!-- DESCRIPTION SECTION -->
 
@@ -31,13 +35,6 @@
         </div>
       </div>
 
-    <!-- DATE SECTION -->
-      <div class="item-show-tags-heading">
-          <p>Item's date:</p>
-      </div>
-      <div class="item-show-date">
-        <%= @item.date.strftime('%Y-%m-%d') %>
-      </div>
 
     <!-- TAGS SECTION -->
 
