@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'comments/new'
   devise_for :users
   root to: "collections#index"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -14,5 +15,5 @@ Rails.application.routes.draw do
   resources :tags, only: [:new, :create]
   resources :members, only: [:new, :create]
   resources :user_suggestions, only: :create
-  get 'landing', to: 'pages#landing'
+  get 'home', to: 'pages#home'
 end

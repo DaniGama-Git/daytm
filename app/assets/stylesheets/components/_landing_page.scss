@@ -1,3 +1,68 @@
+.login {
+  width: 400px;
+  margin: 100px auto 0 auto;
+  background-color: white;
+  padding: 50px;
+  border-radius: 30px;
+}
+
+.image-title-container {
+display: flex;
+}
+
+.landing-page-opening-title {
+  justify-content: center;
+  margin-top: 200px;
+  margin-left:200px;
+}
+
+.empowering-you-container {
+  width: 800px;
+  margin: 100px auto 0 auto;
+  p{
+    font-size: 30px;
+    text-align: center;
+  }
+}
+
+.intuitive-taging-container {
+  width: 600px;
+  align-items: center;
+  margin: 50px auto 0 auto;
+  p{
+    font-size: 30px;
+    text-align: center;
+  }
+}
+
+
+.seamlessly-store {
+  display: flex;
+  width: 400px;
+  align-items: center;
+  margin: 100px auto 0 auto;
+  p{
+    font-size: 30px;
+    text-align: center;
+  }
+}
+
+.second-image-landing-page {
+  display: flex;
+}
+
+.convenience {
+  width: 800px;
+  align-items: center;
+  margin: 100px auto 0 auto;
+  margin-bottom: 200px;
+  p{
+    font-size: 30px;
+    text-align: center;
+  }
+
+}
+
 :root {
   --brand-color: black;
   --black: hsl(0, 0%, 0%);
@@ -25,8 +90,8 @@
   display: grid;
   place-items: center;
   width: 80vw;
-  max-width: 21.875rem;
-  height: 28.125rem;
+  max-width: 30.875rem;
+  height: 37.125rem;
   overflow: hidden;
   border-radius: 20% ;
   box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
@@ -65,6 +130,7 @@
   object-fit: cover;
   max-width: 100%;
   height: 100%;
+  background-color: #2949BF;
 }
 
 .landing-page-card__content {
