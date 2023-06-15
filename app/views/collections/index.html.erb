@@ -1,12 +1,12 @@
 <div class="search-bar-container"> <! --div for the search bar-->
   <div class="col-sm-8">
-    <%= form_with url: collections_path, method: :get, class: "d-flex" do %>
+    <%= form_with url: collections_path, method: :get, class: "d-flex align-items-center" do %>
       <%= text_field_tag :query,
             params[:query],
             class: "search-bar",
             placeholder: "A search engine for your life"
         %>
-      <%= submit_tag "Search", class: "search-button" %>
+      <%= submit_tag "Search", class: "blue-hollow-btn" %>
     <% end %>
   </div>
 </div>

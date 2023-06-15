@@ -28,18 +28,20 @@
             <!-- Modal -->
             <div class="modal fade" id="MemberModal" tabindex="-1" aria-labelledby="MemberModalLabel" aria-hidden="true">
               <div class="modal-dialog ">
-                <div class="modal-content">
+                <div class="modal-content rounded-5">
                   <div class="modal-header d-flex flex-column align-items-center">
                     <h5 class="modal-title" id="MemberModalLabel">Add a Member</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     </button>
                   </div>
                   <div class="modal-body">
-                    <%= simple_form_for(@member, html: { class: "text-center" }) do |f| %>
+                    <%= simple_form_for(@member, html: { class: "" }) do |f| %>
                         <%= f.input :first_name %>
                         <%= f.input :last_name %>
                         <%= f.input :photos, as: :file, input_html: { multiple: false }, label: "Drag & drop your photo here"%>
-                        <%= f.submit class: "blue-primary-btn mb-2" %>
+                        <div class="d-flex justify-content-center">
+                          <%= f.submit class: "blue-primary-btn mb-2" %>
+                        </div>
                     <% end %>
                   </div>
                 </div>
@@ -48,12 +50,12 @@
           </li>
           <li class="nav-link">
             <button type="button" class="black-hollow-btn" data-bs-toggle="modal" data-bs-target="#CollectionModal">
-              <p class="">Add collection</p>
+              <p class="">Add Collection</p>
             </button>
             <!-- Modal -->
-            <div class="modal fade rounded-1" id="CollectionModal" tabindex="-1" aria-labelledby="CollectionModalLabel" aria-hidden="true">
+            <div class="modal fade rounded-3" id="CollectionModal" tabindex="-1" aria-labelledby="CollectionModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
+                <div class="modal-content rounded-5">
                   <div class="modal-header d-flex flex-column align-items-center">
                     <h2 class="modal-title" id="CollectionModalLabel">Add a Collection</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
@@ -61,23 +63,25 @@
                   </div>
                   <div class="modal-body d-flex flex-column align-items-center">
                     <p><strong>Add a new collection</strong></p>
-                      <%= simple_form_for(@collection, html: { class: "text-center" }) do |f| %>
-                        <%= f.input :label %>
-                        <%= f.input :description %>
-                          <%= f.input :photo_url, collection: [
-                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png"],
-                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Torso_kyvgtb.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Torso_kyvgtb.png"],
-                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png"],
-                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Power_Moves_-_Standing_hskmff.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Power_Moves_-_Standing_hskmff.png"],
-                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png"],
-                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_1_axhaln.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_1_axhaln.png"],
-                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_zgipgr.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_zgipgr.png"],
-                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Power_Moves_-_Full_Body_gt0c22.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Power_Moves_-_Full_Body_gt0c22.png"],
-                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Citta%CC%80_-_Standing_nnuzjb.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Citta%CC%80_-_Standing_nnuzjb.png"],
-                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_1_Character_ysea51.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_1_Character_ysea51.png"],
-                            [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_Standing_gu2xqc.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_Standing_gu2xqc.png"]
-                          ], as: :radio_buttons, wrapper_html: { class: "d-flex flex-wrap justify-content-center" } %>
-                      <%= f.submit class: "blue-primary-btn mb-2" %>
+                    <%= simple_form_for(@collection, html: { class: "" }) do |f| %>
+                      <%= f.input :label %>
+                      <%= f.input :description %>
+                        <%= f.input :photo_url, label: "Choose a cover", collection: [
+                          [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png"],
+                          [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Torso_kyvgtb.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Torso_kyvgtb.png"],
+                          [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png"],
+                          [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Power_Moves_-_Standing_hskmff.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Power_Moves_-_Standing_hskmff.png"],
+                          [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png"],
+                          [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_1_axhaln.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_1_axhaln.png"],
+                          [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_zgipgr.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_zgipgr.png"],
+                          [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Power_Moves_-_Full_Body_gt0c22.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Power_Moves_-_Full_Body_gt0c22.png"],
+                          [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Citta%CC%80_-_Standing_nnuzjb.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Citta%CC%80_-_Standing_nnuzjb.png"],
+                          [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_1_Character_ysea51.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_1_Character_ysea51.png"],
+                          [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_Standing_gu2xqc.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_Standing_gu2xqc.png"]
+                        ], as: :radio_buttons, wrapper_html: { class: "d-flex flex-wrap justify-content-center" } %>
+                      <div class="d-flex justify-content-center">
+                        <%= f.submit class: "blue-primary-btn mb-2" %>
+                      </div>
                     <% end %>
                   </div>
                 </div>
