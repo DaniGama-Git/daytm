@@ -24,6 +24,12 @@
                 <%= item.description %>
               </div>
             </div>
+
+        <!-- DATE SECTION -->
+            <div class="item-show-tags-heading">
+              <i class="fa-solid fa-calendar-days mx-1 mb-3"></i> <%= item.date.strftime('%Y-%m-%d') %>
+            </div>
+
               <div class="collections-show-info-bottom">
                 <% item.members.each do |member| %>
                   <%# <%= member.first_name %>
