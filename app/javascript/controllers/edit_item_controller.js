@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["card", "form"]
   connect() {
-    console.log(this.cardTarget, this.formTarget)
+    console.log(this.cardTarget, this.formTarget);
   }
 
   revealForm() {
@@ -13,18 +13,18 @@ export default class extends Controller {
     this.formTarget.classList.remove("d-none")
   }
 
-  // update(event) {
-  //   event.preventDefault()
+update(event) {
+  event.preventDefault()
 
-  //   const url = this.formTarget.action;
-  //   fetch(url, {
-  //     headers: { "Accept": "text/plain" },
-  //     method: "PATCH",
-  //     body: new FormData(this.formTarget)
-  //   })
-  //     .then(response => response.text())
-  //     .then(data => {
-  //       this.containerTarget.outerHTML = data;
-  //     })
-  // }
+  const url = this.formTarget.action;
+  fetch(url, {
+    headers: { "Accept": "text/plain" },
+    method: "PATCH",
+    body: new FormData(this.formTarget)
+  })
+    .then(response => response.text())
+    .then(data => {
+      this.containerTarget.outerHTML = data;
+    })
+}
 }

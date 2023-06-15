@@ -1,26 +1,50 @@
 <div class="item-show-container" data-controller="edit-item">
+
   <div class="item-show-card" data-edit-item-target="card">
-    <div class="item-show-image">
+    <div class="item-show-image d-flex align-items-center">
       <% if @item.photos.first %>
         <%=cl_image_tag(@item.photos.first.key, width: 400, height: 600, crop: :fill, format: :jpg) %>
       <% else %>
         <% end %>
     </div>
     <div class="item-show-content">
+
+    <!-- EDIT AND DELETE BUTTONS -->
+
+      <div class="item-show-edit-delete">
+        <i class="fa-solid fa-pen fa-xs", data-action="click->edit-item#revealForm"></i>
+        <%= link_to item_path(@item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
+      </div>
+
       <div class="item-show-infos-section">
-        <div class="item-show-edit-delete">
-          <h1 class="mb-3"><%= @item.title %></h1>
-          <i class="fa-solid fa-pen fa-xs ml-2", data-action="click->edit-item#revealForm"></i>
-          <%= link_to item_path(@item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-            <i class="fa-solid fa-trash-can"></i>
-          <% end %>
+        <div class="item-show-title">
+            <h1><%= @item.title %></h1>
         </div>
-        <div>
+
+
+    <!-- DESCRIPTION SECTION -->
+
+        <div class="item-show-description">
           <p><%= @item.description %></p>
         </div>
       </div>
+
+    <!-- DATE SECTION -->
+      <div class="item-show-tags-heading">
+          <p>Item's date:</p>
+      </div>
+      <div class="item-show-date">
+        <%= @item.date.strftime('%Y-%m-%d') %>
+      </div>
+
+    <!-- TAGS SECTION -->
+
       <div class="item-show-tags-section">
-        <p>Tags</p>
+        <div class="item-show-tags-heading">
+          <p>Tags:</p>
+        </div>
         <div class="item-show-tags">
           <% @item.tags.each do |tag|%>
             <div class="item-show-tag">
@@ -29,25 +53,36 @@
           <% end %>
         </div>
       </div>
+
+    <!-- MEMBERS SECTION -->
+
       <div class="item-show-members">
-        <% @item.members.each do |member| %>
-          <div class="item-member-tag">
-            <%= cl_image_tag(member.photos.first.key, class: "avatar") %>
+        <p>Members:</p>
+          <div class="d-flex">
+            <% @item.members.each do |member| %>
+              <div class="item-member-avatar">
+                <%= cl_image_tag(member.photos.first.key, class: "avatar") %>
+              </div>
+            <% end %>
           </div>
-        <% end %>
       </div>
+
+    <!-- COMMENTS/NOTES SECTION -->
+
       <div class="item-show-comments-section" id="comment-container" data-controller="insert-comment">
-        <p class="item-show-comment-wording"> <%= @item.comments.count %> Note's:</p>
-        <%= simple_form_for([@item, @comment], data: { behavior: "submit-on-enter" })  do |f| %>
+        <p class="item-show-comment-wording"><%= @item.comments.count %> Notes:</p>
+        <div class="item-show-comments" data-insert-comment-target="comments">
+          <div class="item-show-comments-inner">
+            <% @item.comments.each do |comment| %>
+              <div class="item-show-comment">
+                <%= render 'items/comment', comment: comment %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <%= simple_form_for([@item, @comment], data: { behavior: "submit-on-enter" }) do |f| %>
           <%= f.input :content, label: false, class: "test", placeholder: "What do you want to remember about this item?" %>
         <% end %>
-        <div class="item-show-comments" data-insert-comment-target="comments">
-          <% @item.comments.reverse.first(5).each do |comment| %>
-          <div class="item-show-comment">
-            <%= render 'items/comment', comment: comment %>
-          </div>
-          <% end %>
-        </div>
       </div>
     </div>
   </div>
@@ -56,27 +91,25 @@
 
 <!-- EDIT ITEM MODAL -->
 
-  <div class="edit-item-container"> <!-- Edit item using stimulus -->
-    <div data-edit-item-target="form" class="d-none">
-      <%= simple_form_for(@item) do |f| %>
-        <%= f.input :title %>
-          <%= f.input :date, html5: true, label: "Item date", as: :date, input_html: { placeholder: 'YYYY-MM-DD' }%>
-        <%= f.input :description %>
-        <%= f.association :members, collection: @members, label_method: :full_name, as: :check_boxes %>
-        <%= f.association :collections,
-              collection: Collection.all,
-              label_method: :label,
-              input_html: {multiple: true, data: {controller: "tom-select"}},
-              include_hidden: false
-              %>
-        <%= f.association :tags,
-                  collection: Tag.all,
-                  input_html: {multiple: true, data: {controller: "tom-select"}},
-                  include_hidden: false
-                  %>
-        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-        <%= f.button :submit, "Update item" %>
-      <% end %>
-    </div>
+  <div data-edit-item-target="form" class="d-none edit-item-container">
+    <%= simple_form_for(@item) do |f| %>
+      <%= f.input :title %>
+        <%= f.input :date, html5: true, label: "Item date", as: :date, input_html: { placeholder: 'YYYY-MM-DD' }%>
+      <%= f.input :description %>
+      <%= f.association :members, collection: @members, label_method: :full_name, as: :check_boxes %>
+      <%= f.association :collections,
+            collection: Collection.all,
+            label_method: :label,
+            input_html: {multiple: true, data: {controller: "tom-select"}},
+            include_hidden: false
+            %>
+      <%= f.association :tags,
+                collection: Tag.all,
+                input_html: {multiple: true, data: {controller: "tom-select"}},
+                include_hidden: false
+                %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <%= f.button :submit, "Update item" %>
+    <% end %>
   </div>
 </div>
