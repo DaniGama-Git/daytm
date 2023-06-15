@@ -23,6 +23,10 @@
   }
 }
 
+.item-show-image {
+  object-fit: scale-down;
+}
+
 .item-show-content {
   display: flex;
   flex-direction: column;
