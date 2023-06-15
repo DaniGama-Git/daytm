@@ -68,10 +68,10 @@ collection_4 = Collection.create(label: "Kid's academics", description: "All rep
 user_1.collections << collection_4
 user_1.save
 
-collection_5 = Collection.create(label: "Family trip to Cape Town", description: "For Ben's parents anniversary - includes pictures as well as all videos")
+# collection_5 = Collection.create(label: "Family trip to Cape Town", description: "For Ben's parents anniversary - includes pictures as well as all videos")
 
-user_1.collections << collection_5
-user_1.save
+# user_1.collections << collection_5
+# user_1.save
 
 collection_6 = Collection.create(label: "Family's SA ID Doc's", description: "Home affairs etc")
 
@@ -83,20 +83,20 @@ collection_7 = Collection.create(label: "Travel documents", description: "All do
 user_1.collections << collection_7
 user_1.save
 
-collection_8 = Collection.create(label: "Mom's knee opp", description: "Documents ready for Mom's knee op September")
+# collection_8 = Collection.create(label: "Mom's knee opp", description: "Documents ready for Mom's knee op September")
 
-user_1.collections << collection_8
-user_1.save
+# user_1.collections << collection_8
+# user_1.save
 
-collection_9 = Collection.create(label: "Lis's Gymnastic's info", description: "Information ready for world tour")
+# collection_9 = Collection.create(label: "Lis's Gymnastic's info", description: "Information ready for world tour")
 
-user_1.collections << collection_9
-user_1.save
+# user_1.collections << collection_9
+# user_1.save
 
-collection_10 = Collection.create(label: "Liam's surfing comp", description: "Including photos and his stats")
+# collection_10 = Collection.create(label: "Liam's surfing comp", description: "Including photos and his stats")
 
-user_1.collections << collection_10
-user_1.save
+# user_1.collections << collection_10
+# user_1.save
 
 collection_11 = Collection.create(label: "Dad's family photos", description: "All the photos Dad has gotten from his extended family")
 
@@ -126,14 +126,14 @@ user_1.save
 # CREATING ITEMS & TAGS SEED COLLECTION 1:
 p "CREATING ITEMS & TAGS SEED COLLECTION 1"
 
-item_1_1 = Item.create(title: "Kiki's Leg X-Ray", description: "The X-Rays received from the doctor when Kiki broke her leg", format: "JPEG", date: Date.parse("2022/05/03"), user: user_1)
-item_1_2 = Item.create(title: "Lila's Hospital Visit", description: "Details of Lila's hospital visit", format: "PDF", date: Date.parse("2023-06-07"), user: user_1)
-item_1_3 = Item.create(title: "Liam's dentist appointment", description: "Visit to the dentist 2023", format: "PDF", date: Date.parse("2023-02-02"), user: user_1)
-item_1_4 = Item.create(title: "Lis's dentist appointment", description: "Visit to the dentist 2023", format: "PDF", date: Date.parse("2023-02-02"), user: user_1)
-item_1_5 = Item.create(title: "Kiki's annual checkup", description: "The family did checkups with Dr Joe at the City of Cape Town hospital", format: "JPEG", date: Date.parse("2022/05/03"), user: user_1)
-item_1_6 = Item.create(title: "Lis's annual checkup", description: "The family did checkups with Dr Joe at the City of Cape Town hospital", format: "JPEG", date: Date.parse("2023-06-07"), user: user_1)
-item_1_7 = Item.create(title: "Lila's annual checkup", description: "The family did checkups with Dr Joe at the City of Cape Town hospital", format: "JPEG", date: Date.parse("2023-02-02"), user: user_1)
-item_1_8 = Item.create(title: "Lila's annual checkup", description: "The family did checkups with Dr Joe at the City of Cape Town hospital", format: "JPEG", date: Date.parse("2023-02-02"), user: user_1)
+item_1_1 = Item.create(title: "Kiki's Leg X-Ray", description: "The X-Rays received from the doctor when Kiki broke her leg, she broke her Tibula playing on the jungle-gym.", format: "JPEG", date: Date.parse("2022/05/03"), user: user_1)
+item_1_2 = Item.create(title: "Lila's Hospital Visit", description: "Details my hospital vist from when I got covid and had to be admitted. ", format: "PDF", date: Date.parse("2023-06-07"), user: user_1)
+item_1_3 = Item.create(title: "Liam's dentist appointment", description: "Visit to the dentist 2023, all clear from the dentist, have to go back in six months.", format: "PDF", date: Date.parse("2023-02-02"), user: user_1)
+item_1_4 = Item.create(title: "Lis's dentist appointment", description: "Visit to the dentist 2023, doctor said she may need to get braces when she turns 16.", format: "PDF", date: Date.parse("2023-02-02"), user: user_1)
+item_1_5 = Item.create(title: "Kiki's annual checkup", description: "The family did checkups with Dr Joe at the City of Cape Town hospital, all clear.", format: "JPEG", date: Date.parse("2022/05/03"), user: user_1)
+item_1_6 = Item.create(title: "Lis's annual checkup", description: "The family did checkups with Dr Joe at the City of Cape Town hospital, all clear - no issues.", format: "JPEG", date: Date.parse("2023-06-07"), user: user_1)
+item_1_7 = Item.create(title: "Lila's annual checkup", description: "The family did checkups with Dr Joe at the City of Cape Town hospital - dr said I may have low blood pressure, waiting on test results.", format: "JPEG", date: Date.parse("2023-02-02"), user: user_1)
+item_1_8 = Item.create(title: "Lila's annual checkup", description: "The family did checkups with Dr Joe at the City of Cape Town hospital, all clear from the doctor - he said Liam is super tall for his age group.", format: "JPEG", date: Date.parse("2023-02-02"), user: user_1)
 
 
 collection_1.items << item_1_1
@@ -418,9 +418,9 @@ item_15_3.save
 # CREATING ITEMS & TAGS SEED COLLECTION 12
 p "CREATING ITEMS & TAGS SEED COLLECTION 12"
 
-item_15_1 = Item.create(title: "Lila's Resume", description: "Lila's document with her working experience", format: "PDF", date: Date.parse("2015/02/15"), user: user_1)
-item_15_2 = Item.create(title: "Lila's Cover Letter", description: "Lila's personalized introductory letter", format: "PDF", date: Date.parse("2014/01/21"), user: user_1)
-item_15_3 = Item.create(title: "Lila's Letter of Recommendation", description: "Lila's written recommendations from professors, supervisors, or colleagues", format: "PDF", date: Date.parse("2015/03/14"), user: user_1)
+item_12_1 = Item.create(title: "Lila's Resume", description: "Lila's document with her working experience", format: "PDF", date: Date.parse("2015/02/15"), user: user_1)
+item_12_2 = Item.create(title: "Lila's Cover Letter", description: "Lila's personalized introductory letter", format: "PDF", date: Date.parse("2014/01/21"), user: user_1)
+item_12_3 = Item.create(title: "Lila's Letter of Recommendation", description: "Lila's written recommendations from professors, supervisors, or colleagues", format: "PDF", date: Date.parse("2015/03/14"), user: user_1)
 
 collection_12.items << item_12_1
 collection_12.items << item_12_2
@@ -432,15 +432,15 @@ member_4.items << item_12_2
 member_4.items << item_12_3
 member_4.save
 
-tag_20 = Tag.create(name: "resume", user: user_1)
-tag_21 = Tag.create(name: "letter", user: user_1)
-tag_22 = Tag.create(name: "work", user: user_1)
+tag_22 = Tag.create(name: "resume", user: user_1)
+tag_23 = Tag.create(name: "letter", user: user_1)
+tag_24 = Tag.create(name: "work", user: user_1)
 
-item_12_1.tags << [tag_20, tag_22]
+item_12_1.tags << [tag_22, tag_24]
 item_12_1.save
-item_12_2.tags << [tag_21, tag_22]
+item_12_2.tags << [tag_23, tag_24]
 item_12_2.save
-item_12_3.tags << [tag_21, tag_22]
+item_12_3.tags << [tag_23, tag_24]
 item_12_3.save
 
 # ATTACHING IMAGES/PDF'S TO ITEMS 12.1 , 12.2 , 12.3
@@ -470,24 +470,24 @@ collection_3.save
 collection_image_5 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Torso_kyvgtb.png")
 collection_4.photos.attach(io: collection_image_5, filename: "collection_image_5", content_type: "png")
 collection_4.save
-collection_image_4 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png")
-collection_5.photos.attach(io: collection_image_4, filename: "collection_image_4", content_type: "png")
-collection_5.save
+# collection_image_4 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png")
+# collection_5.photos.attach(io: collection_image_4, filename: "collection_image_4", content_type: "png")
+# collection_5.save
 collection_image_6 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png")
 collection_6.photos.attach(io: collection_image_6, filename: "collection_image_6", content_type: "png")
 collection_6.save
 collection_image_1 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_zgipgr.png")
 collection_7.photos.attach(io: collection_image_1, filename: "collection_image_1", content_type: "png")
 collection_7.save
-collection_image_3 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_1_axhaln.png")
-collection_8.photos.attach(io: collection_image_3, filename: "collection_image_3", content_type: "png")
-collection_8.save
-collection_image_6 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png")
-collection_9.photos.attach(io: collection_image_6, filename: "collection_image_6", content_type: "png")
-collection_9.save
-collection_image_2 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_1_Character_ysea51.png")
-collection_10.photos.attach(io: collection_image_2, filename: "collection_image_2", content_type: "png")
-collection_10.save
+# collection_image_3 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Brazuca_-_Planning_1_axhaln.png")
+# collection_8.photos.attach(io: collection_image_3, filename: "collection_image_3", content_type: "png")
+# collection_8.save
+# collection_image_6 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Walking_In_the_Park_brvkyb.png")
+# collection_9.photos.attach(io: collection_image_6, filename: "collection_image_6", content_type: "png")
+# collection_9.save
+# collection_image_2 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_1_Character_ysea51.png")
+# collection_10.photos.attach(io: collection_image_2, filename: "collection_image_2", content_type: "png")
+# collection_10.save
 collection_image_4 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Red_Sitting_On_Chair_astucs.png")
 collection_11.photos.attach(io: collection_image_4, filename: "collection_image_4", content_type: "png")
 collection_11.save
