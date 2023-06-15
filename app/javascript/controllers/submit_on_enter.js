@@ -1,3 +1,5 @@
+import { Controller } from "@hotwired/stimulus"
+
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("[data-behavior='submit-on-enter']");
 
