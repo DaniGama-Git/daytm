@@ -1,42 +1,14 @@
-// import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus"
 
-// // Connects to data-controller="insert-comment"
-// export default class extends Controller {
-//   static targets = ["comments", "form"]
+document.addEventListener("DOMContentLoaded", function() {
+  var form = document.querySelector("form[data-behavior='submit-on-enter']");
 
-//   connect() {
-//     console.log(this.element)
-//     console.log(this.commentsTarget)
-//     console.log(this.formTarget)
-//     this.element.addEventListener("keydown", this.handleKeyDown.bind(this));
-//   }
-
-//   handleKeyDown(event) {
-//     console.log(event)
-//     if (event.keyCode === 13 && event.target === this.formTarget.querySelector(".test")) {
-//       event.preventDefault();
-//       this.send();
-//       this.clearForm();
-//     }
-//   }
-
-//   send() {
-
-//     fetch(this.formTarget.action, {
-//       method: "POST",
-//       headers: { "Accept": "application/json" },
-//       body: new FormData(this.formTarget)
-//     })
-//       .then(response => response.json())
-//       .then((data) => {
-//         if (data.inserted_item) {
-//           this.commentsTarget.insertAdjacentHTML("afterbegin", data.inserted_item)
-//         }
-//         this.formTarget.outerHTML = data.form
-//       })
-//     }
-
-//   clearForm() {
-//     this.formTarget.reset();
-//   }
-// }
+  if (form) {
+    form.addEventListener("keydown", function(event) {
+      if (event.keyCode === 13) { // Check if the pressed key is Enter (key code 13)
+        event.preventDefault(); // Prevent the default form submission
+        form.submit(); // Submit the form
+      }
+    });
+  }
+});
