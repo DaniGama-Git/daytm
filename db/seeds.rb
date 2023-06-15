@@ -126,14 +126,14 @@ user_1.save
 # CREATING ITEMS & TAGS SEED COLLECTION 1:
 p "CREATING ITEMS & TAGS SEED COLLECTION 1"
 
-item_1_1 = Item.create(title: "Kiki's Leg X-Ray", description: "The X-Rays received from the doctor when Kiki broke her leg, she broke her Tibula playing on the jungle-gym.", format: "JPEG", date: Date.parse("2022/05/03"), user: user_1)
+item_1_1 = Item.create(title: "Kiki's Leg X-Ray", description: "X-Rays received from the doctor when Kiki broke her leg, she broke her Tibula.", format: "JPEG", date: Date.parse("2022/05/03"), user: user_1)
 item_1_2 = Item.create(title: "Lila's Hospital Visit", description: "Details my hospital vist from when I got covid and had to be admitted. ", format: "PDF", date: Date.parse("2023-06-07"), user: user_1)
 item_1_3 = Item.create(title: "Liam's dentist appointment", description: "Visit to the dentist 2023, all clear from the dentist, have to go back in six months.", format: "PDF", date: Date.parse("2023-02-02"), user: user_1)
-item_1_4 = Item.create(title: "Lis's dentist appointment", description: "Visit to the dentist 2023, doctor said she may need to get braces when she turns 16.", format: "PDF", date: Date.parse("2023-02-02"), user: user_1)
+item_1_4 = Item.create(title: "Lis's dentist app", description: "Visit to the dentist 2023, she has the best smile.", format: "PDF", date: Date.parse("2023-02-02"), user: user_1)
 item_1_5 = Item.create(title: "Kiki's annual checkup", description: "The family did checkups with Dr Joe at the City of Cape Town hospital, all clear.", format: "JPEG", date: Date.parse("2022/05/03"), user: user_1)
 item_1_6 = Item.create(title: "Lis's annual checkup", description: "The family did checkups with Dr Joe at the City of Cape Town hospital, all clear - no issues.", format: "JPEG", date: Date.parse("2023-06-07"), user: user_1)
 item_1_7 = Item.create(title: "Lila's annual checkup", description: "The family did checkups with Dr Joe at the City of Cape Town hospital - dr said I may have low blood pressure, waiting on test results.", format: "JPEG", date: Date.parse("2023-02-02"), user: user_1)
-item_1_8 = Item.create(title: "Lila's annual checkup", description: "The family did checkups with Dr Joe at the City of Cape Town hospital, all clear from the doctor - he said Liam is super tall for his age group.", format: "JPEG", date: Date.parse("2023-02-02"), user: user_1)
+item_1_8 = Item.create(title: "Liam's's annual checkup", description: "The family did checkups with Dr Joe - he said Liam is super tall for his age group.", format: "JPEG", date: Date.parse("2023-02-02"), user: user_1)
 
 
 collection_1.items << item_1_1
@@ -506,19 +506,24 @@ collection_15.save
 
 # CREATING SUGGESTIONS SEED
 p "CREATING SUGGESTIONS SEED"
-Suggestion.create(content: "Lila - Passport: Proof of identity and international travel document.")
-Suggestion.create(content: "Kiki - Childcare enrollment documents: Required forms for enrolling the baby in daycare or preschool.")
-Suggestion.create(content: "Lis - Babysitter authorization form: Permission for someone to care for the baby in your absence.")
-Suggestion.create(content: "Liam - Emergency contact list: Important contacts in case of emergencies.")
-Suggestion.create(content: "Lila - Social Security card: Government-issued identification for social security benefits.")
-Suggestion.create(content: "Kiki - Guardian designation: Legal document specifying a guardian for the baby if needed.")
-Suggestion.create(content: "Lis - Pediatrician contact information: Details of the baby's primary healthcare provider.")
-Suggestion.create(content: "Liam - Health insurance card: Proof of the baby's coverage for medical care.")
-Suggestion.create(content: "Lila - Birth certificate: Proof of birth and citizenship.")
-Suggestion.create(content: "Kiki - Immunization records: Documentation of the baby's vaccinations and health history.")
-Suggestion.create(content: "Lis - Passport: Document for international travel with the baby.")
+Suggestion.create(content: "Lila - Identification documents: Driver's License")
+Suggestion.create(content: "Lila - Identification documents: Passport")
+Suggestion.create(content: "Lila - Identification documents: Birth Certificate")
+Suggestion.create(content: "Kiki - Identification documents: Birth Certificate")
+Suggestion.create(content: "Lis - School photos")
+Suggestion.create(content: "Liam - Photos of after-school activities.")
+Suggestion.create(content: "Lila - Tax returns for the year")
+Suggestion.create(content: "Kiki - This years school reports")
+Suggestion.create(content: "Lis - School photos")
+Suggestion.create(content: "Liam - Health insurance policy documents")
+Suggestion.create(content: "Lila - Home insurance documents")
+Suggestion.create(content: "Kiki - Medical reccords: vaccination certificates.")
+Suggestion.create(content: "Lila - Will")
 Suggestion.create(content: "Liam - Social Security card: Government-issued identification for the baby.")
 Suggestion.create(content: "Kiki - Birth certificate: Proof of the baby's birth and identity.")
-Suggestion.create(content: "Lila - Health insurance card: Proof of coverage for medical expenses.")
-Suggestion.create(content: "Lila - Driver's license: Official identification and permit for operating vehicles.")
+Suggestion.create(content: "Lila - Power of Attorney.")
+Suggestion.create(content: "Lila - Property Deeds/Leases")
+Suggestion.create(content: "Lila - Education: Diplomas and Degrees")
+Suggestion.create(content: "Lila - Employment contracts")
+
 p "FINISHED SEEDING THE DATABASE"
