@@ -8,7 +8,7 @@
     </div>
     <div class="item-show-content">
       <div class="item-show-infos-section">
-        <div class="item-show-title-buttons">
+        <div class="item-show-edit-delete">
           <h1 class="mb-3"><%= @item.title %></h1>
           <i class="fa-solid fa-pen fa-xs ml-2", data-action="click->edit-item#revealForm"></i>
           <%= link_to item_path(@item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
@@ -37,11 +37,9 @@
         <% end %>
       </div>
       <div class="item-show-comments-section" id="comment-container" data-controller="insert-comment">
-        <p class="item-show-comment-wording">Note's about this item:</p>
-        <p>What do you want to remember about this item?</p>
+        <p class="item-show-comment-wording"> <%= @item.comments.count %> Note's:</p>
         <%= simple_form_for([@item, @comment], data: { behavior: "submit-on-enter" })  do |f| %>
-          <%= f.input :content, label: false, class: "test" %>
-          <%= f.submit "Submit comment", class: "orange-hollow-btn"%>
+          <%= f.input :content, label: false, class: "test", placeholder: "What do you want to remember about this item?" %>
         <% end %>
         <div class="item-show-comments" data-insert-comment-target="comments">
           <% @item.comments.reverse.first(5).each do |comment| %>
@@ -53,6 +51,11 @@
       </div>
     </div>
   </div>
+
+
+
+<!-- EDIT ITEM MODAL -->
+
   <div class="edit-item-container"> <!-- Edit item using stimulus -->
     <div data-edit-item-target="form" class="d-none">
       <%= simple_form_for(@item) do |f| %>
