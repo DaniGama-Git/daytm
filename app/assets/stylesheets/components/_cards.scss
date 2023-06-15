@@ -30,6 +30,10 @@
   }
 }
 
+.collections-show-item-card:hover {
+  box-shadow: 30px 30px 40px rgba(0, 0, 0, .1);
+}
+
 .collections-show-item-card-info {
   display: flex;
   flex-direction: column;
