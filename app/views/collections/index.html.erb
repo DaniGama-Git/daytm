@@ -21,7 +21,7 @@
 <% end %>
 <div class="all-collections-container">
   <%= link_to items_path do %> <!-- block to always display the all items collection -->
-    <div class="home-collection-card-all-items">
+    <div class="home-collection-card-all-items pop-on-hover">
       <div class="home-collection-image">
           <%= image_tag "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575989/collection_images/Tutto_Ricco_-_Pink_Sitting_On_Chair_dmhiv5.png", alt: "all items", height: 110 %>
       </div>
@@ -53,7 +53,7 @@
   <% else %>
     <% @collections.each do |collection| %>
       <%= link_to collection_path(collection) do %>
-        <div class="home-collection-card">
+        <div class="home-collection-card pop-on-hover">
           <div class="home-collection-image">
             <% if collection.photos.attached? %>
               <%=cl_image_tag(collection.photos.first.key, height: 110) %>
@@ -70,7 +70,7 @@
 <!-- Button trigger add item -->
 <div class="new-item-button">
   <%= link_to new_item_path do %>
-    <button class="btn">
+    <button class="btn pop-on-hover">
       <svg class="plus-button" xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
       </svg>

@@ -10,14 +10,30 @@
       <ul class="navbar-nav me-auto d-flex align-items-center">
         <% if user_signed_in? %>
           <li class="nav-link suggestions">
-            <div class="dropdown black-hollow-btn">
-              <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-regular fa-lightbulb"></i>
-              </button>
-              <%= simple_form_for @user_suggestion, html: { class: "dropdown-menu dropdown-menu-end ", id: "user-suggestion-form" } do |f| %>
-                <%= f.association :suggestion, collection: @suggestions, label_method: :content, as: :check_boxes, wrapper_html: { class: "form-group" } %>
-                <%= f.button :submit, "Return", class: "submit-button" %>
-              <% end %>
+            <!-- Button trigger modal -->
+            <button type="button" class="black-hollow-btn" data-bs-toggle="modal" data-bs-target="#SuggestionsModal">
+              <i class="fa-regular fa-lightbulb"></i>
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="SuggestionsModal" tabindex="-1" aria-labelledby="SuggestionsModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content rounded-5">
+                  <div class="modal-header d-flex flex-column align-items-center">
+                    <h3 class="modal-title" id="SuggestionsModalLabel">Suggestions:</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <%= simple_form_for @user_suggestion do |f| %>
+                      <div class="d-flex flex-column bd-highlight mb-3 checkbox-spacing">
+                        <%= f.collection_check_boxes :suggestion, @suggestions, :id, :content %>
+                      </div>
+                      <div class="d-flex justify-content-center">
+                        <%= f.button :submit, "Complete", class: "blue-primary-btn m-3" %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
             </div>
           </li>
           <li class="nav-link">
@@ -27,10 +43,10 @@
             </button>
             <!-- Modal -->
             <div class="modal fade" id="MemberModal" tabindex="-1" aria-labelledby="MemberModalLabel" aria-hidden="true">
-              <div class="modal-dialog ">
+              <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-5">
                   <div class="modal-header d-flex flex-column align-items-center">
-                    <h5 class="modal-title" id="MemberModalLabel">Add a Member</h5>
+                    <h3 class="modal-title" id="MemberModalLabel">Add a Member</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     </button>
                   </div>
@@ -38,9 +54,9 @@
                     <%= simple_form_for(@member, html: { class: "" }) do |f| %>
                         <%= f.input :first_name %>
                         <%= f.input :last_name %>
-                        <%= f.input :photos, as: :file, input_html: { multiple: false }, label: "Drag & drop your photo here"%>
+                        <%= f.input :photos, as: :file, input_html: { multiple: false }, label: "Add a profile picture here"%>
                         <div class="d-flex justify-content-center">
-                          <%= f.submit class: "blue-primary-btn mb-2" %>
+                          <%= f.submit class: "blue-primary-btn m-3" %>
                         </div>
                     <% end %>
                   </div>
@@ -57,12 +73,11 @@
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-5">
                   <div class="modal-header d-flex flex-column align-items-center">
-                    <h2 class="modal-title" id="CollectionModalLabel">Add a Collection</h2>
+                    <h3 class="modal-title" id="CollectionModalLabel">Add a Collection</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     </button>
                   </div>
                   <div class="modal-body d-flex flex-column align-items-center">
-                    <p><strong>Add a new collection</strong></p>
                     <%= simple_form_for(@collection, html: { class: "" }) do |f| %>
                       <%= f.input :label %>
                       <%= f.input :description %>
@@ -80,7 +95,7 @@
                           [image_tag("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_Standing_gu2xqc.png", height: 75), "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686575988/collection_images/Humaaans_-_Standing_gu2xqc.png"]
                         ], as: :radio_buttons, wrapper_html: { class: "d-flex flex-wrap justify-content-center" } %>
                       <div class="d-flex justify-content-center">
-                        <%= f.submit class: "blue-primary-btn mb-2" %>
+                        <%= f.submit class: "blue-primary-btn m-3" %>
                       </div>
                     <% end %>
                   </div>
@@ -109,4 +124,3 @@
   </div>
 </div>
 <div>
-

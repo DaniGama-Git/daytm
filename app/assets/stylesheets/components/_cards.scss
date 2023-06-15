@@ -119,6 +119,40 @@
   box-shadow: 20px 20px 30px rgba(0, 0, 0, .05);
 }
 
+.home-collection-card:hover {
+  background-color: #ffffff;
+  box-shadow: 30px 30px 40px rgba(0, 0, 0, .1);
+}
+
+@-webkit-keyframes pop-on-hover {
+  50% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+}
+@keyframes pop-on-hover {
+  50% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+}
+.pop-on-hover {
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(0.5px) translateZ(0);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0);
+}
+.pop-on-hover:hover, .pop-on-hover:focus, .pop-on-hover:active {
+  -webkit-animation-name: pop-on-hover;
+  animation-name: pop-on-hover;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+
 .home-collection-card-all-items {
   height: 180px;
   width: auto;
@@ -131,6 +165,11 @@
   text-align: center;
   box-shadow: 20px 20px 30px rgba(0, 0, 0, .05);
   box-shadow: inset 5px 10px 50px rgb(197, 201, 238);
+}
+
+.home-collection-card-all-items:hover {
+  background-color: #ffffff;
+  box-shadow: 10px 20px 60px rgb(197, 201, 238);
 }
 
 .home-collection-title {
