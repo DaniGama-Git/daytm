@@ -45,7 +45,7 @@
         <div class="item-show-tags">
           <% @item.tags.each do |tag|%>
             <div class="item-show-tag">
-              <p><%= tag.name %></p>
+              <p><%= link_to tag.name, tag_path(tag), style: "text-decoration:none; color:black;" %></p>
             </div>
           <% end %>
         </div>

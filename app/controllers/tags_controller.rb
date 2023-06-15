@@ -7,6 +7,12 @@ class TagsController < ApplicationController
   def new
   end
 
+  def show
+    @collection = Collection.new
+    @tag = Tag.find(params[:id])
+    @items = @tag.items
+  end
+
   def create
     @tag = Tag.new(tag_params)
     @tag.user = current_user

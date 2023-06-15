@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
   resources :collections
-  resources :tags, only: [:new, :create]
+  resources :tags, only: [:new, :create, :show]
   resources :members, only: [:new, :create]
   resources :user_suggestions, only: :create
   get 'home', to: 'pages#home'
