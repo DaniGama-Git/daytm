@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
   def index
-    @members = Member.all
+    @members = Member.all.where(user: current_user)
   end
 
   def new
@@ -25,6 +25,6 @@ class MembersController < ApplicationController
   private
 
   def member_params
-    params.require(:member).permit(:first_name, :last_name)
+    params.require(:member).permit(:first_name, :last_name, :photos)
   end
 end

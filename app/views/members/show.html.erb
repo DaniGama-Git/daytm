@@ -1,9 +1,13 @@
-<div>
-  <h1 class="text-center mt-4" ><%= @member.first_name.capitalize%>'s Items</h1>
-</div>
+<div class="screen-stretch">
+  <div>
+    <h1 class="text-center mt-4" ><%= @member.first_name.capitalize%>'s Items</h1>
+  </div>
 
-<div class="collections-show-items-cards">
-  <% @member.items.each do |item| %>
-    <%= render partial: "items/item_card", locals: { item: item } %>
-  <% end %>
+  <div class="collections-show-items-cards">
+    <% @member.items.each do |item| %>
+      <%= content_tag :div, class: "pop-on-hover" do %>
+        <%= render partial: "items/item_card", locals: { item: item } %>
+      <% end %>
+    <% end %>
+  </div>
 </div>

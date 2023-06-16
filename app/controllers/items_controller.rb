@@ -2,14 +2,14 @@ class ItemsController < ApplicationController
   before_action :set_item, only: %i[show edit update destroy]
 
   def index
-    @items = Item.all
+    @items = Item.all.where(user: current_user)
     @collection = Collection.new
   end
 
   def show
     @comment = Comment.new
-    @tags = Tag.all
-    @collections = Collection.all
+    @tags = Tag.all.where(user: current_user)
+    @collections = Collection.all.where(user: current_user)
     @members = Member.all
     @collection = Collection.new
   end
