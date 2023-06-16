@@ -6,7 +6,7 @@
     <div class="collections-show-items-cards">
       <% @items.each do |item|%>
         <%= link_to item_path(item) do %>
-          <div class="collections-show-item-card">
+          <div class="collections-show-item-card pop-on-hover">
             <% if item.photos.attached? %>
               <div class="collections-show-image">
                 <%=cl_image_tag(item.photos.first.key, format: :jpg) %>
