@@ -128,7 +128,7 @@ p "CREATING ITEMS & TAGS SEED COLLECTION 1"
 
 item_1_1 = Item.create(title: "Kiki's Leg X-Ray", description: "X-Rays received from the doctor when Kiki broke her leg, she broke her Tibula.", format: "JPEG", date: Date.parse("2022/05/03"), user: user_1)
 item_1_2 = Item.create(title: "Lila's Hospital Visit", description: "Details my hospital vist from when I got covid and had to be admitted. ", format: "PDF", date: Date.parse("2023-06-07"), user: user_1)
-item_1_3 = Item.create(title: "Dani's dentist appointment", description: "Visit to the dentist 2023, all clear from the dentist, have to go back in six months.", format: "PDF", date: Date.parse("2023-02-02"), user: user_1)
+item_1_3 = Item.create(title: "Dani's dentist app'", description: "Visit to the dentist 2023, all clear, have to go back in 6 months.", format: "PDF", date: Date.parse("2023-02-02"), user: user_1)
 item_1_4 = Item.create(title: "Lis's dentist app", description: "Visit to the dentist 2023, she has the best smile.", format: "PDF", date: Date.parse("2023-02-02"), user: user_1)
 item_1_5 = Item.create(title: "Kiki's annual checkup", description: "The family did checkups with Dr Joe at the City of Cape Town hospital, all clear.", format: "JPEG", date: Date.parse("2022/05/03"), user: user_1)
 item_1_6 = Item.create(title: "Lis's annual checkup", description: "The family did checkups with Dr Joe at CT hospital, all clear - no issues.", format: "JPEG", date: Date.parse("2023-06-07"), user: user_1)
@@ -335,20 +335,23 @@ item_4_3.save
 p "CREATING ITEMS & TAGS SEED COLLECTION 7"
 
 item_7_1 = Item.create(title: "Lila's Travel Itinerary", description: "Lila's details of the travel plans ", format: "PDF", date: Date.parse("2023/06/15"), user: user_1)
-item_7_2 = Item.create(title: "Lis's Boarding Pass", description: "Boarding pass and Visa for America trip.", format: "PDF", date: Date.parse("2023/06/14"), user: user_1)
+item_7_2 = Item.create(title: "Dani's Boarding Pass", description: "Boarding pass and Visa for America trip.", format: "PDF", date: Date.parse("2023/06/14"), user: user_1)
 item_7_3 = Item.create(title: "Lila's Travel Insurance", description: "Travel insruance purchased from AIG for India trip.", format: "PDF", date: Date.parse("2023/06/14"), user: user_1)
+item_7_4 = Item.create(title: "Dani's Vietnam Visa", description: "For her trip to SE Asia.", format: "PDF", date: Date.parse("2022/12/12"), user: user_1)
 
 collection_7.items << item_7_1
 collection_7.items << item_7_2
 collection_7.items << item_7_3
+collection_7.items << item_7_4
 collection_7.save
 
 member_4.items << item_7_1
 member_4.items << item_7_3
 member_4.save
 
-member_2.items << item_7_2
-member_2.save
+member_3.items << item_7_2
+member_3.items << item_7_4
+member_3.save
 
 tag_16 = Tag.create(name: "travel", user: user_1)
 tag_17 = Tag.create(name: "trip", user: user_1)
@@ -360,6 +363,8 @@ item_7_2.tags << [tag_16, tag_17, tag_18]
 item_7_2.save
 item_7_3.tags << [tag_16, tag_17, tag_18]
 item_7_3.save
+item_7_4.tags << [tag_16, tag_17]
+item_7_4.save
 
 # ATTACHING IMAGES/PDF'S TO ITEMS 7.1 , 7.2 , 7.3
 file_7_1 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686837114/Travel_Itinerary_iquw50.jpg")
@@ -373,6 +378,10 @@ item_7_2.save
 file_7_3 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686837114/Travel_Insurance_adaojw.jpg")
 item_7_3.photos.attach(io: file_7_3, filename: "img.pdf", content_type: "image/jpg")
 item_7_3.save
+
+file_7_4 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686909454/GAMA_DANIELLA_RAQUEL_fbpcdf.jpg")
+item_7_4.photos.attach(io: file_7_4, filename: "img.pdf", content_type: "image/jpg")
+item_7_4.save
 
 # CREATING ITEMS & TAGS SEED COLLECTION 15
 p "CREATING ITEMS & TAGS SEED COLLECTION 15"
@@ -420,7 +429,7 @@ p "CREATING ITEMS & TAGS SEED COLLECTION 12"
 
 item_12_1 = Item.create(title: "Lila's Resume", description: "My resume from 2023 + updates.", format: "PDF", date: Date.parse("2015/02/15"), user: user_1)
 item_12_2 = Item.create(title: "Lila's Cover Letter", description: "My cover letter used to apply to Apple.", format: "PDF", date: Date.parse("2014/01/21"), user: user_1)
-item_12_3 = Item.create(title: "Lila's Letter of Recommendation", description: "Written recommendations from professors and colleagues", format: "PDF", date: Date.parse("2015/03/14"), user: user_1)
+item_12_3 = Item.create(title: "Dani's Letter of Recommendation", description: "From professors & colleagues", format: "PDF", date: Date.parse("2015/03/14"), user: user_1)
 
 collection_12.items << item_12_1
 collection_12.items << item_12_2
@@ -429,8 +438,10 @@ collection_12.save
 
 member_4.items << item_12_1
 member_4.items << item_12_2
-member_4.items << item_12_3
 member_4.save
+
+member_3.items << item_12_3
+member_3.save
 
 tag_22 = Tag.create(name: "resume", user: user_1)
 tag_23 = Tag.create(name: "letter", user: user_1)
