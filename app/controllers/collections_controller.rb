@@ -12,7 +12,7 @@ class CollectionsController < ApplicationController
       pg_results = PgSearch.multisearch(params[:query])
       @results = pg_results.uniq
     else
-      @collections = Collection.all
+      @collections = Collection.all.where(user: current_user)
     end
     @collection = Collection.new
   end
