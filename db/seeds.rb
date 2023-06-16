@@ -27,11 +27,11 @@ p "CREATING USER SEED - LILA, MOTHER OF THREE"
 user_1 = User.create(email: 'lila@legend.com', password: 'password', first_name: 'Lila', last_name: 'Legend')
 
 # CREATING MEMBER'S SEED - LILA'S THREE KIDS, KIKI, LIS, LIAM
-p "CREATING MEMBER'S SEED - LILA'S THREE KIDS, KIKI, LIS, LIAM"
+p "CREATING MEMBER'S SEED - LILA'S THREE KIDS, KIKI, LIS, Dani"
 
 member_1 = Member.create(first_name: 'Kiki', last_name: 'Legend', user: user_1)
 member_2 = Member.create(first_name: 'Lis', last_name: 'Legend', user: user_1)
-member_3 = Member.create(first_name: 'Liam', last_name: 'Legend', user: user_1)
+member_3 = Member.create(first_name: 'Dani', last_name: 'Legend', user: user_1)
 member_4 = Member.create(first_name: 'Lila', last_name: 'Legend', user: user_1)
 
 avatar_1 = URI.open("https://res.cloudinary.com/dp3xfbod8/image/upload/v1686672432/Screenshot_2023-06-13_at_18.05.58_m97mx4.png")
@@ -54,7 +54,7 @@ user_1.collections << collection_1
 user_1.save
 
 
-collection_2 = Collection.create(label: "Kid's artworks", description: "A collection of Kiki, Liam and Lis's school art")
+collection_2 = Collection.create(label: "Kid's artworks", description: "A collection of Kiki, Dani and Lis's school art")
 user_1.collections << collection_2
 user_1.save
 
@@ -93,7 +93,7 @@ user_1.save
 # user_1.collections << collection_9
 # user_1.save
 
-# collection_10 = Collection.create(label: "Liam's surfing comp", description: "Including photos and his stats")
+# collection_10 = Collection.create(label: "Dani's surfing comp", description: "Including photos and his stats")
 
 # user_1.collections << collection_10
 # user_1.save
@@ -128,12 +128,12 @@ p "CREATING ITEMS & TAGS SEED COLLECTION 1"
 
 item_1_1 = Item.create(title: "Kiki's Leg X-Ray", description: "X-Rays received from the doctor when Kiki broke her leg, she broke her Tibula.", format: "JPEG", date: Date.parse("2022/05/03"), user: user_1)
 item_1_2 = Item.create(title: "Lila's Hospital Visit", description: "Details my hospital vist from when I got covid and had to be admitted. ", format: "PDF", date: Date.parse("2023-06-07"), user: user_1)
-item_1_3 = Item.create(title: "Liam's dentist appointment", description: "Visit to the dentist 2023, all clear from the dentist, have to go back in six months.", format: "PDF", date: Date.parse("2023-02-02"), user: user_1)
+item_1_3 = Item.create(title: "Dani's dentist appointment", description: "Visit to the dentist 2023, all clear from the dentist, have to go back in six months.", format: "PDF", date: Date.parse("2023-02-02"), user: user_1)
 item_1_4 = Item.create(title: "Lis's dentist app", description: "Visit to the dentist 2023, she has the best smile.", format: "PDF", date: Date.parse("2023-02-02"), user: user_1)
 item_1_5 = Item.create(title: "Kiki's annual checkup", description: "The family did checkups with Dr Joe at the City of Cape Town hospital, all clear.", format: "JPEG", date: Date.parse("2022/05/03"), user: user_1)
 item_1_6 = Item.create(title: "Lis's annual checkup", description: "The family did checkups with Dr Joe at CT hospital, all clear - no issues.", format: "JPEG", date: Date.parse("2023-06-07"), user: user_1)
 item_1_7 = Item.create(title: "Lila's annual checkup", description: "The family did checkups with Dr Joe at at CT hospital- dr said I may have low blood pressure, waiting on test results.", format: "JPEG", date: Date.parse("2023-02-02"), user: user_1)
-item_1_8 = Item.create(title: "Liam's's annual checkup", description: "Checkups with Dr - he said Liam is super tall for his age group.", format: "JPEG", date: Date.parse("2023-02-02"), user: user_1)
+item_1_8 = Item.create(title: "Dani's's annual checkup", description: "Checkups with Dr - he said Dani is super tall for his age group.", format: "JPEG", date: Date.parse("2023-02-02"), user: user_1)
 
 
 collection_1.items << item_1_1
@@ -211,7 +211,7 @@ item_1_8.save
 # CREATING ITEMS & TAGS SEED COLLECTION 2
 p "CREATING ITEMS & TAGSNEED COLLECTION 2"
 
-item_2_1 = Item.create(title: "Liam's drawing of a bug", description: "Liam's drawing done with Nonna on school holidays", format: "JPEG", date: Date.parse("2021/06/02"), user: user_1)
+item_2_1 = Item.create(title: "Dani's drawing of a bug", description: "Dani's drawing done with Nonna on school holidays", format: "JPEG", date: Date.parse("2021/06/02"), user: user_1)
 item_2_2 = Item.create(title: "Lis's pottery", description: "Lis's pottery done at clay cafe for her cousin's birthday", format: "JPEG", date: Date.parse("2023/08/14"), user: user_1)
 
 collection_2.items << item_2_1
@@ -290,7 +290,7 @@ p "CREATING ITEMS & TAGS SEED COLLECTION 4"
 
 item_4_1 = Item.create(title: "Kiki's School Application Form ", description: "Kiki's School Enrollment Document", format: "PDF", date: Date.parse("2017/06/02"), user: user_1)
 item_4_2 = Item.create(title: "Lis's admission letter", description: "Lis's School Enrollment Document", format: "PDF", date: Date.parse("2017/10/14"), user: user_1)
-item_4_3 = Item.create(title: "Liam's Progress Report", description: "Liam's school progress report.", format: "PDF", date: Date.parse("2017/12/28"), user: user_1)
+item_4_3 = Item.create(title: "Dani's Progress Report", description: "Dani's school progress report.", format: "PDF", date: Date.parse("2017/12/28"), user: user_1)
 
 collection_4.items << item_4_1
 collection_4.items << item_4_2
@@ -511,15 +511,15 @@ Suggestion.create(content: "Lila - Identification documents: Passport")
 Suggestion.create(content: "Lila - Identification documents: Birth Certificate")
 Suggestion.create(content: "Kiki - Identification documents: Birth Certificate")
 Suggestion.create(content: "Lis - School photos")
-Suggestion.create(content: "Liam - Photos of after-school activities.")
+Suggestion.create(content: "Dani - Photos of after-school activities.")
 Suggestion.create(content: "Lila - Tax returns for the year")
 Suggestion.create(content: "Kiki - This years school reports")
 Suggestion.create(content: "Lis - School photos")
-Suggestion.create(content: "Liam - Health insurance policy documents")
+Suggestion.create(content: "Dani - Health insurance policy documents")
 Suggestion.create(content: "Lila - Home insurance documents")
 Suggestion.create(content: "Kiki - Medical reccords: vaccination certificates.")
 Suggestion.create(content: "Lila - Will")
-Suggestion.create(content: "Liam - Social Security card: Government-issued identification for the baby.")
+Suggestion.create(content: "Dani - Social Security card: Government-issued identification for the baby.")
 Suggestion.create(content: "Kiki - Birth certificate: Proof of the baby's birth and identity.")
 Suggestion.create(content: "Lila - Power of Attorney.")
 Suggestion.create(content: "Lila - Property Deeds/Leases")
