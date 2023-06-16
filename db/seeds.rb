@@ -218,11 +218,11 @@ collection_2.items << item_2_1
 collection_2.items << item_2_2
 collection_2.save
 
-member_2.items << item_2_1
-member_2.save
-
-member_3.items << item_2_2
+member_3.items << item_2_1
 member_3.save
+
+member_2.items << item_2_2
+member_2.save
 
 tag_5 = Tag.create(name: "art", user: user_1)
 tag_6 = Tag.create(name: "pictures", user: user_1)
