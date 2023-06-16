@@ -14,26 +14,26 @@
         <h1 class="collections-show-title"><%= item.title %></h1>
         <div class="collections-show-item-card-description">
           <%= item.description %>
+          <div class="item-show-tags-heading">
+            <i class="fa-solid fa-calendar-days mx-1 mb-3"></i> <%= item.date.strftime('%Y-%m-%d') %>
+          </div>
         </div>
       </div>
 
-  <!-- DATE SECTION -->
-      <div class="item-show-tags-heading">
-        <i class="fa-solid fa-calendar-days mx-1 mb-3"></i> <%= item.date.strftime('%Y-%m-%d') %>
-      </div>
-
-        <div class="collections-show-info-bottom">
+      <div class="collections-show-info-bottom">
+        <div class="collections-show-member-avatars">
           <% item.members.each do |member| %>
             <%# <%= member.first_name %>
             <% if member.photos.attached? %>
               <%=cl_image_tag(member.photos.first.key, class: "avatar") %>
             <% end %>
           <% end %>
-          <div>
-            <%= item.comments.count %>
-            <i class="fa-solid fa-comment"></i>
-          </div>
         </div>
+        <div collections-show-comments-bottom>
+          <%= item.comments.count %>
+          <i class="fa-solid fa-comment"></i>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>
