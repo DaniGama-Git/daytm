@@ -1,5 +1,4 @@
-<div class="item-show-container" data-controller="edit-item">
-
+<div class="item-show-container screen-stretch" data-controller="edit-item">
   <div class="item-show-card" data-edit-item-target="card">
     <div class="item-show-image d-flex align-items-center">
       <% if @item.photos.first %>
@@ -8,36 +7,27 @@
         <% end %>
     </div>
     <div class="item-show-content">
-
     <!-- EDIT AND DELETE BUTTONS -->
-
-      <div class="item-show-edit-delete">
-        <i class="fa-solid fa-pen fa-xs", data-action="click->edit-item#revealForm"></i>
-        <%= link_to item_path(@item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-          <i class="fa-solid fa-trash-can"></i>
-        <% end %>
+    <div class="item-show-edit-delete">
+      <i class="fa-solid fa-pen fa-xs", data-action="click->edit-item#revealForm"></i>
+      <%= link_to item_path(@item), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+        <i class="fa-solid fa-trash-can"></i>
+      <% end %>
+    </div>
+    <div class="item-show-infos-section">
+      <div class="item-show-title">
+          <h1><%= @item.title %></h1>
       </div>
-
-      <div class="item-show-infos-section">
-        <div class="item-show-title">
-            <h1><%= @item.title %></h1>
-        </div>
-
     <!-- DATE SECTION -->
       <div class="item-show-tags-heading">
         <i class="fa-solid fa-calendar-days mx-1 mb-3"></i> <%= @item.date.strftime('%Y-%m-%d') %>
       </div>
-
     <!-- DESCRIPTION SECTION -->
-
         <div class="item-show-description">
           <p><%= @item.description %></p>
         </div>
       </div>
-
-
     <!-- TAGS SECTION -->
-
       <div class="item-show-tags-section">
         <div class="item-show-tags-heading">
           <p>Tags:</p>
@@ -50,24 +40,26 @@
           <% end %>
         </div>
       </div>
-
     <!-- MEMBERS SECTION -->
-
       <div class="item-show-members">
         <p>Members:</p>
           <div class="d-flex">
             <% @item.members.each do |member| %>
               <div class="item-member-avatar">
+
                   <%= link_to member_path(member) do %>
-                    <%= cl_image_tag(member.photos.first.key, class: "avatar")%>
+                     <% if member.photos.attached? %>
+                      <%= cl_image_tag(member.photos.first.key, class: "avatar") %>
+                    <% else %>
+                      <img src="https://res.cloudinary.com/dp3xfbod8/image/upload/v1686759875/Tutto_Ricco_-_Home_Vacations_dh62mj.png" alt="">
+                    <% end %>
                   <% end %>
+                
               </div>
             <% end %>
           </div>
       </div>
-
     <!-- COMMENTS/NOTES SECTION -->
-
       <div class="item-show-comments-section" id="comment-container" data-controller="insert-comment">
         <p class="item-show-comment-wording"><%= @item.comments.count %> Notes:</p>
         <div class="item-show-comments" data-insert-comment-target="comments">
@@ -85,11 +77,7 @@
       </div>
     </div>
   </div>
-
-
-
 <!-- EDIT ITEM MODAL -->
-
   <div data-edit-item-target="form" class="d-none edit-item-container">
     <%= simple_form_for(@item) do |f| %>
       <%= f.input :title %>

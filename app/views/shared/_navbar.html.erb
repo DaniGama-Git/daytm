@@ -16,7 +16,7 @@
             </button>
             <!-- Modal -->
             <div class="modal fade" id="SuggestionsModal" tabindex="-1" aria-labelledby="SuggestionsModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg">
+              <div class="modal-dialog modal-md">
                 <div class="modal-content rounded-5">
                   <div class="modal-header d-flex flex-column align-items-center">
                     <h3 class="modal-title" id="SuggestionsModalLabel">Suggestions:</h3>
@@ -108,7 +108,7 @@
           </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar-home" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686832693/screenshot_2023-06-13_at_17.42.02_khbecm.png", class: "avatar", alt: "dropdown menu" %>
+            <%= image_tag "https://res.cloudinary.com/dp3xfbod8/image/upload/v1686832693/screenshot_2023-06-13_at_17.42.02_khbecm.png", class: "avatar-home", alt: "dropdown menu" %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
