@@ -82,8 +82,11 @@
 .collections-show-info-bottom {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   // border: 1px solid black
+}
+
+.collections-show-member-avatars {
+  align-items: left;
 }
 
 .collections-show-info-top {

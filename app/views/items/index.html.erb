@@ -16,31 +16,33 @@
                 <%=cl_image_tag("eb29e166f6bd2b605ac17b58a9f2f7ac_lugu4k", width: 400, height: 600, crop: :fill, format: :jpg) %>
               </div>
             <% end %>
-            <div class="collections-show-item-card-info">
-              <div class="collections-show-info-top">
+          <div class="collections-show-item-card-info">
+            <div class="collections-show-info-top">
                 <h1 class="collections-show-title"><%= item.title %></h1>
                 <div class="collections-show-item-card-description">
                   <%= item.description %>
                 </div>
               </div>
-
           <!-- DATE SECTION -->
               <div class="item-show-tags-heading">
                 <i class="fa-solid fa-calendar-days mx-1 mb-3"></i> <%= item.date.strftime('%Y-%m-%d') %>
               </div>
 
                 <div class="collections-show-info-bottom">
-                  <% item.members.each do |member| %>
-                    <%# <%= member.first_name %>
-                    <% if member.photos.attached? %>
-                      <%=cl_image_tag(member.photos.first.key, class: "avatar") %>
+                  <div class="collections-show-member-avatars">
+                      <% item.members.each do |member| %>
+                      <%# <%= member.first_name %>
+                      <% if member.photos.attached? %>
+                        <%=cl_image_tag(member.photos.first.key, class: "avatar") %>
+                      <% end %>
                     <% end %>
-                  <% end %>
-                  <div>
-                    <%= item.comments.count %>
-                    <i class="fa-solid fa-comment"></i>
                   </div>
+                    <div collections-show-comments-bottom>
+                      <%= item.comments.count %>
+                      <i class="fa-solid fa-comment"></i>
+                    </div>
                 </div>
+
             </div>
           </div>
         <% end %>
@@ -57,13 +59,13 @@
       <%= link_to "+ Add you first item", new_item_path, class: "orange-primary-btn text-decoration-none"%>
     </div>
   <% end %>
-</div>
-<div class="new-item-button">
-<%= link_to new_item_path do %>
-  <button class="btn pop-on-hover">
-    <svg class="plus-button" xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-    </svg>
-  </button>
-<% end %>
+  <div class="new-item-button">
+  <%= link_to new_item_path do %>
+    <button class="btn pop-on-hover">
+      <svg class="plus-button" xmlns="http://www.w3.org/2000/svg" width="75" height="75" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+      </svg>
+    </button>
+  <% end %>
+  </div>
 </div>

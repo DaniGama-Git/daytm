@@ -17,8 +17,8 @@
                 <%=cl_image_tag("eb29e166f6bd2b605ac17b58a9f2f7ac_lugu4k", width: 400, height: 600, crop: :fill, format: :jpg) %>
               </div>
             <% end %>
-            <div class="collections-show-item-card-info">
-              <div class="collections-show-info-top">
+          <div class="collections-show-item-card-info">
+            <div class="collections-show-info-top">
                 <h1 class="collections-show-title"><%= item.title %></h1>
                 <div class="collections-show-item-card-description">
                   <%= item.description %>
@@ -30,17 +30,20 @@
               </div>
 
                 <div class="collections-show-info-bottom">
-                  <% item.members.each do |member| %>
-                    <%# <%= member.first_name %>
-                    <% if member.photos.attached? %>
-                      <%=cl_image_tag(member.photos.first.key, class: "avatar") %>
+                  <div class="collections-show-member-avatars">
+                      <% item.members.each do |member| %>
+                      <%# <%= member.first_name %>
+                      <% if member.photos.attached? %>
+                        <%=cl_image_tag(member.photos.first.key, class: "avatar") %>
+                      <% end %>
                     <% end %>
-                  <% end %>
-                  <div>
-                    <%= item.comments.count %>
-                    <i class="fa-solid fa-comment"></i>
                   </div>
+                    <div collections-show-comments-bottom>
+                      <%= item.comments.count %>
+                      <i class="fa-solid fa-comment"></i>
+                    </div>
                 </div>
+
             </div>
           </div>
         <% end %>
