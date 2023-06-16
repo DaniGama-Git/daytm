@@ -211,17 +211,17 @@ item_1_8.save
 # CREATING ITEMS & TAGS SEED COLLECTION 2
 p "CREATING ITEMS & TAGSNEED COLLECTION 2"
 
-item_2_1 = Item.create(title: "Dani's drawing of a bug", description: "Dani's drawing done with Nonna on school holidays", format: "JPEG", date: Date.parse("2021/06/02"), user: user_1)
-item_2_2 = Item.create(title: "Lis's pottery", description: "Lis's pottery done at clay cafe for her cousin's birthday", format: "JPEG", date: Date.parse("2023/08/14"), user: user_1)
+item_2_1 = Item.create(title: "Drawing of a bug", description: "Dani's drawing done with Nonna on school holidays", format: "JPEG", date: Date.parse("2021/06/02"), user: user_1)
+item_2_2 = Item.create(title: "Pottery", description: "Lis's pottery done at clay cafe for her cousin's birthday", format: "JPEG", date: Date.parse("2023/08/14"), user: user_1)
 
 collection_2.items << item_2_1
 collection_2.items << item_2_2
 collection_2.save
 
-member_3.items << item_2_1
+member_3.items << [item_2_1, item_2_2]
 member_3.save
 
-member_2.items << item_2_2
+member_2.items << [item_2_2, item_2_1]
 member_2.save
 
 tag_5 = Tag.create(name: "art", user: user_1)
