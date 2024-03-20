@@ -8,12 +8,11 @@ export default class extends Controller {
 
   send(event) {
     event.preventDefault();
-    console.log(this.inputTarget.value)
 
-    fetch('https://us22.api.mailchimp.com/3.0/lists/members', {
+    fetch('https://us22.api.mailchimp.com/3.0/lists/6a583e5cf0/members', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json', 'api-key': this.apiKeyValue },
-      body: JSON.stringify({ 'email_address': this.inputTarget.value})
+      headers: {'Content-Type': 'application/json', 'apikey': this.apiKeyValue },
+      body: JSON.stringify({ 'email_address': this.inputTarget.value, 'status': 'subscribed' })
     })
       .then((response) => {
         if (response.status === 201) {
