@@ -1,24 +1,37 @@
 <div class="image-title-container">
   <div class="landing-page-opening-title">
-    <h1> <strong>All your information</strong></h1>
+    <h1><strong>All your information</strong></h1>
     <h2>collected in one place </h2>
     <p>Available whenever you need it</p>
-    <p><%= link_to "Sign up", new_user_registration_path, class: "text-decoration-none black-primary-btn" %></p>
+    <%= link_to "Sign up", "#newsletter", class: "text-decoration-none black-primary-btn" %>
   </div>
-    <img src="https://res.cloudinary.com/dp3xfbod8/image/upload/v1686834012/Tutto_Ricco_-_Marching_itxym9.png" alt="" width =800px >
+    <img src="https://res.cloudinary.com/dp3xfbod8/image/upload/v1686834012/Tutto_Ricco_-_Marching_itxym9.png" alt="" width=800px >
 </div>
 
-    <!-- ADD ANOTHER SIGN UP BUTTON HERE (SEE COLLECT PAGE)  -->
+<div id="newsletter" class="newsletter-signup-container">
+  <h2>Coming Soon</h2>
+  <p>This web application is currently in the prototype phase and is not yet ready for full use. We appreciate your interest and ethusiasm.</p>
+  <p>Kindly sign up below, and we'll keep you informed when the app is ready for launch. Thank you for your patience and support!</p>
+  <form class="newsletter-signup" action="https://us22.api.mailchimp.com/3.0/lists/members" method="post">
+    <input type="hidden" name="apikey" value="<%= ENV['MAILCHIMP_API_KEY'] %>">
+    <div class="newsletter-signup-inputs">
+      <input placeholder="Email Address" type="email" id="email" name="email" required class="newsletter-signup-input-field form-control">
+      <input type="submit" value="Subscribe" class="text-decoration-none black-primary-btn">
+    </div>
+  </form>
+</div>
+
 <div class="empowering-you-container">
-  <p> Empowering you to effortlessly organise and retrieve your personal information </p>
+  <h2>Why wait?</h2>
+  <p>Empowering you to effortlessly organise and retrieve your personal information.</p>
 </div>
 
 <div class="intuitive-taging-container">
-  <p> Using intuitive tagging and a powerful search engine. Say goodbye to the frustration of lost personal information with <strong> daytm.</strong></p>
+  <p>Using intuitive tagging and a powerful search engine. Say goodbye to the frustration of lost personal information with <strong> daytm.</strong></p>
 </div>
 
 <div class="second-image-landing-page">
-    <img src="https://res.cloudinary.com/dp3xfbod8/image/upload/v1686837790/Tutto_Ricco_-_Fresh_Air_ylbk1e.png" alt="" width =900px >
+    <img src="https://res.cloudinary.com/dp3xfbod8/image/upload/v1686837790/Tutto_Ricco_-_Fresh_Air_ylbk1e.png" alt="" width=900px >
   <div class="seamlessly-store">
     <p>Designed for busy people. Seamlessly store, tag, and save your data.</p>
   </div>
