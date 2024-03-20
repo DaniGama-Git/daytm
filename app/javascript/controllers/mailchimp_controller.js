@@ -11,7 +11,7 @@ export default class extends Controller {
 
     fetch('https://us22.api.mailchimp.com/3.0/lists/6a583e5cf0/members', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json', 'apikey': this.apiKeyValue },
+      headers: {'Content-Type': 'application/json', 'Authorization': 'apikey fbb7c1c8ec64a89efa370dd401a386d7-us22' },
       body: JSON.stringify({ 'email_address': this.inputTarget.value, 'status': 'subscribed' })
     })
       .then((response) => {
