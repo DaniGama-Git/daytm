@@ -12,10 +12,11 @@
   <h2>Coming Soon</h2>
   <p>This web application is currently in the prototype phase and is not yet ready for full use. We appreciate your interest and ethusiasm.</p>
   <p>Kindly sign up below, and we'll keep you informed when the app is ready for launch. Thank you for your patience and support!</p>
-  <form class="newsletter-signup" action="https://us22.api.mailchimp.com/3.0/lists/members" method="post">
-    <input type="hidden" name="apikey" value="<%= ENV['MAILCHIMP_API_KEY'] %>">
+  <form data-controller="mailchimp"
+        data-action="submit->mailchimp#send"
+        data-mailchimp-api-key-value="<%= ENV['MAILCHIMP_API_KEY'] %>" class="newsletter-signup">
     <div class="newsletter-signup-inputs">
-      <input placeholder="Email Address" type="email" id="email" name="email" required class="newsletter-signup-input-field form-control">
+      <input data-mailchimp-target="input" placeholder="Email Address" type="email" id="email" name="email" required class="newsletter-signup-input-field form-control">
       <input type="submit" value="Subscribe" class="text-decoration-none black-primary-btn">
     </div>
   </form>
