@@ -12,23 +12,22 @@
   <h2>Coming Soon</h2>
   <p>This web application is currently in the prototype phase and is not yet ready for full use. We appreciate your interest and ethusiasm.</p>
   <p>Kindly sign up below, and we'll keep you informed when the app is ready for launch. Thank you for your patience and support!</p>
-  <form data-controller="mailchimp"
-        data-action="submit->mailchimp#send"
-        data-mailchimp-api-key-value="<%= ENV['MAILCHIMP_API_KEY'] %>" class="newsletter-signup">
-    <div class="newsletter-signup-inputs">
-      <input data-mailchimp-target="input" placeholder="Email Address" type="email" id="email" name="email" required class="newsletter-signup-input-field form-control">
-      <input type="submit" value="Subscribe" class="text-decoration-none black-primary-btn">
-    </div>
-  </form>
+
+  <%= form_with(url: '/mailchimp', method: 'post', local: true, input_html: { class: 'newsletter-signup' }) do |form| %>
+  <div class="newsletter-signup-inputs">
+    <%= form.text_field :email_address, required: true, placeholder: "Enter your email address", class: 'newsletter-signup-input-field form-control' %>
+    <%= form.submit "Subscribe", class: 'text-decoration-none black-primary-btn' %>
+  </div>
+  <% end %>
 </div>
 
 <div class="empowering-you-container">
-  <h2>Why wait?</h2>
+  <h2>Why daytm?</h2>
   <p>Empowering you to effortlessly organise and retrieve your personal information.</p>
 </div>
 
 <div class="intuitive-taging-container">
-  <p>Using intuitive tagging and a powerful search engine. Say goodbye to the frustration of lost personal information with <strong> daytm.</strong></p>
+  <p>Using intuitive tagging and a powerful search engine. Say goodbye to the frustration of lost personal information.</p>
 </div>
 
 <div class="second-image-landing-page">

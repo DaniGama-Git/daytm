@@ -6,34 +6,39 @@ export default class extends Controller {
   static targets = ['input']
   static values = { apiKey: String }
 
+  connect() {
+    console.log('hi new')
+  }
+
   send(event) {
     event.preventDefault();
 
     fetch('https://us22.api.mailchimp.com/3.0/lists/6a583e5cf0/members', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json', 'Authorization': 'apikey fbb7c1c8ec64a89efa370dd401a386d7-us22' },
+      headers: {'Content-Type': 'application/json', 'apikey': this.apiKeyValue },
       body: JSON.stringify({ 'email_address': this.inputTarget.value, 'status': 'subscribed' })
     })
       .then((response) => {
-        if (response.status === 201) {
-          swal({
-            title: 'Signed up! 💌',
-            text: 'You have successfully subscribed to our newsletter and will now stay up to date. We would love to welcome you into our community!',
-            button: 'Lots of love!'
-          })
-        } else if (response.status === 400) {
-          swal({
-            title: 'Something went wrong! 🚫',
-            text: 'You are already in our waiting list with this email address. Why not sign up to Quouch and become part of this special community already? 😏',
-            button: 'Lots of love!'
-          })
-        } else {
-          swal({
-            title: 'Something went wrong! 🚫',
-            text: 'Huh? Please try again or contact the Quouch support to further inquire the issue.',
-            button: 'Lots of love!'
-          })
-        }
+        console.log(response)
+        // if (response.status === 201) {
+        //   swal({
+        //     title: 'Signed up! 💌',
+        //     text: 'You have successfully subscribed to our newsletter and will now stay up to date. We would love to welcome you into our community!',
+        //     button: 'Lots of love!'
+        //   })
+        // } else if (response.status === 400) {
+        //   swal({
+        //     title: 'Something went wrong! 🚫',
+        //     text: 'You are already in our waiting list with this email address. Why not sign up to Quouch and become part of this special community already? 😏',
+        //     button: 'Lots of love!'
+        //   })
+        // } else {
+        //   swal({
+        //     title: 'Something went wrong! 🚫',
+        //     text: 'Huh? Please try again or contact the Quouch support to further inquire the issue.',
+        //     button: 'Lots of love!'
+        //   })
+        // }
       })
   }
 }
