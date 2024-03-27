@@ -1,6 +1,4 @@
-// Entry point for the build script in your package.json
-import "@hotwired/turbo-rails"
-import "./controllers"
-import "bootstrap"
+// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 
-//= require submit_on_enter
+import "@hotwired/turbo-rails"
+import "bootstrap"
