@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   resources :members, only: [:new, :create, :show]
   resources :user_suggestions, only: :create
   get 'home', to: 'pages#home'
+  post 'mailchimp', to: 'pages#create_mailchimp_member'
 end
