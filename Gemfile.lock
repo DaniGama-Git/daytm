@@ -304,8 +304,8 @@ DEPENDENCIES
   devise
   dotenv-rails
   font-awesome-sass (~> 6.1)
-  importmap-rails
   gibbon
+  importmap-rails
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
