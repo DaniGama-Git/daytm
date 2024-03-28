@@ -11,35 +11,16 @@
 }
 
 .landing-page-opening-title {
-  justify-content: center;
-  margin-top: 200px;
-  margin-left:200px;
+  p {}
+
 }
 
-.empowering-you-container {
-  width: 800px;
-  margin: 2rem auto 0 auto;
-  text-align: center;
-
-  p{ font-size: 30px; }
-
-  h2{ margin-bottom: 1rem; }
-}
 
 .newsletter-signup-container {
-  width: 800px;
   margin: 2rem auto 0;
   text-align: center;
-  padding: 4rem;
-
-  p { font-size: 30px; }
 
   h2 { margin-bottom: 1rem; }
-}
-
-.newsletter-signup {
-  margin: 2rem auto;
-  width: 80%;
 }
 
 .newsletter-signup-input-field {
@@ -47,9 +28,9 @@
 }
 
 .newsletter-signup-inputs {
-  display: flex;
-  justify-content: space-around;
-  gap: 1rem;
+  // display: flex;
+  // justify-content: space-around;
+  // gap: 1rem;
 }
 
 .intuitive-taging-container {

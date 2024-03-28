@@ -1,42 +1,61 @@
-<div class="image-title-container">
-  <div class="landing-page-opening-title">
-    <h1><strong>All your information</strong></h1>
-    <h2>collected in one place </h2>
-    <p>Available whenever you need it</p>
-    <%= link_to "Sign up", "#newsletter", class: "text-decoration-none black-primary-btn" %>
-  </div>
-    <img src="https://res.cloudinary.com/dp3xfbod8/image/upload/v1686834012/Tutto_Ricco_-_Marching_itxym9.png" alt="" width=800px >
-</div>
-
-<div id="newsletter" class="newsletter-signup-container">
-  <h2>Coming Soon</h2>
-  <p>This web application is currently in the prototype phase and is not yet ready for full use. We appreciate your interest and ethusiasm.</p>
-  <p>Kindly sign up below, and we'll keep you informed when the app is ready for launch. Thank you for your patience and support!</p>
-  <form class="newsletter-signup" action="https://us22.api.mailchimp.com/3.0/lists/members" method="post">
-    <input type="hidden" name="apikey" value="<%= ENV['MAILCHIMP_API_KEY'] %>">
-    <div class="newsletter-signup-inputs">
-      <input placeholder="Email Address" type="email" id="email" name="email" required class="newsletter-signup-input-field form-control">
-      <input type="submit" value="Subscribe" class="text-decoration-none black-primary-btn">
+<div class="container px-5">
+  <div class="row my-5">
+    <div class="col-12 col-lg-4 d-flex align-items-center justify-content-center">
+      <div class="landing-page-opening-title my-5 d-flex flex-column text-center text-lg-start">
+        <h1 class="mb-5">All your information collected in one place </h1>
+        <p class="mb-5 fs-5">Find whatever you need, whenever you need it</p>
+        <%= link_to "Sign up", "#newsletter", class: "text-decoration-none black-primary-btn" %>
+      </div>
     </div>
-  </form>
-</div>
-
-<div class="empowering-you-container">
-  <h2>Why wait?</h2>
-  <p>Empowering you to effortlessly organise and retrieve your personal information.</p>
-</div>
-
-<div class="intuitive-taging-container">
-  <p>Using intuitive tagging and a powerful search engine. Say goodbye to the frustration of lost personal information with <strong> daytm.</strong></p>
-</div>
-
-<div class="second-image-landing-page">
-    <img src="https://res.cloudinary.com/dp3xfbod8/image/upload/v1686837790/Tutto_Ricco_-_Fresh_Air_ylbk1e.png" alt="" width=900px >
-  <div class="seamlessly-store">
-    <p>Designed for busy people. Seamlessly store, tag, and save your data.</p>
+    <div class="col-12 col-lg-8">
+      <img class="img-fluid" src="https://res.cloudinary.com/dp3xfbod8/image/upload/v1686834012/Tutto_Ricco_-_Marching_itxym9.png" alt="" >
+    </div>
   </div>
-</div>
 
-<div class="convenience">
-  <p>Enjoy the convenience of effortlessly searching and accessing your data whenever you need it.</p>
+  <div class="row justify-content-center mt-5">
+    <div class="col-12 col-lg-6">
+      <div id="newsletter" class="newsletter-signup-container">
+        <h2 class="my-5">Coming soon</h2>
+        <p class="fs-5">This web application is currently in the prototype phase and will be ready for you soon. We appreciate your interest and ethusiasm.
+        <p class="fs-5 mb-5">Kindly sign up below, and we'll keep you in the loop on the latest from daytm. Thanks for your patience and support!</p>
+        <form class="newsletter-signup" action="https://us22.api.mailchimp.com/3.0/lists/members" method="post">
+          <input type="hidden" name="apikey" value="<%= ENV['MAILCHIMP_API_KEY'] %>">
+          <div class="newsletter-signup-inputs d-flex flex-column flex-sm-row justify-content-around gap-3">
+            <input placeholder="Email Address" type="email" id="email" name="email" required class="newsletter-signup-input-field form-control">
+            <input type="submit" value="Subscribe" class="text-decoration-none black-primary-btn">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-12 col-lg-6">
+      <div class="empowering-you-container my-5 text-center">
+        <h2 class="my-5">Why daytm?</h2>
+        <%# <p class="fs-5">Our mission is to empower you to effortlessly organise and retrieve your personal information.</p>
+        <p class="fs-5">Using intuitive tagging and a powerful search engine. Say goodbye to the frustration of lost personal information.</p> %>
+        <p class="fs-5">Say goodbye to the frustrations of disorganized data.
+          With intuitive tagging and an AI powered search engine, daytm will empower you
+          to effortlessly and securely manage your personal and family documents.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-lg-8">
+      <img class="img-fluid" src="https://res.cloudinary.com/dp3xfbod8/image/upload/v1686837790/Tutto_Ricco_-_Fresh_Air_ylbk1e.png" alt="">
+    </div>
+    <div class="col-12 col-lg-4 d-flex align-items-center justify-content-center my-5">
+      <p class="fs-5 text-center mb-0">Designed for busy people. Seamlessly upload, organize, tag and retrieve your data.</p>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6 mb-5 mt-lg-5">
+      <p class="fs-5 text-center">Enjoy the convenience of effortlessly searching and accessing your data whenever you need it.</p>
+    </div>
+  </div>
+
 </div>
