@@ -18,8 +18,8 @@
         <h2 class="my-5">Coming soon</h2>
         <p class="fs-5">This web application is currently in the prototype phase and will be ready for you soon. We appreciate your interest and ethusiasm.
         <p class="fs-5 mb-5">Kindly sign up below, and we'll keep you in the loop on the latest from daytm. Thanks for your patience and support!</p>
-        <form class="newsletter-signup" action="https://us22.api.mailchimp.com/3.0/lists/members" method="post">
-          <input type="hidden" name="apikey" value="<%= ENV['MAILCHIMP_API_KEY'] %>">
+        <form class="newsletter-signup" action="/mailchimp" method="post">
+          <input type="hidden" name="apiKey" value="fbb7c1c8ec64a89efa370dd401a386d7-us22">
           <div class="newsletter-signup-inputs d-flex flex-column flex-sm-row justify-content-around gap-3">
             <input placeholder="Email Address" type="email" id="email" name="email" required class="newsletter-signup-input-field form-control">
             <input type="submit" value="Subscribe" class="text-decoration-none black-primary-btn">
